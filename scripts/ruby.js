@@ -8,7 +8,7 @@ $(document).ready(function () {
 		temptext += "<option value=" + (i + 1) + ">" + routeNames[i] + "</option>";
 	}
 	temptext += "</select><br>";
-	document.getElementById("droplist").innerHTML = temptext;
+	//document.getElementById("droplist").innerHTML = temptext;
 
 	getSheetData({
 		// sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"

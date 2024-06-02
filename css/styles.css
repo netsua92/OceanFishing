@@ -12,8 +12,18 @@ body>footer {
   top: 100vh;
 }
 
+.form-control,.form-select {
+  display:inline-block !important;
+  width:auto !important;
+  vertical-align: middle;
+}
+
 .smallbait {
   width: 50px;
+}
+
+.iconMedium {
+  width:75px;
 }
 
 .iconSmall {

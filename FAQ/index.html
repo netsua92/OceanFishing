@@ -21,7 +21,7 @@
   <script src="../assets/js/color-modes.js"></script>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  <title>Ocean Fishing Tracker</title>
+  <title>Ocean Fishing Tracker | FAQ</title>
 </head>
 
 <body>
@@ -121,9 +121,18 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../ruby/">Ruby</a>
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link" href="../schedules/">Schedules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../achievements/">Achievements</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active"  aria-current="page" href="#">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about/">About</a>
           </li>
         </ul>
       </div>
@@ -132,34 +141,42 @@
 
   <main class="container">
     <div class="bg-body-tertiary p-5 rounded">
+      
+    <h1>Frequently Asked Questions</h1>
+    <p>Select a topic below to find out more.</p>
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
               Common Ability Acronyms and Terms
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               
-              <p>DH = Double Hook :DoubleHook: (Lv. 65 quest skill)<br/>
-              TH = Triple Hook :TripleHook: (Lv. 90 skill)<br/>
-              IC = Identical Cast :IdenticalCast: (Lv. 79 skill)<br/>
-              PC = Prize Catch :PrizeCatch: (Lv. 81 skill)<br/>
-              Slap/SS = Surface Slap :SurfaceSlap: (Lv. 71 skill)<br/>
-              P2 = Patience II :PatienceII: (Lv. 60 quest skill)<br/>
-              P1 = Patience :Patience: (Lv. 15 skill)<br/>
-              AA = Angler's Art :AnglersArt: (stacks from the Lv. 15 trait)<br/>
-              TF = Thaliak's Favor :ThaliaksFavor: (Lv. 15 skill)<br/>
-              MSB/MB = Makeshift Bait :MakeshiftBait: (Lv. 48 skill)</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Double Hook.png' alt="Double Hook Skill Icon"> <b>DH</b> = Double Hook  (Lv. 65 quest skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Triple Hook.png' alt="Triple Hook Skill Icon"> <b>TH</b> = Triple Hook  (Lv. 90 skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Identical Cast.png' alt="Identical Cast Skill Icon"> <b>IC</b> = Identical Cast (Lv. 79 skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Prize Catch.png' alt="Prize Catch Skill Icon"> <b>PC</b> = Prize Catch (Lv. 81 skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Surface Slap.png' alt="Surface Slap Skill Icon"> <b>Slap/SS</b> = Surface Slap (Lv. 71 skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Patience II.png' alt="Patience II Skill Icon"> <b>P2</b> = Patience II (Lv. 60 quest skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Patience.png' alt="Patience Skill Icon"> <b>P1</b> = Patience (Lv. 15 skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Anglers Art 1.png' alt="Anglers Art Buff Icon"> <b>AA</b> = Angler's Art (stacks from the Lv. 15 trait)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Thaliaks Favor.png' alt="Thaliak's Favor Skill Icon"> <b>TF</b> = Thaliak's Favor (Lv. 15 skill)<br/></li>
+                <li class="list-group-item"><img class='iconSmaller' src='../img/skills/Makeshift Bait.png' alt="Makeshift Bait Skill Icon"> <b>MSB/MB</b> = Makeshift Bait (Lv. 48 skill)</li>
+              </ul>
+              <br>
               
-              <p>
-              Ability Combinations:<br/>
-              DH-IC-DH = :DoubleHook: → :IdenticalCast: → :DoubleHook:<br/>
-              DH-IC-PC-TH = :DoubleHook: → :IdenticalCast: → :PrizeCatch: → :TripleHook:<br/>
-              TH-IC-TH = :TripleHook: → :IdenticalCast: → :TripleHook:<br/>
-              TH-IC-PC-TH = :TripleHook: → :IdenticalCast: → :PrizeCatch: → :TripleHook:<br/>
-              Combinations require varied amounts of :AnglersArt: stacks to use :ThaliaksFavor: and/or Hi-Cordial.</p>
+              <h5>Ability Combinations:</h5><br/>
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>DH-IC-DH</b> = <img class='iconSmaller' src='../img/skills/Double Hook.png' alt="Double Hook Skill Icon"> → <img class='iconSmaller' src='../img/skills/Identical Cast.png' alt="Identical Cast Skill Icon"> → <img class='iconSmaller' src='../img/skills/Double Hook.png' alt="Double Hook Skill Icon"><br/></li>
+              <li class="list-group-item"><b>DH-IC-PC-TH</b> = <img class='iconSmaller' src='../img/skills/Double Hook.png' alt="Double Hook Skill Icon"> → <img class='iconSmaller' src='../img/skills/Identical Cast.png' alt="Identical Cast Skill Icon"> → <img class='iconSmaller' src='../img/skills/Prize Catch.png' alt="Prize Catch Skill Icon"> → <img class='iconSmaller' src='../img/skills/Triple Hook.png' alt="Triple Hook Skill Icon"><br/></li>
+              <li class="list-group-item"><b>TH-IC-TH</b> = <img class='iconSmaller' src='../img/skills/Triple Hook.png' alt="Triple Hook Skill Icon"> → <img class='iconSmaller' src='../img/skills/Identical Cast.png' alt="Identical Cast Skill Icon"> → <img class='iconSmaller' src='../img/skills/Triple Hook.png' alt="Triple Hook Skill Icon"><br/></li>
+              <li class="list-group-item"><b>TH-IC-PC-TH</b> = <img class='iconSmaller' src='../img/skills/Triple Hook.png' alt="Triple Hook Skill Icon"> → <img class='iconSmaller' src='../img/skills/Identical Cast.png' alt="Identical Cast Skill Icon"> → <img class='iconSmaller' src='../img/skills/Prize Catch.png' alt="Prize Catch Skill Icon"> → <img class='iconSmaller' src='../img/skills/Triple Hook.png' alt="Triple Hook Skill Icon"><br/></li>
+              </ul>
+              <br/>
+              <b>Combinations require varied amounts of <img class='iconSmaller' src='../img/skills/Anglers Art 1.png' alt="Anglers Art Buff Icon"> stacks to use <img class='iconSmaller' src='../img/skills/Thaliaks Favor.png' alt="Thaliak's Favor Skill Icon"> and/or Hi-Cordial.</p></b>
             
             </div>
           </div>
@@ -167,19 +184,21 @@
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Accordion Item #2
+              Understanding Route Nomenclature
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+              <p>Both players and popular Ocean Fishing resources generally refer to routes by the fish-specific bonus objectives commonly completed on them or the ★★★★★ available on them.</p>
+
+               <p>As an example, the "shark route" is the specific route (Rhotano Sea ending at Day) where groups try to complete the bonus objective "Certifiable Shark Hunters" for the "What Did Sharks Do to You?" achievement.</p>
+              <p>This means that you are likely to see people referring to routes by what is classified as "Optional Objectives".</p></div>
           </div>
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Accordion Item #3
+              What bait do I need?
             </button>
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -188,6 +207,227 @@
             </div>
           </div>
         </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Cast Macro Timer
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              How to use Double and Triple Hook
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              Blind Double/Triple Hooking
+            </button>
+          </h2>
+          <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              How to use Hooksets
+            </button>
+          </h2>
+          <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+              A spectral current began/ended and my Identical Cast buff fell off. Is my fish gone?
+            </button>
+          </h2>
+          <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+              What is Fisher's Intuition?
+            </button>
+          </h2>
+          <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+              Non-Ocean Fishing Baits
+            </button>
+          </h2>
+          <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+              What stats should I have?
+            </button>
+          </h2>
+          <div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+              Blind Double/Triple Hooking
+            </button>
+          </h2>
+          <div id="collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+              Recommended GP
+            </button>
+          </h2>
+          <div id="collapseThirteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+              How do I get a spectral current to occur?
+            </button>
+          </h2>
+          <div id="collapseFourteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+              Spectral Current Extensions
+            </button>
+          </h2>
+          <div id="collapseFifteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
+              Dolphin and Seagull Buffs
+            </button>
+          </h2>
+          <div id="collapseSixteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+              Can I tell what the weather will be beforehand?
+            </button>
+          </h2>
+          <div id="collapseSeventeen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
+              Can you tell what the Voyage Missions will be?
+            </button>
+          </h2>
+          <div id="collapseEighteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
+              How do I know what fish are eligible for the first Voyage Mission? 
+            </button>
+          </h2>
+          <div id="collapseNineteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+     
       </div>
     </div>
   </main>
@@ -196,8 +436,11 @@
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="../" class="nav-link px-2 text-body-secondary">Home</a></li>
       <li class="nav-item"><a href="../Indigo/" class="nav-link px-2 text-body-secondary">Indigo</a></li>
-      <li class="nav-item"><a href="../ruby/" class="nav-link px-2 text-body-secondary">Ruby</a></li>
+      <li class="nav-item"><a href="../ruby/" class="nav-link px-2 text-body-secondary">Ruby</a></li>      
+      <li class="nav-item"><a href="../schedules/" class="nav-link px-2 text-body-secondary">Schedules</a></li>
+      <li class="nav-item"><a href="../achievements/" class="nav-link px-2 text-body-secondary">Achievements</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQ</a></li>
+      <li class="nav-item"><a href="../about/" class="nav-link px-2 text-body-secondary">About</a></li>
     </ul>
       <p class="text-center">
        <a class="link-body-emphasis iconSocial" href="https://twitter.com/TyotoTayuun"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a>
@@ -206,7 +449,6 @@
       </p>
   </footer>
 
-  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
