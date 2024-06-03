@@ -21,6 +21,8 @@
   <script src="../assets/js/color-modes.js"></script>
   <script src='../assets/dist/js/bootstrap.bundle.min.js'></script>
 
+  <script src="../scripts/achievements.js" type="text/javascript" defer></script>
+
   <title>Ocean Fishing Tracker | Achivements</title>
 </head>
 
@@ -133,7 +135,7 @@
             <a class="nav-link  active" aria-current="page" href="#">Achievements</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="../FAQ/">FAQ</a>
+            <a class="nav-link" href="../FAQ/">FAQ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../about/">About</a>
@@ -146,13 +148,123 @@
   <main class="container">
     <div class="bg-body-tertiary p-5 rounded">
 
-      <h2>Time Calculator for Ocean Fishing</h2>
-
+      <h2>Achievements</h2>
+      <h5>Select the achievement you want to see below</h5>
 
       <div class="row">
-        
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/octo_mark.png" class="iconMedium"> What Did Octopodes Do To You?</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/shark_mark.png" class="iconMedium"> What Did Sharks Do To You?</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/jelly_mark.png" class="iconMedium"> What Did Jellyfish Do To You?</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/dragon_mark.png" class="iconMedium"> What Did Seadragons Do To You?</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" onclick="printRoutesIndigo(11,12)"><img
+              src="../img/balloon_mark.png" class="iconMedium"> What Did Balloons Do To You?</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/crab_mark.png" class="iconMedium"> What Did Crabs Do To You?</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/manta_mark.png" class="iconMedium"> What Did Mantas Do To You?</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/mussel_mark.png" class="iconMedium"> What Did Shellfish Do To You?</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/squid_mark.png" class="iconMedium"> What Did Squid Do To You?</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
+              src="../img/shrimp_mark.png" class="iconMedium"> What Did Shrimp Do To You?</button>
+        </div>
       </div>
 
+
+      <div id="btnResult"></div>
+
+      <h2>How do I get started?</h2>
+      <h5>Finding/Forming a Party</h5>
+
+      <ul>
+        <li>Every objective but Sticking it to the Manta and Shrimp Smorgasbord is best attempted with a premade, full
+          8-person party of Lv. 80 - 90 fishers for Indigo achievements, and Lv. 90 fishers for Ruby achievements.
+          Parties are sometimes made for the solo/individual achievements as well for spectral current control, but are
+          not required, and if you do make/join one for it you do not need it to be a full party.</li>
+        <ul>
+          <li>All objectives can and have been completed in parties of less than 8 people. Jelled Together and Maritime
+            Dragonslayers are the ones easiest to successfuly complete with smaller parties.</li>
+        </ul>
+        <li>Before the time for registration on your target route begins, set up or search for a party under the
+          Gathering Forays section of the Party Finder. Parties often start forming 15 - 30 minutes before registration
+          begins.</li>
+      </ul>
+      <ul>
+        <li>It is a good idea, especially if you are the party leader, to ensure that everyone who joins the party is
+          aware of what the objective is before queueing.</li>
+        <li>Mikah Tayuun (no relation) has <a
+            href="https://na.finalfantasyxiv.com/lodestone/character/27182703/blog/4721961/">made macros covering each
+            objective</a> that can be used to quickly and simply share stop-by-stop information with your party that can
+          be posted in the party chat beforehand and/or at the beginning of each stop.</li>
+      </ul>
+      <h5>Queueing Up</h5>
+      <ul>
+        <li>
+        <li>Registration ends 15 minutes past the hour when it opens. Your party can queue as late as 14m59s past the
+          hour with one non-standard Duty Finder language option selected to increase the odds that you are not paried
+          with other fishers outside your party.</li>
+        <ul>
+          <li>If playing on an NA or JA data centre, D or F are the best options. If playing on an EU data centre, J is
+            the best option.</li>
+          <li>This is not required but provides for greater control over spectral currents, allowing you to avoid
+            undesired ones and to get the desired ones (if they proc) extended to 3 minutes from the normal spectral
+            current length of 2 minutes.</li>
+        </ul>
+        <li>To change your Duty Finder language settings: open the Duty Finder and click the cogwheel in the top left.
+          The Duty Finder Settings window will open. Select one non-English language at the bottom and hit Confirm. Only
+          the party leader needs to do this.</li>
+      </ul>
+      <ul>
+        <li>Queueing late (10+ minutes past when registration opens) with limited Duty Finder language settings is the
+          most likely way to get a solo/party only boat, but it is not guaranteed. If other players queued with the same
+          options selected as you/your party, you will get paired with them.</li>
+        <ul>
+          <li> <i>If your party is paired with other players,</i> it's advised that you inform them of your party's
+            objective if you are attempting to control spectral currents. The best thing you can do when paired with
+            random players is to state your goal and politely ask them to go along with it.
+            Keep in mind that random players you are queued with have no obligation to work with your party. Players may
+            attempt to get a small/solo boat in order to focus ★★★★★ fish or just out of preference and might have goals
+            that conflict with yours. If they do not help or proc a current you do not want, this is not a reportable
+            offence or something that ruins an objective.
+            Spectral current extensions were added in patch 5.4 and the jellyfish, seadragon, shark, and octopus
+            objectives have existed since patch 5.2. These objectives were all possible without extensions, and so are
+            any of the others.</li>
+        </ul>
+        <li>If you do this, don't forget to return your Duty Finder language settings back to what they normally are
+          afterwards.</li>
+      </ul>
 
     </div>
   </main>
@@ -172,7 +284,8 @@
           height="24">
           <use xlink:href="#twitter" />
         </svg></a>
-      <a class="link-body-emphasis iconSocial" href="#"><svg class="bi" width="24" height="24">
+      <a class="link-body-emphasis iconSocial" href="https://ko-fi.com/tyototayuun"><svg class="bi" width="24"
+          height="24">
           <use xlink:href="#kofi" />
         </svg></a>
       <a class="link-body-emphasis iconSocial" href="https://discord.gg/fishcord"><svg class="bi" width="24"

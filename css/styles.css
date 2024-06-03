@@ -6,7 +6,39 @@ body {
 colgroup {
   display: none;
 }
+pre{
+  background-color: #555;
+  border-radius: 5px;
+}
 
+.fullWidth {
+  width:100%;
+}
+
+.achievementSelector img {
+  max-height:56px;
+  width:auto;
+}
+
+.achievementSelector {
+  margin-top:5px;
+  margin-bottom:10px;
+}
+
+.massivePre{
+  padding-top: 20px;
+}
+
+.preInside {
+  display:inline-block;
+  margin-bottom: 0px;
+}
+
+.infographic {
+  width:95%;
+  margin-top:5px;
+  margin-bottom:10px;
+}
 body>footer {
   position: sticky;
   top: 100vh;
@@ -18,8 +50,21 @@ body>footer {
   vertical-align: middle;
 }
 
+.centerAlign {
+  text-align:center;
+}
 .smallbait {
   width: 50px;
+}
+
+.left {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.apkallu {
+  z-index:-5;
+  position:relative;
 }
 
 .iconMedium {
