@@ -20,7 +20,7 @@
   <script src="../scripts/jquery-3.7.1.min.js" type="text/javascript" defer></script>
   <script src="../assets/js/color-modes.js"></script>
   <script src='../assets/dist/js/bootstrap.bundle.min.js'></script>
-
+  <script src="../scripts/popper.min.js"></script>
   <script src="../scripts/achievements.js" type="text/javascript" defer></script>
 
   <title>Ocean Fishing Tracker | Achivements</title>
@@ -145,66 +145,58 @@
     </div>
   </nav>
 
-  <main class="container">
-    <div class="bg-body-tertiary p-5 rounded">
+  <main class="container-fluid">
+    <div class="bg-body-tertiary rounded fullPadding">
 
       <h2>Achievements</h2>
       <h5>Select the achievement you want to see below</h5>
 
       <div class="row">
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/octo_mark.png" class="iconMedium"> What Did Octopodes Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="octo" data-bs-toggle="tooltip" data-bs-title="What Did Octopodes Do To You?" data-bs-placement="bottom"><img
+              src="../img/octo_mark.png" class="iconMedium"></button>
         </div>
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/shark_mark.png" class="iconMedium"> What Did Sharks Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="shark" data-bs-toggle="tooltip" data-bs-title="What Did Sharks Do To You?" data-bs-placement="bottom"><img
+              src="../img/shark_mark.png" class="iconMedium"></button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/jelly_mark.png" class="iconMedium"> What Did Jellyfish Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="jelly" data-bs-toggle="tooltip" data-bs-title="What Did Jellyfish Do To You?" data-bs-placement="bottom"><img
+              src="../img/jelly_mark.png" class="iconMedium"></button>
         </div>
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/dragon_mark.png" class="iconMedium"> What Did Seadragons Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="dragon" data-bs-toggle="tooltip" data-bs-title="What Did Seadragons Do To You?" data-bs-placement="bottom"><img
+              src="../img/dragon_mark.png" class="iconMedium"></button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" onclick="printRoutesIndigo(11,12)"><img
-              src="../img/balloon_mark.png" class="iconMedium"> What Did Balloons Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="fugu" data-bs-toggle="tooltip" data-bs-title="What Did Balloons Do To You?" data-bs-placement="bottom"><img
+              src="../img/balloon_mark.png" class="iconMedium"></button>
         </div>
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/crab_mark.png" class="iconMedium"> What Did Crabs Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="crab" data-bs-toggle="tooltip" data-bs-title="What Did Crabs Do To You?" data-bs-placement="bottom"><img
+              src="../img/crab_mark.png" class="iconMedium"></button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/manta_mark.png" class="iconMedium"> What Did Mantas Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="manta" data-bs-toggle="tooltip" data-bs-title="What Did Mantas Do To You?" data-bs-placement="bottom" ><img
+              src="../img/manta_mark.png" class="iconMedium"></button>
         </div>
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/mussel_mark.png" class="iconMedium"> What Did Shellfish Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="mussel" data-bs-toggle="tooltip" data-bs-title="What Did Shellfish Do To You?" data-bs-placement="bottom"><img
+              src="../img/mussel_mark.png" class="iconMedium"></button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/squid_mark.png" class="iconMedium"> What Did Squid Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="squid" data-bs-toggle="tooltip" data-bs-title="What Did Squid Do To You?" data-bs-placement="bottom"><img
+              src="../img/squid_mark.png" class="iconMedium"></button>
         </div>
-        <div class="col-6">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector"><img
-              src="../img/shrimp_mark.png" class="iconMedium"> What Did Shrimp Do To You?</button>
+        <div class="col">
+          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="shrimp" data-bs-toggle="tooltip" data-bs-title="What Did Shrimp Do To You?" data-bs-placement="bottom"><img
+              src="../img/shrimp_mark.png" class="iconMedium"></button>
         </div>
       </div>
 
 
       <div id="btnResult"></div>
-
+      <br>
       <h2>How do I get started?</h2>
       <h5>Finding/Forming a Party</h5>
 
@@ -231,7 +223,6 @@
       </ul>
       <h5>Queueing Up</h5>
       <ul>
-        <li>
         <li>Registration ends 15 minutes past the hour when it opens. Your party can queue as late as 14m59s past the
           hour with one non-standard Duty Finder language option selected to increase the odds that you are not paried
           with other fishers outside your party.</li>
@@ -280,15 +271,15 @@
       <li class="nav-item"><a href="../about/" class="nav-link px-2 text-body-secondary">About</a></li>
     </ul>
     <p class="text-center">
-      <a class="link-body-emphasis iconSocial" href="https://twitter.com/TyotoTayuun"><svg class="bi" width="24"
+      <a class="link-body-emphasis iconSocial" href="https://twitter.com/TyotoTayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
           height="24">
           <use xlink:href="#twitter" />
         </svg></a>
-      <a class="link-body-emphasis iconSocial" href="https://ko-fi.com/tyototayuun"><svg class="bi" width="24"
+      <a class="link-body-emphasis iconSocial" href="https://ko-fi.com/tyototayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
           height="24">
           <use xlink:href="#kofi" />
         </svg></a>
-      <a class="link-body-emphasis iconSocial" href="https://discord.gg/fishcord"><svg class="bi" width="24"
+      <a class="link-body-emphasis iconSocial" href="https://discord.gg/fishcord" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
           height="24">
           <use xlink:href="#discord" />
         </svg></a>

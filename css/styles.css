@@ -15,14 +15,27 @@ pre{
   width:100%;
 }
 
+.achievementGraphic {
+  max-width:1180px;
+}
+
 .achievementSelector img {
-  max-height:56px;
+  max-height:50px;
   width:auto;
+  /*float:left;*/
 }
 
 .achievementSelector {
   margin-top:5px;
   margin-bottom:10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  /*height:105px;*/
+}
+
+.fullPadding{
+  padding:15px;
 }
 
 .massivePre{

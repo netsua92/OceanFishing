@@ -49,8 +49,67 @@ var timeFormat = {
 };
 
 $(document).ready(function () {
-	//
+	$(".achievementSelector").each(function () {
+		var $this = $(this);
+		$this.on("click", function () {
+			$(".achievementSelector").removeClass("active");
+			$(this).addClass("active");
+			displayAchievementData($(this).data("type"));
+		});
+	});
+
+	const tooltipTriggerList = document.querySelectorAll(
+		'[data-bs-toggle="tooltip"]'
+	);
+	const tooltipList = [...tooltipTriggerList].map(
+		(tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+	);
 });
+
+function displayAchievementData(type) {
+	var getRoutes;
+	var achiName;
+	if (type == "fugu") {
+		getRoutes = printRoutesIndigo(11, 12);
+		achiName = "balloon-catchers";
+	} else if (type == "crab") {
+		getRoutes = printRoutesIndigo(9, 0);
+		achiName = "crab-boat-crew";
+	} else if (type == "shark") {
+		getRoutes = printRoutesIndigo(6, 0);
+		achiName = "certifiable-shark-hunters";
+	} else if (type == "manta") {
+		getRoutes = printRoutesIndigo(8, 12);
+		achiName = "sticking-it-to-the-manta";
+	} else if (type == "dragon") {
+		getRoutes = printRoutesIndigo(1, 0);
+		achiName = "maritime-dragonslayers";
+	} else if (type == "octo") {
+		getRoutes = printRoutesIndigo(2, 0);
+		achiName = "octopus-travelers";
+	} else if (type == "jelly") {
+		getRoutes = printRoutesIndigo(5, 0);
+		achiName = "jelled-together";
+	} else if (type == "squid") {
+		getRoutes = printRoutesRuby(2, 6);
+		achiName = "squid-squadron";
+	} else if (type == "mussel") {
+		getRoutes = printRoutesRuby(3, 5);
+		achiName = "maximum-mussel";
+	} else if (type == "shrimp") {
+		getRoutes = printRoutesRuby(4, 3);
+		achiName = "shrimp-smorgasbord";
+	}
+
+	document.getElementById("btnResult").innerHTML =
+		'<div class="row"><div class="col-xl-9"><img class="fullWidth " src="../img/achievements/' +
+		type +
+		'.png" ></div><div class="col-xl-3">' +
+		getRoutes +
+		'<br><h2>Seeking more information?</h2><br><h5> <a href="https://guides.ffxivteamcraft.com/guide/ocean-fishing-bonus-achievements#' +
+		achiName +
+		'"  target="_blank" rel="noopener noreferrer">Read the indepth guide</a> by Tyo\'to Tayuun.</h5></div></div>';
+}
 
 function printRoutesIndigo(rn1, rn2) {
 	var rN = rn1;
@@ -99,17 +158,17 @@ function printRoutesIndigo(rn1, rn2) {
 		temptext += "</td><td>";
 		temptext += routeNamesIndigo[routeNumberArr[i] - 1];
 		temptext += "</td></tr>";
-		console.log(matchedTimes[i]);
 	}
 
 	temptext += "</table>";
 
-	document.getElementById("btnResult").innerHTML = temptext;
+	return temptext;
 }
 
-function printRoutesRuby() {
-	var rN = document.getElementById("routeNumber").value;
-	var pQ = document.getElementById("printQuantityRuby").value;
+function printRoutesRuby(rn1, rn2) {
+	var rN = rn1;
+	var rN2 = rn2;
+	var pQ = 10;
 
 	var currentTime = new Date();
 	var currentTwoHourChunks = Math.floor(
@@ -128,12 +187,17 @@ function printRoutesRuby() {
 	var tries = 0;
 	var matches = 0;
 	var matchedTimes = [];
+	var routeNumberArr = [];
 
 	while (matches < pQ && tries < pQ * 20) {
 		//ADD offset to find pattern
 		var temp = currentTwoHourChunks + tries + offset;
-		if (patternRuby[temp % patternRuby.length] == rN) {
+		if (
+			patternRuby[temp % patternRuby.length] == rN ||
+			patternRuby[temp % patternRuby.length] == rN2
+		) {
 			matchedTimes.push(temp + 1);
+			routeNumberArr.push(patternRuby[temp % patternRuby.length]);
 			matches++;
 		}
 		tries++;
@@ -145,10 +209,12 @@ function printRoutesRuby() {
 		//SUBTRACT offset to get real time
 		var tempoop = new Date((matchedTimes[i] - offset) * (1000 * 60 * 60 * 2));
 		temptext += tempoop.toLocaleString(timeRegion, timeFormat);
+		temptext += "</td><td>";
+		temptext += routeNamesRuby[routeNumberArr[i] - 1];
 		temptext += "</td></tr>";
 	}
 
 	temptext += "</table>";
 
-	document.getElementById("rubySpecific").innerHTML = temptext;
+	return temptext;
 }
