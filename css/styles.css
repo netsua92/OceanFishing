@@ -10,6 +10,9 @@ pre{
   background-color: #555;
   border-radius: 5px;
 }
+pre, [data-bs-theme="light"] {
+  background-color: #e5eefb;
+}
 
 .fullWidth {
   width:100%;
@@ -34,10 +37,20 @@ pre{
   /*height:105px;*/
 }
 
+.achievementDesc {
+margin-bottom:20px;
+}
+
+.achievementTitle{
+margin:10px;
+}
+
 .activeRow {
   background-color: #4b5257;
 }
-
+.activeRow, [data-bs-theme="light"] {
+  background-color: #cfe2ff;
+}
 .activeRow > td:first-child{
   padding-left:5px;
 }

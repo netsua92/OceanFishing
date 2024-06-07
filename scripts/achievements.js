@@ -158,9 +158,9 @@ function displayAchievementData(type) {
 	}
 
 	document.getElementById("btnResult").innerHTML =
-		"<h1>" +
+		"<h1 class='achievementTitle'>" +
 		achiHeader +
-		"</h1><div class='card'> <div class='card-body'>" +
+		"</h1><div class='card achievementDesc'> <div class='card-body'>" +
 		achiText +
 		'</div></div><div class="row"><div class="col-xl-9"><img class="fullWidth " src="../img/achievements/' +
 		type +
