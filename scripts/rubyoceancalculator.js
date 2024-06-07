@@ -13,6 +13,15 @@ var routeNames = [
 	"Squid/Taniwha",
 ];
 
+var routeImages = [
+	"<img src='../img/opobj/Glass Dragon.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Jewel of Plum Spring.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Squids.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Glass Dragon.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Shellfish.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Shrimp.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Shrimp.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Hells Claw.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Shellfish.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Taniwha.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Squids.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Taniwha.png' class='iconSmall routetableOpObj'>",
+];
+
 var schedules = [
 	"Sirensong Sea at Sunset, Kugane at Night, One River at Day",
 	"Sirensong Sea at Sunset, Kugane at Night, Ruby Sea at Day",
@@ -78,6 +87,7 @@ function convertTime() {
 		var routeNumber = pattern[temp];
 		var finalStopDisp = finalStop[pattern[temp] - 1];
 		var optObjectives = routeNames[pattern[temp] - 1];
+		var images = routeImages[pattern[temp] - 1];
 
 		var timeUntilDepature = moment(stopTime).fromNow();
 
@@ -88,6 +98,7 @@ function convertTime() {
 			finalStopDisp,
 			optObjectives,
 			routeNumber,
+			images,
 		]);
 	}
 	new DataTable("#boatSchedule", {
@@ -97,6 +108,7 @@ function convertTime() {
 			{ title: "Destination" },
 			{ title: "Optional Objectives" },
 			{ title: "Route Number", visible: false },
+			{ title: "" },
 		],
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);

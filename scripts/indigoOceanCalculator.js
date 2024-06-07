@@ -12,14 +12,29 @@ var routeNames = [
 	"Octopus",
 	"Sothis & Elasmosaurus",
 	"Sothis & Stonescale",
-	"Jelly",
-	"Shark/Coral Manta",
+	"Jellyfish",
+	"Sharks/Coral Manta",
 	"Hafgufa & Elasmosaurus",
 	"Mantas",
 	"Crabs/Seafaring Toad",
 	"Hafgufa & Placodus",
 	"Fugu/Stonescale",
 	"Fugu/Mantas",
+];
+
+var routeImages = [
+	"<img src='../img/opobj/Seadragons.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Coral Manta.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Octopus.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Sothis.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Elasmosaurus.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Sothis.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Stonescale.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Jellyfish.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Sharks.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Coral Manta.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Hafgufa.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Elasmosaurus.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Mantas.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Crabs.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Seafaring Toad.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Hafgufa.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Placodus.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Fugu.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Stonescale.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Fugu.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Mantas.png' class='iconSmall routetableOpObj'>",
 ];
 
 var schedules = [
@@ -111,6 +126,7 @@ function convertTime() {
 		var routeNumber = pattern[temp];
 		var finalStopDisp = finalStop[pattern[temp] - 1];
 		var optObjectives = routeNames[pattern[temp] - 1];
+		var images = routeImages[pattern[temp] - 1];
 
 		var timeUntilDepature = moment(stopTime).fromNow();
 
@@ -121,6 +137,7 @@ function convertTime() {
 			finalStopDisp,
 			optObjectives,
 			routeNumber,
+			images,
 		]);
 	}
 
@@ -131,6 +148,7 @@ function convertTime() {
 			{ title: "Destination" },
 			{ title: "Optional Objectives" },
 			{ title: "Route Number", visible: false },
+			{ title: "" },
 		],
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);

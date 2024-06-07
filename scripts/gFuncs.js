@@ -632,6 +632,28 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	});
 	let toggleFable = document.querySelector("#fff" + id);
 	$(toggleFable).on("change", function (event, state) {
+		var c = $(this).prop("checked");
+		$("#fff" + id + "spec").prop("checked", c);
+
+		$("[id^=desttable" + id + "]").each(function (index) {
+			$(".fabled" + id).each(function () {
+				// .each to loop through elements
+				if (toggleFable.checked) {
+					$(this).closest("tr").hide();
+					$(this).closest("table").removeClass("table-striped");
+				} else {
+					$(this).closest("tr").show();
+					$(this).closest("table").addClass("table-striped");
+				}
+			});
+		});
+	});
+
+	let toggleFableSpec = document.querySelector("#fff" + id + "spec");
+	$(toggleFableSpec).on("change", function (event, state) {
+		var c = $(this).prop("checked");
+		$("#fff" + id).prop("checked", c);
+
 		$("[id^=desttable" + id + "]").each(function (index) {
 			$(".fabled" + id).each(function () {
 				// .each to loop through elements

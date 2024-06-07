@@ -14,7 +14,10 @@ pre{
 .fullWidth {
   width:100%;
 }
-
+.routetableOpObj {
+  margin-left:5px;
+  margin-top:5px;
+}
 .achievementGraphic {
   max-width:1180px;
 }
