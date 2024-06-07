@@ -187,6 +187,23 @@ function styleRow(row, id, type) {
 			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
 			row.Intuition +
 			"</div></div>";
+	} else if (row.Fish.substring(0, 2) == "T!") {
+		//Intuition Fish
+		row.Fish = row.Fish.replace("T!", "");
+		row.Fish =
+			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
+			row.Fish.replace(/'/g, "_") +
+			".png' alt='" +
+			row.Fish +
+			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			row.Fish.replace(/'/g, "") +
+			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
+			row.Fish +
+			"</span>" +
+			addStars(row.Stars) +
+			"<br/>" +
+			row.Intuition +
+			"</div></div>";
 	} else {
 		row.Fish =
 			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
