@@ -7,11 +7,8 @@ colgroup {
   display: none;
 }
 pre{
-  background-color: #555;
+  background-color: var(--bs-myBlueGrey);
   border-radius: 5px;
-}
-pre, [data-bs-theme="light"] {
-  background-color: #e5eefb;
 }
 
 .fullWidth {
@@ -45,11 +42,8 @@ margin-bottom:20px;
 margin:10px;
 }
 
-.activeRow {
-  background-color: #4b5257;
-}
-.activeRow, [data-bs-theme="light"] {
-  background-color: #cfe2ff;
+.activeRow { 
+  background-color: var(--bs-myBlueGrey);
 }
 .activeRow > td:first-child{
   padding-left:5px;
