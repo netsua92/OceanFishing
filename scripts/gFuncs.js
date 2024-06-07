@@ -482,7 +482,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 					},
 					title:
 						"<img class='iconSmall' src='../img/bait/Mooch.png' alt='Mooch'>",
-					visible: mooch,
+					visible: false,
 				},
 				{
 					data: {
@@ -496,7 +496,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						".png' alt='" +
 						specialBait +
 						"'>",
-					visible: specBait,
+					visible: false,
 				},
 				{
 					data: {
@@ -575,7 +575,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 					},
 					title:
 						"<img class='iconSmall' src='../img/bait/Mooch.png' alt='Mooch'>",
-					visible: mooch,
+					visible: false,
 				},
 				{
 					data: {
@@ -656,13 +656,22 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	$("[id^=desttable" + id + type + "]").each(function (index) {
 		let column = table.column(6);
 		if ($(this).find(".moochIcon").length > 0) {
-			column.visible(column.visible());
+			column.visible(!column.visible());
 			$("#moochBaitToggle" + id + type).addClass("active");
 		} else {
-			column.visible(!column.visible());
+			column.visible(column.visible());
 			$("#moochBaitToggle" + id + type).addClass("disabled");
 		}
 	});
+	if (type == "spec") {
+		$("[id^=desttable" + id + type + "]").each(function (index) {
+			let columnspec = table.column(7);
+			if ($(this).find(".fabledFish").length > 0) {
+				columnspec.visible(!columnspec.visible());
+				$("#specialBaitToggle" + id + type).addClass("active");
+			}
+		});
+	}
 
 	tempDataSet = "";
 }
