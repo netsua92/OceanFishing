@@ -11,7 +11,6 @@ var imgSunset = "<img src='../img/ocSunset.png' alt='Sunset' class='svgColor'>";
 
 let specialBait = "Special Bait";
 let SpecialBaitStripped = "SpecialBait";
-let mooch = false;
 
 function subtractTimeFromDate(objDate, intHours) {
 	var numberOfMlSeconds = objDate;
@@ -168,7 +167,7 @@ function styleRow(row, id, type) {
 			row.Fish +
 			"</span>" +
 			addStars(row.Stars) +
-			"<img src='../img/bait/Mooch.png' class='iconMini'> " +
+			"<img src='../img/bait/Mooch.png' class='iconMini moochIcon'> " +
 			"</div></div>";
 	} else if (row.Fish.substring(0, 2) == "I!") {
 		//Intuition Fish
@@ -187,8 +186,25 @@ function styleRow(row, id, type) {
 			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
 			row.Intuition +
 			"</div></div>";
+	} else if (row.Fish.substring(0, 2) == "F!") {
+		//Fabled Fish
+		row.Fish = row.Fish.replace("F!", "");
+		row.Fish =
+			"<div class='row'><div class='col-3'><img class='iconSmall fabledFish' src='../img/fish/" +
+			row.Fish.replace(/'/g, "_") +
+			".png' alt='" +
+			row.Fish +
+			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			row.Fish.replace(/'/g, "") +
+			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
+			row.Fish +
+			"</span>" +
+			addStars(row.Stars) +
+			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
+			row.Intuition +
+			"</div></div>";
 	} else if (row.Fish.substring(0, 2) == "T!") {
-		//Intuition Fish
+		//Trigger Fish
 		row.Fish = row.Fish.replace("T!", "");
 		row.Fish =
 			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
@@ -385,6 +401,8 @@ function styleRow(row, id, type) {
 
 function makeStopTable(tempDataSet, type, id, time, route) {
 	let newtempDataSet = [];
+	let specBait = false;
+	let mooch = false;
 	//tempDataSet = { ...tempDataSettemp };
 
 	tempDataSet.forEach(function (row) {
@@ -394,17 +412,20 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 				specialBait = row.Bait.SpecialType;
 				SpecialBaitStripped = row.Bait.SpecialType.replace(/\s/g, "");
 				$("#specialBaitToggle" + id + type).html(specialBait);
+				specBait = true;
 			} else {
 				specialBait = "Special Bait";
 				SpecialBaitStripped = "SpecialBait";
 				$("#specialBaitToggle" + id + type).html(specialBait);
-				$("#specialBaitToggle" + id + type).addClass("disabled");
+				specBait = false;
 			}
 		}
 
 		//Disable Mooch if no Mooch
 		if (row.Bait.MoochType != "") {
 			mooch = true;
+		} else {
+			mooch = false;
 		}
 
 		let temprow;
@@ -461,7 +482,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 					},
 					title:
 						"<img class='iconSmall' src='../img/bait/Mooch.png' alt='Mooch'>",
-					visible: false,
+					visible: mooch,
 				},
 				{
 					data: {
@@ -475,7 +496,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						".png' alt='" +
 						specialBait +
 						"'>",
-					visible: false,
+					visible: specBait,
 				},
 				{
 					data: {
@@ -554,7 +575,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 					},
 					title:
 						"<img class='iconSmall' src='../img/bait/Mooch.png' alt='Mooch'>",
-					visible: false,
+					visible: mooch,
 				},
 				{
 					data: {
@@ -625,15 +646,23 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		});
 	});
 
-	if (!mooch) {
-		$("#moochBaitToggle" + id + type).addClass("disabled");
-	}
-
 	const popoverTriggerList = document.querySelectorAll(
 		'[data-bs-toggle="popover"]'
 	);
 	const popoverList = [...popoverTriggerList].map(
 		(popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
 	);
+
+	$("[id^=desttable" + id + type + "]").each(function (index) {
+		let column = table.column(6);
+		if ($(this).find(".moochIcon").length > 0) {
+			column.visible(column.visible());
+			$("#moochBaitToggle" + id + type).addClass("active");
+		} else {
+			column.visible(!column.visible());
+			$("#moochBaitToggle" + id + type).addClass("disabled");
+		}
+	});
+
 	tempDataSet = "";
 }
