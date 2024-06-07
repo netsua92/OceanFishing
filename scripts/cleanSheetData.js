@@ -64,6 +64,7 @@ function sheetDataHandlerIndigo(sheetData) {
 
 	//Get Ocean Fishing Schedule for next 12 stops and return the first Route to show
 	var firstRoute = convertTime();
+	$("#boatSchedule>tbody>tr:first").addClass("activeRow");
 	displayStops("Indigo", firstRoute, cleanedDataObj);
 }
 
@@ -124,5 +125,6 @@ function sheetDataHandlerRuby(sheetData) {
 
 	//Get Ocean Fishing Schedule for next 12 stops and return the first Route to show
 	var firstRoute = convertTime();
+	$("#boatSchedule>tbody>tr:first").addClass("activeRow");
 	displayStops("Ruby", firstRoute, cleanedDataObj);
 }

@@ -2,12 +2,6 @@ var cleanedDataObj = [];
 const cleanedDataObjBK = [];
 $(document).ready(function () {
 	//generate drop down list
-	var temptext = '<label for="routeNumber">Route: </label>';
-	temptext += '<select id="routeNumber">';
-	for (var i = 0; i < routeNames.length; i++) {
-		temptext += "<option value=" + (i + 1) + ">" + routeNames[i] + "</option>";
-	}
-	temptext += "</select><br>";
 	//document.getElementById("droplist").innerHTML = temptext;
 
 	getSheetData({

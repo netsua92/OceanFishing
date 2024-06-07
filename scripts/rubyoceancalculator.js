@@ -100,11 +100,12 @@ function convertTime() {
 		],
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);
+			$(row).addClass("stopsRow");
 			$(row).on("click", function () {
-				//var href = new URL(window.location.href);
-				//href.searchParams.set("R", data[4]);
-				//window.history.pushState({}, "", href);
-				//destroyTables();
+				$(".stopsRow").each(function (i) {
+					$(this).removeClass("activeRow");
+				});
+				$(this).addClass("activeRow");
 				console.log("Cleaned obj bk", cleanedDataObjBK);
 				displayStops("Ruby", data[4], cleanedDataObjBK);
 			});

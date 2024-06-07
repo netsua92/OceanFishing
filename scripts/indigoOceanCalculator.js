@@ -134,7 +134,12 @@ function convertTime() {
 		],
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);
+			$(row).addClass("stopsRow");
 			$(row).on("click", function () {
+				$(".stopsRow").each(function (i) {
+					$(this).removeClass("activeRow");
+				});
+				$(this).addClass("activeRow");
 				console.log("Cleaned obj bk", cleanedDataObjBK);
 				displayStops("Indigo", data[4], cleanedDataObjBK);
 			});
