@@ -126,7 +126,7 @@ function displayAchievementData(type) {
 		achiHeader = "What Did Jellyfish Do To You?";
 		achiText =
 			"<p>It is entirely possible to complete this objective in The Southern Strait of Merlthor. It is therefore possible to complete this objective on any route where just that stop is available at any time. Attempting it on this specific route provides the Rhotano Spectral Current as possible insurance.</p>" +
-			"<p>The advised target in The Southern Strait of Merlthor is La Noscean Jelly because they are much more efficient to fish for than a spectral current and Sea Nettles. In addition, skipping the spectral current there allows for an extended one at Rhotano Sea. If fishing for La Noscean Jelly properly, as advised, there is no chance of proccing an undesired spectral current.</p>";
+			"<p>The advised target in The Southern Strait of Merlthor is La Noscean Jellyfish because they are much more efficient to fish for than a spectral current and Sea Nettles. In addition, skipping the spectral current there allows for an extended one at Rhotano Sea. If fishing for La Noscean Jellyfish properly, as advised, there is no chance of proccing an undesired spectral current.</p>";
 	} else if (type == "squid") {
 		getRoutes = printRoutesRuby(2, 6);
 		achiName = "squid-squadron";
@@ -168,7 +168,7 @@ function displayAchievementData(type) {
 		getRoutes +
 		'<br><h2>Seeking more information?</h2><br><h5> <a href="https://guides.ffxivteamcraft.com/guide/ocean-fishing-bonus-achievements#' +
 		achiName +
-		'"  target="_blank" rel="noopener noreferrer">Read the indepth guide</a> by Tyo\'to Tayuun.</h5></div></div>';
+		'"  target="_blank" rel="noopener noreferrer">Read the in-depth guide</a>.</h5></div></div>';
 }
 
 function printRoutesIndigo(rn1, rn2) {

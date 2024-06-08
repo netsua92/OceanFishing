@@ -19,7 +19,7 @@ var routeNamesIndigo = [
 	"Octopus",
 	"Sothis & Elasmosaurus",
 	"Sothis & Stonescale",
-	"Jelly",
+	"Jellyfish",
 	"Shark/Coral Manta",
 	"Hafgufa & Elasmosaurus",
 	"Mantas",
@@ -56,7 +56,7 @@ var timeFormat = {
 };
 
 //generate drop down list
-var temptext = '<label for="routeNumber" class="form-label">Route:</label>  ';
+var temptext = '<label for="routeNumber" class="form-label">Route: </label>  ';
 temptext += '<select id="routeNumber"  class="form-select">';
 for (var i = 0; i < routeNamesIndigo.length; i++) {
 	temptext +=
@@ -65,7 +65,7 @@ for (var i = 0; i < routeNamesIndigo.length; i++) {
 temptext += "</select><br>";
 document.getElementById("droplistIndigo").innerHTML = temptext;
 
-var temptext = '<label for="routeNumber" class="form-label">Route: </label>';
+temptext = '<label for="routeNumber" class="form-label">Route: </label>  ';
 temptext += '<select id="routeNumber"  class="form-select">';
 for (var i = 0; i < routeNamesRuby.length; i++) {
 	temptext +=
