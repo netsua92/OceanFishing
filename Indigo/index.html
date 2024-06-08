@@ -157,9 +157,13 @@
 
     <main class="container-xxl">
         <div class="bg-body-tertiary p-5 rounded">
+            <div class="row">                
+                
+                <div class="col-6"><h1>Indigo Route</h1></div>
+                <div class="col-6"><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true">Toggle Schedule</button></div>
+            </div>
             <div class="row">
-                <h1>Indigo Route</h1>
-                <table id="boatSchedule"></table>
+                <table id="boatSchedule" ></table>
             </div>
         </div>
         <br>
@@ -189,22 +193,10 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="dest1-tab-pane" role="tabpanel"
                         aria-labelledby="dest1-tab" tabindex="0">
-                        <div>
-                            <!--<div class="row">
-                                <div class="col-6">
-                                    <div  class="callout">
-                                        <div><h2>The best bait to trigger Spectral Current</h2></div> <div><div id="baitSpecProc1"></div>  <span> > </span> <div id="hookSpecProc1"></div> </div>                                     
-                                      </div>
-                                    
-                                </div>
-                                <div class="col-6">
-                                    <div id="baitSpec1"></div>
-                                        Best Bait in Spectral
-                                    
-                                </div>
-                            </div> -->
-                        </div>
                         <div id="Toggles1reg">
+                            <div class="row">
+                                <div class="col-2"><h5 class="headingforfishtable">Normal Zone</h5></div>
+                                <div class="col-8">
                             <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                 <button type="button" class="btn active btn-bait-primary toggle-vis"
                                     data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -216,10 +208,12 @@
                                     data-bs-toggle="button" aria-pressed="true" data-column="6">Mooch</button>
                                 <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
                                     aria-pressed="true" data-column="7">Versatile Lure</button>
-                            </p><div class="form-check form-switch fabledCheck">
+                            </p></div>
+                                
+                            <div class="col-2"><div class="form-check form-switch fabledCheck">
                                 <input class="form-check-input" type="checkbox" role="switch" id="fff1">
                                 <label class="form-check-label" for="fff1">Fabled Fish Focus</label>
-                            </div>
+                            </div></div></div>
 
                             <!-- Toggle Bait: <a class="toggle-vis" data-column="3">Ragworm</a> - <a class="toggle-vis" data-column="4">Krill</a> - <a class="toggle-vis" data-column="5">Plump Worm</a> -<a id="moochBaitToggle1reg" class="toggle-vis" data-column="6">Mooch</a> - <a class="toggle-vis" data-column="7">Versatile Lure</a> -->
                         </div>
@@ -229,6 +223,9 @@
 
                         <hr>
                         <div id="Toggles1spec">
+                            <div class="row">
+                                <div class="col-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
+                                <div class="col-8">
                             <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                 <button type="button" class="btn active btn-bait-primary toggle-vis"
                                     data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -243,10 +240,12 @@
                                     data-column="7">Special Bait</button>
                                 <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
                                     aria-pressed="true" data-column="8">Versatile Lure</button>
-                            </p><div class="form-check form-switch fabledCheck">
+                            </p></div>
+                                
+                            <div class="col-2"><div class="form-check form-switch fabledCheck">
                                 <input class="form-check-input" type="checkbox" role="switch" id="fff1spec">
                                 <label class="form-check-label" for="fff1spec">Fabled Fish Focus</label>
-                            </div>
+                            </div></div></div>
                             <!--Toggle Bait: <a class="toggle-vis" data-column="3">Ragworm</a> - <a class="toggle-vis" data-column="4">Krill</a> - <a class="toggle-vis" data-column="5">Plump Worm</a> - <a id="moochBaitToggle1spec" class="toggle-vis" data-column="6">Mooch</a> - <a id="specialBaitToggle1spec" class="toggle-vis" data-column="7">Special Bait</a> - <a class="toggle-vis" data-column="8">Versatile Lure</a>-->
                         </div>
                         <div id="desttable1specContainer">
@@ -258,6 +257,9 @@
                         tabindex="0">
 
                         <div id="Toggles2reg">
+                            <div class="row">
+                                <div class="col-2"><h5 class="headingforfishtable">Normal Zone</h5></div>
+                                <div class="col-8">
                             <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                 <button type="button" class="btn active btn-bait-primary toggle-vis"
                                     data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -269,16 +271,21 @@
                                     data-bs-toggle="button" aria-pressed="true" data-column="6">Mooch</button>
                                 <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
                                     aria-pressed="true" data-column="7">Versatile Lure</button>
-                            </p><div class="form-check form-switch fabledCheck">
+                            </p></div>
+                                
+                            <div class="col-2"><div class="form-check form-switch fabledCheck">
                                 <input class="form-check-input" type="checkbox" role="switch" id="fff2">
                                 <label class="form-check-label" for="fff2">Fabled Fish Focus</label>
-                            </div>
+                            </div></div></div>
                         </div>
                         <div id="desttable2regContainer">
                             <table id="desttable2reg" class="table-striped table table-hover"></table>
                         </div>
                         <hr>
                         <div id="Toggles2spec">
+                            <div class="row">
+                                <div class="col-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
+                                <div class="col-8">
                             <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                 <button type="button" class="btn active btn-bait-primary toggle-vis"
                                     data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -293,10 +300,12 @@
                                     data-column="7">Special Bait</button>
                                 <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
                                     aria-pressed="true" data-column="8">Versatile Lure</button>
-                            </p><div class="form-check form-switch fabledCheck">
+                            </p></div>
+                                
+                            <div class="col-2"><div class="form-check form-switch fabledCheck">
                                 <input class="form-check-input" type="checkbox" role="switch" id="fff2spec">
                                 <label class="form-check-label" for="fff2spec">Fabled Fish Focus</label>
-                            </div>
+                            </div></div></div>
                         </div>
                         <div id="desttable2specContainer">
                             <table id="desttable2spec" class="table-striped table table-hover"></table>
@@ -306,6 +315,9 @@
                     <div class="tab-pane fade" id="dest3-tab-pane" role="tabpanel" aria-labelledby="dest3-tab"
                         tabindex="0">
                         <div id="Toggles3reg">
+                            <div class="row">
+                                <div class="col-2"><h5 class="headingforfishtable">Normal Zone</h5></div>
+                                <div class="col-8">
                             <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                 <button type="button" class="btn active btn-bait-primary toggle-vis"
                                     data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -317,16 +329,21 @@
                                     data-bs-toggle="button" aria-pressed="true" data-column="6">Mooch</button>
                                 <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
                                     aria-pressed="true" data-column="7">Versatile Lure</button>
-                            </p><div class="form-check form-switch fabledCheck">
+                            </p></div>
+                                
+                            <div class="col-2"><div class="form-check form-switch fabledCheck">
                                 <input class="form-check-input" type="checkbox" role="switch" id="fff3">
                                 <label class="form-check-label" for="fff3">Fabled Fish Focus</label>
-                            </div>
+                            </div></div></div>
                         </div>
                         <div id="desttable3regContainer">
                             <table id="desttable3reg" class="table-striped table table-hover"></table>
                         </div>
                         <hr>
                         <div id="Toggles3spec">
+                            <div class="row">
+                                <div class="col-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
+                                <div class="col-8">
                             <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                 <button type="button" class="btn active btn-bait-primary toggle-vis"
                                     data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -341,10 +358,12 @@
                                     data-column="7">Special Bait</button>
                                 <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
                                     aria-pressed="true" data-column="8">Versatile Lure</button>
-                            </p><div class="form-check form-switch fabledCheck">
+                            </p></div>
+                                
+                            <div class="col-2"><div class="form-check form-switch fabledCheck">
                                 <input class="form-check-input" type="checkbox" role="switch" id="fff3spec">
                                 <label class="form-check-label" for="fff3spec">Fabled Fish Focus</label>
-                            </div>
+                            </div></div></div>
                         </div>
                         <div id="desttable3specContainer">
                             <table id="desttable3spec" class="table-striped table table-hover"></table>

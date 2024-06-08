@@ -18,8 +18,23 @@ pre{
   margin-left:5px;
   margin-top:5px;
 }
+
+.nav-tabs .nav-link{
+  border: var(--bs-nav-tabs-border-width) solid var(--bs-border-color);
+}
 .achievementGraphic {
   max-width:1180px;
+}
+
+#boatscheduletoggle {
+  width:250px;
+  display:block;
+  float:right;
+}
+.headingforfishtable{
+
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
 .achievementSelector img {

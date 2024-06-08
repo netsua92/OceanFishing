@@ -417,7 +417,6 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 				specialBait = "Special Bait";
 				SpecialBaitStripped = "SpecialBait";
 				$("#specialBaitToggle" + id + type).html(specialBait);
-				specBait = false;
 			}
 		}
 
@@ -675,6 +674,10 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		(popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
 	);
 
+	if (!specBait) {
+		$("#specialBaitToggle" + id + type).addClass("disabled");
+	}
+
 	$("[id^=desttable" + id + type + "]").each(function (index) {
 		let column = table.column(6);
 		if ($(this).find(".moochIcon").length > 0) {
@@ -685,12 +688,15 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 			$("#moochBaitToggle" + id + type).addClass("disabled");
 		}
 	});
+
 	if (type == "spec") {
 		$("[id^=desttable" + id + type + "]").each(function (index) {
 			let columnspec = table.column(7);
 			if ($(this).find(".fabledFish").length > 0) {
-				columnspec.visible(!columnspec.visible());
+				columnspec.visible(true);
 				$("#specialBaitToggle" + id + type).addClass("active");
+			} else {
+				$("#specialBaitToggle" + id + type).removeClass("active");
 			}
 		});
 	}
