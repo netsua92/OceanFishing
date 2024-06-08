@@ -16,7 +16,8 @@ pre{
 }
 .routetableOpObj {
   margin-left:5px;
-  margin-top:5px;
+  margin-top:2.5px;
+  margin-bottom:2.5px;
 }
 
 .nav-tabs .nav-link{
@@ -63,7 +64,7 @@ margin:10px;
 .activeRow { 
   background-color: var(--bs-myBlueGrey);
 }
-.activeRow > td:first-child{
+.stopsRow > td:first-child{
   padding-left:5px;
 }
 
@@ -159,11 +160,27 @@ body>footer {
   --bs-gutter-x: 0rem;
 }
 
-.badge {
+.bitebadge {
   font-size:1em;
   margin-top:10px;
   font-family:Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   width: 36.8px;
+}
+
+.speciesbadge {
+  padding: 9px;
+  background-color: var(--species-badge);
+}
+
+.timebadge {
+  background-color: var(--time-badge);
+  margin: 5px;
+  padding: 5px;
+}
+
+.destLabel {
+  margin-top:0 !important;
+  margin-bottom:0 !important;
 }
 
 .row,
@@ -204,9 +221,12 @@ table.dataTable td.dt-type-numeric {
 .svgColor {
   display: inline-block;
   position: relative;
+  padding-left: 5px;
+}
+
+p .svgColor {
   top: 0.35em;
   vertical-align: sub;
-  padding-left: 5px;
 }
 
 .cardLink {

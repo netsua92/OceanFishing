@@ -104,7 +104,7 @@ function convertTime() {
 	new DataTable("#boatSchedule", {
 		columns: [
 			{ title: "Time" },
-			{ title: "Time Until Depature" },
+			{ title: "Boarding Starts" },
 			{ title: "Destination" },
 			{ title: "Optional Objectives" },
 			{ title: "Route Number", visible: false },

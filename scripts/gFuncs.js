@@ -5,9 +5,12 @@ var svgSun =
 var svgSunset =
 	'<svg width="32" height="32" aria-label="Sunset" class="svgColor"><path d="M 29 22 A 10.4 10.4 0 1 0 10 22 Z"></path><path d="M 2 28 L 2 24 L 30 24 L 30 28 Z"></path></svg>';
 
-var imgNight = "<img src='../img/ocNight.png' alt='Night' class='svgColor'>";
-var imgDay = "<img src='../img/ocDay.png' alt='Day' class='svgColor'>";
-var imgSunset = "<img src='../img/ocSunset.png' alt='Sunset' class='svgColor'>";
+var imgNight =
+	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocNight.png' alt='Night'></span>";
+var imgDay =
+	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocDay.png' alt='Day'></span>";
+var imgSunset =
+	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocSunset.png' alt='Sunset'></span>";
 
 let specialBait = "Special Bait";
 let SpecialBaitStripped = "SpecialBait";
@@ -248,43 +251,43 @@ function styleRow(row, id, type) {
 	switch (row.Species) {
 		case "Manta":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Manta' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Manta' tabindex='0'></span>";
 			break;
 		case "Fugu":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Fugu' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Fugu' tabindex='0'></span>";
 			break;
 		case "Crab":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Crab' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Crab' tabindex='0'></span>";
 			break;
 		case "Seadragon":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Dragon' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Dragon' tabindex='0'></span>";
 			break;
 		case "Jellyfish":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Jelly' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Jelly' tabindex='0'></span>";
 			break;
 		case "Octopus":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Octo' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Octo' tabindex='0'></span>";
 			break;
 		case "Shark":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shark' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shark' tabindex='0'></span>";
 			break;
 		case "Shellfish":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shellfish' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shellfish' tabindex='0'></span>";
 			break;
 		case "Squid":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Squid' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Squid' tabindex='0'></span>";
 			break;
 		case "Shrimp":
 			row.Species =
-				"&nbsp;&nbsp;<img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shrimp' tabindex='0'>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shrimp' tabindex='0'></span>";
 			break;
 		default:
 			break;
@@ -295,17 +298,17 @@ function styleRow(row, id, type) {
 		case "!":
 			row.Hookset =
 				row.Hookset +
-				'  <span class="translate-middle badge rounded-pill bg-success">!<span class="visually-hidden"> ! </span></span></div>';
+				'  <span class="translate-middle badge bitebadge rounded-pill bg-success">!<span class="visually-hidden"> ! </span></span></div>';
 			break;
 		case "!!":
 			row.Hookset =
 				row.Hookset +
-				'  <span class="translate-middle badge rounded-pill bg-primary">!!<span class="visually-hidden">!!</span></span></div>';
+				'  <span class="translate-middle badge bitebadge rounded-pill bg-primary">!!<span class="visually-hidden">!!</span></span></div>';
 			break;
 		default:
 			row.Hookset =
 				row.Hookset +
-				'  <span class="translate-middle badge rounded-pill bg-danger">!!!<span class="visually-hidden">!!!</span></span></div>';
+				'  <span class="translate-middle badge bitebadge rounded-pill bg-danger">!!!<span class="visually-hidden">!!!</span></span></div>';
 			break;
 	}
 	//TH Scores
