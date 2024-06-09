@@ -32,12 +32,12 @@ var schedules = [
 ];
 
 var finalStop = [
-	"One River" + imgDay,
-	"Ruby Sea" + imgDay,
-	"One River" + imgSunset,
-	"Ruby Sea" + imgSunset,
-	"One River" + imgNight,
-	"Ruby Sea" + imgNight,
+	imgDay + '<span class="desttextrt">One River</span>',
+	imgDay + '<span class="desttextrt">Ruby Sea</span>',
+	imgSunset + '<span class="desttextrt">One River</span>',
+	imgSunset + '<span class="desttextrt">Ruby Sea</span>',
+	imgNight + '<span class="desttextrt">One River</span>',
+	imgNight + '<span class="desttextrt">Ruby Sea</span>',
 ];
 
 var finalTime = ["Day", "Day", "Sunset", "Sunset", "Night", "Night"];

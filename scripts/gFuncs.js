@@ -6,11 +6,11 @@ var svgSunset =
 	'<svg width="32" height="32" aria-label="Sunset" class="svgColor"><path d="M 29 22 A 10.4 10.4 0 1 0 10 22 Z"></path><path d="M 2 28 L 2 24 L 30 24 L 30 28 Z"></path></svg>';
 
 var imgNight =
-	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocNight.png' alt='Night'></span>";
+	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocNight.png' alt='Night' class='iconSmallest'></span>";
 var imgDay =
-	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocDay.png' alt='Day'></span>";
+	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocDay.png' alt='Day' class='iconSmallest'></span>";
 var imgSunset =
-	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocSunset.png' alt='Sunset'></span>";
+	"<span class=\" badge timebadge rounded-pill\"><img src='../img/ocSunset.png' alt='Sunset' class='iconSmallest'></span>";
 
 let specialBait = "Special Bait";
 let SpecialBaitStripped = "SpecialBait";
@@ -141,7 +141,7 @@ function styleRow(row, id, type) {
 			row.Bait.BestBait.replace(/'/g, "_") +
 			".png' alt='" +
 			row.Bait.BestBait +
-			"' tabindex='0' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' tabindex='0' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Bait.BestBait +
 			"' tabindex='0'>";
 	} else {
@@ -150,7 +150,7 @@ function styleRow(row, id, type) {
 			row.Bait.BestBait.replace(/\s/g, "") +
 			".png' alt='" +
 			row.Bait.BestBait +
-			"' tabindex='0' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' tabindex='0' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Bait.BestBait +
 			"'>";
 	}
@@ -160,11 +160,11 @@ function styleRow(row, id, type) {
 		//Mooch
 		row.Fish = row.Fish.replace("M!", "");
 		row.Fish =
-			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
+			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
 			row.Fish +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Fish.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
 			row.Fish +
@@ -176,11 +176,11 @@ function styleRow(row, id, type) {
 		//Intuition Fish
 		row.Fish = row.Fish.replace("I!", "");
 		row.Fish =
-			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
+			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
 			row.Fish +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Fish.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
 			row.Fish +
@@ -193,11 +193,11 @@ function styleRow(row, id, type) {
 		//Fabled Fish
 		row.Fish = row.Fish.replace("F!", "");
 		row.Fish =
-			"<div class='row'><div class='col-3'><img class='iconSmall fabledFish' src='../img/fish/" +
+			"<div class='row'><div class='col-3 min50'><img class='iconSmall fabledFish' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
 			row.Fish +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Fish.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
 			row.Fish +
@@ -210,11 +210,11 @@ function styleRow(row, id, type) {
 		//Trigger Fish
 		row.Fish = row.Fish.replace("T!", "");
 		row.Fish =
-			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
+			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
 			row.Fish +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Fish.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
 			row.Fish +
@@ -225,11 +225,11 @@ function styleRow(row, id, type) {
 			"</div></div>";
 	} else {
 		row.Fish =
-			"<div class='row'><div class='col-3'><img class='iconSmall' src='../img/fish/" +
+			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
 			row.Fish +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Fish.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
 			row.Fish +
@@ -241,53 +241,53 @@ function styleRow(row, id, type) {
 	//Hookset Images
 	if (row.Hookset == "Powerful") {
 		row.Hookset =
-			"<div><img src='../img/Powerful.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Powerful Hookset' tabindex='0'>";
+			"<div><img src='../img/Powerful.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Powerful Hookset' tabindex='0'>";
 	} else {
 		row.Hookset =
-			"<div><img src='../img/Precision.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Precision Hookset' tabindex='0'>";
+			"<div><img src='../img/Precision.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Precision Hookset' tabindex='0'>";
 	}
 
 	//Species Images
 	switch (row.Species) {
 		case "Manta":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Manta' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Manta' tabindex='0'></span>";
 			break;
 		case "Fugu":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Fugu' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Fugu' tabindex='0'></span>";
 			break;
 		case "Crab":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Crab' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Crab' tabindex='0'></span>";
 			break;
 		case "Seadragon":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Dragon' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Dragon' tabindex='0'></span>";
 			break;
 		case "Jellyfish":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Jelly' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Jellyfish' tabindex='0'></span>";
 			break;
 		case "Octopus":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Octo' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Octo' tabindex='0'></span>";
 			break;
 		case "Shark":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shark' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shark' tabindex='0'></span>";
 			break;
 		case "Shellfish":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shellfish' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shellfish' tabindex='0'></span>";
 			break;
 		case "Squid":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Squid' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Squid' tabindex='0'></span>";
 			break;
 		case "Shrimp":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Shrimp' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shrimp' tabindex='0'></span>";
 			break;
 		default:
 			break;
@@ -314,50 +314,51 @@ function styleRow(row, id, type) {
 	//TH Scores
 	if (typeof row.TH[0] == "string") {
 		var tempRange = new splitRange(row.TH[0]);
-		row.TH[0] =
-			row.TH[0] +
-			" (" +
-			parseFloat(row.Points) * parseFloat(tempRange[0]) +
-			" - " +
-			parseFloat(row.Points) * parseFloat(tempRange[1]) +
-			")";
+		var math1 = parseFloat(row.Points) * parseFloat(tempRange[0]);
+		var math2 = parseFloat(row.Points) * parseFloat(tempRange[1]);
+
+		row.TH[0] = math1 + " - " + math2 + " (" + row.TH[0] + ")";
+		row.TH[1] = math1;
 	} else {
-		row.TH[0] = row.TH[0] + " (" + row.TH[0] * parseFloat(row.Points) + ")";
+		var math = parseFloat(row.TH[0]) * parseFloat(row.Points);
+		row.TH[0] = math + " (" + row.TH[0] + ")";
+		row.TH[1] = math;
 	}
 
 	//DH Scores
 	if (typeof row.DH[0] == "string") {
 		var tempRange = new splitRange(row.DH[0]);
-		row.DH[0] =
-			row.DH[0] +
-			" (" +
-			parseFloat(row.Points) * parseFloat(tempRange[0]) +
-			" - " +
-			parseFloat(row.Points) * parseFloat(tempRange[1]) +
-			")";
+
+		var math1 = parseFloat(row.Points) * parseFloat(tempRange[0]);
+		var math2 = parseFloat(row.Points) * parseFloat(tempRange[1]);
+
+		row.DH[0] = math1 + " - " + math2 + " (" + row.DH[0] + ")";
+		row.DH[1] = math1;
 	} else {
-		row.DH[0] = row.DH[0] + " (" + row.DH[0] * parseFloat(row.Points) + ")";
+		var math = parseFloat(row.DH[0]) * parseFloat(row.Points);
+		row.DH[0] = math + " (" + row.DH[0] + ")";
+		row.DH[1] = math;
 	}
 
 	//Append if Fabled onto points
 	if (row.Fabled == "No") {
 		row.Bait.BestBait +=
-			"<span class='fabled" + id + "' hidden>FabledTrue</span>";
+			"<span class='fabled" + id + "' hidden>FabledDrue</span>";
 	}
 
 	//Weather
 	var rowWeather = "";
 	if (row.Weather.FairSkies !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Fair Skies.png' alt='Fair Skies' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Fair Skies' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Fair Skies.png' alt='Fair Skies' data-bs-toggle='tooltip' data-bs-title='Fair Skies' tabindex='0'>";
 	}
 	if (row.Weather.Clouds !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Clouds.png' alt='Clouds' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Clouds' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Clouds.png' alt='Clouds' data-bs-toggle='tooltip' data-bs-title='Clouds' tabindex='0'>";
 	}
 	if (row.Weather.Fog !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Fog.png' alt='Fog' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Fog' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Fog.png' alt='Fog' data-bs-toggle='tooltip' data-bs-title='Fog' tabindex='0'>";
 	}
 	if (row.Weather.Special1 !== "Yes") {
 		rowWeather +=
@@ -365,7 +366,7 @@ function styleRow(row, id, type) {
 			row.Weather.Special1Type +
 			".png' alt='" +
 			row.Weather.Special1Type +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Weather.Special1Type +
 			"' tabindex='0'>";
 	}
@@ -375,7 +376,7 @@ function styleRow(row, id, type) {
 			row.Weather.Special2Type +
 			".png' alt='" +
 			row.Weather.Special2Type +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Weather.Special2Type +
 			"' tabindex='0'>";
 	}
@@ -385,13 +386,13 @@ function styleRow(row, id, type) {
 			row.Weather.Special3Type +
 			".png' alt='" +
 			row.Weather.Special3Type +
-			"' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='" +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
 			row.Weather.Special3Type +
 			"' tabindex='0'>";
 	}
 	if (row.Weather.ClearSkies !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Clear Skies.png' alt='Clear Skies' data-bs-toggle='popover' data-bs-trigger='focus' data-bs-content='Clear Skies' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Clear Skies.png' alt='Clear Skies' data-bs-toggle='tooltip' data-bs-title='Clear Skies' tabindex='0'>";
 	}
 	if (rowWeather == "") {
 		row.ClearSkies = "Any";
@@ -517,7 +518,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						type: "DH.1",
 						sort: "DH.1",
 					},
-					title: "DH",
+					title: "DH (Yield)",
 				},
 				{
 					data: {
@@ -525,7 +526,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						type: "TH.1",
 						sort: "TH.1",
 					},
-					title: "TH",
+					title: "TH (Yield)",
 				},
 				{ data: "Species", title: "Species" },
 			],
@@ -596,7 +597,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						type: "DH.1",
 						sort: "DH.1",
 					},
-					title: "DH",
+					title: "DH (Yield)",
 				},
 				{
 					data: {
@@ -604,7 +605,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						type: "TH.1",
 						sort: "TH.1",
 					},
-					title: "TH",
+					title: "TH (Yield)",
 				},
 				{
 					data: "ClearSkies",
@@ -670,6 +671,12 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		});
 	});
 
+	const tooltipTriggerList = document.querySelectorAll(
+		'[data-bs-toggle="tooltip"]'
+	);
+	const tooltipList = [...tooltipTriggerList].map(
+		(tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+	);
 	const popoverTriggerList = document.querySelectorAll(
 		'[data-bs-toggle="popover"]'
 	);
@@ -686,9 +693,11 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		if ($(this).find(".moochIcon").length > 0) {
 			column.visible(!column.visible());
 			$("#moochBaitToggle" + id + type).addClass("active");
+			$("#moochBaitToggle" + id + type).removeClass("disabled");
 		} else {
 			column.visible(column.visible());
 			$("#moochBaitToggle" + id + type).addClass("disabled");
+			$("#moochBaitToggle" + id + type).removeClass("active");
 		}
 	});
 

@@ -135,6 +135,10 @@ body>footer {
   margin-bottom: 4px;
 }
 
+.iconSmallest {
+  width: 25px;
+}
+
 .minibait {
   width: 20px;
   margin-bottom: 4px;
@@ -176,11 +180,21 @@ body>footer {
   background-color: var(--time-badge);
   margin: 5px;
   padding: 5px;
+  margin-left:-5px;
 }
 
 .destLabel {
   margin-top:0 !important;
   margin-bottom:0 !important;
+}
+
+.min50 {
+  min-width:50px;
+}
+
+.desttextrt{
+  vertical-align:middle;
+  margin-right:5px;
 }
 
 .row,

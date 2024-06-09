@@ -213,13 +213,22 @@ function displayStops(route, routeNumber, dataObj) {
 
 	var currStop = schedules[routeNumber - 1];
 	$("#dest1Label").html(
-		currStop.stopDisplayName1 + getTimeImg(currStop.stopTime1)
+		"<span class='desttextrt'>" +
+			currStop.stopDisplayName1 +
+			"</span>" +
+			getTimeImg(currStop.stopTime1)
 	);
 	$("#dest2Label").html(
-		currStop.stopDisplayName2 + getTimeImg(currStop.stopTime2)
+		"<span class='desttextrt'>" +
+			currStop.stopDisplayName2 +
+			"</span>" +
+			getTimeImg(currStop.stopTime2)
 	);
 	$("#dest3Label").html(
-		currStop.stopDisplayName3 + getTimeImg(currStop.stopTime3)
+		"<span class='desttextrt'>" +
+			currStop.stopDisplayName3 +
+			"</span>" +
+			getTimeImg(currStop.stopTime3)
 	);
 
 	for (var i = 0; i < 3; i++) {

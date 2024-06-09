@@ -52,20 +52,51 @@ var schedules = [
 	"Ciel at Sunset, Rhotano at Night, Sound at Day",
 ];
 
+/*var finalStop = [
+	'<span class="desttextrt">Northern Strait of Merlthor</span>' + imgSunset,
+	'<span class="desttextrt">Northern Strait of Merlthor</span>' + imgNight,
+	'<span class="desttextrt">Northern Strait of Merlthor</span>' + imgDay,
+	'<span class="desttextrt">Rhotano Sea</span>' + imgSunset,
+	'<span class="desttextrt">Rhotano Sea</span>' + imgNight,
+	'<span class="desttextrt">Rhotano Sea</span>' + imgDay,
+	'<span class="desttextrt">Bloodbrine Sea</span>' + imgSunset,
+	'<span class="desttextrt">Bloodbrine Sea</span>' + imgNight,
+	'<span class="desttextrt">Bloodbrine Sea</span>' + imgDay,
+	'<span class="desttextrt">Rothlyt Sound</span>' + imgSunset,
+	'<span class="desttextrt">Rothlyt Sound</span>' + imgNight,
+	'<span class="desttextrt">Rothlyt Sound</span>' + imgDay,
+];*/
+
 var finalStop = [
-	"Northern Strait of Merlthor" + imgSunset,
-	"Northern Strait of Merlthor" + imgNight,
-	"Northern Strait of Merlthor" + imgDay,
-	"Rhotano Sea" + imgSunset,
-	"Rhotano Sea" + imgNight,
-	"Rhotano Sea" + imgDay,
-	"Bloodbrine Sea" + imgSunset,
-	"Bloodbrine Sea" + imgNight,
-	"Bloodbrine Sea" + imgDay,
-	"Rothlyt Sound" + imgSunset,
-	"Rothlyt Sound" + imgNight,
-	"Rothlyt Sound" + imgDay,
+	imgSunset + '<span class="desttextrt">Northern Strait of Merlthor</span>',
+	imgNight + '<span class="desttextrt">Northern Strait of Merlthor</span>',
+	imgDay + '<span class="desttextrt">Northern Strait of Merlthor</span>',
+	imgSunset + '<span class="desttextrt">Rhotano Sea</span>',
+	imgNight + '<span class="desttextrt">Rhotano Sea</span>',
+	imgDay + '<span class="desttextrt">Rhotano Sea</span>',
+	imgSunset + '<span class="desttextrt">Bloodbrine Sea</span>',
+	imgNight + '<span class="desttextrt">Bloodbrine Sea</span>',
+	imgDay + '<span class="desttextrt">Bloodbrine Sea</span>',
+	imgSunset + '<span class="desttextrt">Rothlyt Sound</span>',
+	imgNight + '<span class="desttextrt">Rothlyt Sound</span>',
+	imgDay + '<span class="desttextrt">Rothlyt Sound</span>',
 ];
+
+/*
+var finalStop = [
+	"Northern Strait of Merlthor",
+	"Northern Strait of Merlthor",
+	"Northern Strait of Merlthor",
+	"Rhotano Sea",
+	"Rhotano Sea",
+	"Rhotano Sea",
+	"Bloodbrine Sea",
+	"Bloodbrine Sea",
+	"Bloodbrine Sea",
+	"Rothlyt Sound",
+	"Rothlyt Sound",
+	"Rothlyt Sound",
+];*/
 
 var finalTime = [
 	"Sunset",
@@ -80,6 +111,21 @@ var finalTime = [
 	"Sunset",
 	"Night",
 	"Day",
+];
+
+var timeImages = [
+	imgSunset,
+	imgNight,
+	imgDay,
+	imgSunset,
+	imgNight,
+	imgDay,
+	imgSunset,
+	imgNight,
+	imgDay,
+	imgSunset,
+	imgNight,
+	imgDay,
 ];
 
 var timeRegion = "en-US";
