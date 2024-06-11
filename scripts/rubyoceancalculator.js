@@ -1,3 +1,5 @@
+var activeRowIDpers = "";
+
 var pattern = [
 	1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 3, 4,
 	5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 5, 6, 1, 2,
@@ -91,7 +93,7 @@ function convertTime() {
 
 		var timeUntilDepature = moment(stopTime).fromNow();
 
-		var cleanDate = moment(stopTime).format("llll");
+		var cleanDate = moment(stopTime).format("MMM DD h:mm A");
 		dataSet.push([
 			cleanDate,
 			timeUntilDepature,
@@ -101,7 +103,15 @@ function convertTime() {
 			images,
 		]);
 	}
-	new DataTable("#boatSchedule", {
+
+	var boatTable;
+
+	if (!firstTime) {
+		boatTable = $("#boatSchedule").DataTable();
+		boatTable.clear().destroy();
+	}
+
+	boatTable = new DataTable("#boatSchedule", {
 		columns: [
 			{ title: "Time" },
 			{ title: "Boarding Starts" },
@@ -113,11 +123,17 @@ function convertTime() {
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);
 			$(row).addClass("stopsRow");
+			$(row).attr(
+				"id",
+				"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "")
+			);
 			$(row).on("click", function () {
 				$(".stopsRow").each(function (i) {
 					$(this).removeClass("activeRow");
 				});
 				$(this).addClass("activeRow");
+				activeRowIDpers =
+					"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "");
 				console.log("Cleaned obj bk", cleanedDataObjBK);
 				displayStops("Ruby", data[4], cleanedDataObjBK);
 			});

@@ -64,7 +64,27 @@ function sheetDataHandlerIndigo(sheetData) {
 
 	//Get Ocean Fishing Schedule for next 12 stops and return the first Route to show
 	var firstRoute = convertTime();
+	var table = $("#boatSchedule").DataTable();
+	var test = setInterval(function () {
+		convertTime(false);
+		if (activeRowIDpers == "") {
+			console.log("fuck");
+			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+		} else {
+			console.log("fuckity");
+			$("#boatSchedule>tbody>#" + activeRowIDpers).addClass("activeRow");
+		}
+
+		if ($("#boatscheduletoggle").hasClass("active")) {
+			$("#boatSchedule>tbody>tr").each(function (index) {
+				if (!$(this).hasClass("activeRow")) {
+					$(this).toggle();
+				}
+			});
+		}
+	}, 60000);
 	$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+	$("#throbber").addClass("importanthide");
 	displayStops("Indigo", firstRoute, cleanedDataObj);
 }
 
@@ -125,6 +145,27 @@ function sheetDataHandlerRuby(sheetData) {
 
 	//Get Ocean Fishing Schedule for next 12 stops and return the first Route to show
 	var firstRoute = convertTime();
+	var table = $("#boatSchedule").DataTable();
+	var test = setInterval(function () {
+		convertTime(false);
+		if (activeRowIDpers == "") {
+			console.log("fuck");
+			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+		} else {
+			console.log("fuckity");
+			$("#boatSchedule>tbody>#" + activeRowIDpers).addClass("activeRow");
+		}
+
+		if ($("#boatscheduletoggle").hasClass("active")) {
+			$("#boatSchedule>tbody>tr").each(function (index) {
+				if (!$(this).hasClass("activeRow")) {
+					$(this).toggle();
+				}
+			});
+		}
+	}, 60000);
+
 	$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+	$("#throbber").addClass("importanthide");
 	displayStops("Ruby", firstRoute, cleanedDataObj);
 }

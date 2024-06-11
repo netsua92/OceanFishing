@@ -1,3 +1,5 @@
+var activeRowIDpers = "";
+
 var pattern = [
 	7, 10, 1, 4, 8, 11, 2, 5, 12, 3, 6, 7, 10, 1, 4, 8, 11, 2, 5, 9, 3, 6, 7, 10,
 	1, 4, 8, 11, 2, 5, 9, 12, 6, 7, 10, 1, 4, 8, 11, 2, 5, 9, 12, 3, 7, 10, 1, 4,
@@ -147,7 +149,7 @@ if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day;
 
-function convertTime() {
+function convertTime(firstTime = true) {
 	var x = Date.now();
 	var selectedTime = subtractTimeFromDate(new Date(x), 6.5);
 	var selectedTwoHourChunk = Math.floor(
@@ -176,7 +178,7 @@ function convertTime() {
 
 		var timeUntilDepature = moment(stopTime).fromNow();
 
-		var cleanDate = moment(stopTime).format("llll");
+		var cleanDate = moment(stopTime).format("MMM DD h:mm A");
 		dataSet.push([
 			cleanDate,
 			timeUntilDepature,
@@ -186,8 +188,14 @@ function convertTime() {
 			images,
 		]);
 	}
+	var boatTable;
 
-	new DataTable("#boatSchedule", {
+	if (!firstTime) {
+		boatTable = $("#boatSchedule").DataTable();
+		boatTable.clear().destroy();
+	}
+
+	boatTable = new DataTable("#boatSchedule", {
 		columns: [
 			{ title: "Time" },
 			{ title: "Boarding Starts" },
@@ -198,13 +206,18 @@ function convertTime() {
 		],
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);
+			$(row).attr(
+				"id",
+				"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "")
+			);
 			$(row).addClass("stopsRow");
 			$(row).on("click", function () {
 				$(".stopsRow").each(function (i) {
 					$(this).removeClass("activeRow");
 				});
 				$(this).addClass("activeRow");
-				console.log("Cleaned obj bk", cleanedDataObjBK);
+				activeRowIDpers =
+					"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "");
 				displayStops("Indigo", data[4], cleanedDataObjBK);
 			});
 		},
@@ -214,5 +227,6 @@ function convertTime() {
 		ordering: false,
 		info: false,
 	});
+
 	return dataSet[0][4];
 }

@@ -10,6 +10,12 @@ $(document).ready(function () {
 				$(this).toggle();
 			}
 		});
+
+		if ($(this).hasClass("active")) {
+			$("#boatscheduletoggle").removeClass("active");
+		} else {
+			$("#boatscheduletoggle").addClass("active");
+		}
 	});
 
 	getSheetData({

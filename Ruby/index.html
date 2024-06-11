@@ -10,28 +10,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="../css/navbar-static.css" rel="stylesheet">
-    <link href="../assets/dist/css/bootstrap.min.css?v=2" rel="stylesheet">
+    <link href="../assets/dist/css/bootstrap.min.css?v=8" rel="stylesheet">
     <link href="../css/datatables.min.css" rel="stylesheet">
     <link href="../css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="../css/styles.css?v=3" rel="stylesheet">
+    <link href="../css/styles.css?v=8" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
     <script src="../scripts/jquery-3.7.1.min.js" type="text/javascript" defer></script>
     <script src="../scripts/popper.min.js" type="text/javascript" defer></script>
-    <script src="../scripts/cleanSheetData.js" type="text/javascript" defer></script>
+    <script src="../scripts/cleanSheetData.js?v=8" type="text/javascript" defer></script>
     <script src="../scripts/moment.js" type="text/javascript" defer></script>
-    <script src="../scripts/gFuncs.js?v=6" type="text/javascript" defer></script>
+    <script src="../scripts/gFuncs.js?v=8" type="text/javascript" defer></script>
     <script src="../scripts/getSheetData.js" type="text/javascript" defer></script>
     <script src="../scripts/datatables.min.js" type="text/javascript" defer></script>
     <script src="../scripts/dataTables.bootstrap5.min.js" type="text/javascript" defer></script>
     <script src="../assets/js/color-modes.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../scripts/displayStops.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/displayStops.js?v=8" type="text/javascript" defer></script>
 
-    <script src="../scripts/ruby.js" type="text/javascript" defer></script>
-    <script src="../scripts/rubyOceanCalculator.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/ruby.js?v=8" type="text/javascript" defer></script>
+    <script src="../scripts/rubyOceanCalculator.js?v=8" type="text/javascript" defer></script>
 
     <title>Ocean Fishing Tracker | Ruby</title>
 </head>
@@ -159,11 +159,15 @@
             <div class="bg-body-tertiary p-5 rounded">
                 <div class="row">                
                 
-                    <div class="col-6"><h1>Ruby Route</h1></div>
-                    <div class="col-6"><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true">Toggle Schedule</button></div>
+                    <div class="col-sm-6"><h1>Ruby Route</h1></div>
+                    <div class="col-sm-6"><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true">Toggle Schedule</button></div>
                 </div>
                 <div class="row">
-                    <table id="boatSchedule" ></table>
+                    <table id="boatSchedule" ><div id="throbber" class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </div></table>
                 </div>
             </div>
             <br>
@@ -230,8 +234,8 @@
                             <hr>
                             <div id="Toggles1spec">
                                 <div class="row">
-                                <div class="col-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
-                                <div class="col-8">
+                                <div class="col-md-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
+                                <div class="col-md-8">
                                 <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
                                     <button type="button" class="btn active btn-bait-primary toggle-vis"
                                         data-bs-toggle="button" data-column="3">Ragworm</button>
@@ -250,7 +254,7 @@
                                         Lure</button>
                                 </p></div>
                                 
-                                <div class="col-2"><div class="form-check form-switch fabledCheck">
+                                <div class="col-md-2"><div class="form-check form-switch fabledCheck">
                                     <input class="form-check-input" type="checkbox" role="switch" id="fff1spec">
                                     <label class="form-check-label" for="fff1spec">Fabled Fish Focus</label>
                                 </div></div>
