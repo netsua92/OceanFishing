@@ -342,8 +342,7 @@ function styleRow(row, id, type) {
 
 	//Append if Fabled onto points
 	if (row.Fabled == "No") {
-		row.Bait.BestBait +=
-			"<span class='fabled" + id + "' hidden>FabledDrue</span>";
+		row.Bait.BestBait += "<span class='fabled' hidden>FabledTrue</span>";
 	}
 
 	//Weather
@@ -404,6 +403,8 @@ function styleRow(row, id, type) {
 }
 
 function makeStopTable(tempDataSet, type, id, time, route) {
+	$("#fff" + id + "spec").prop("checked", false);
+	$("#fff" + id).prop("checked", false);
 	let newtempDataSet = [];
 	let specBait = false;
 	let mooch = false;
@@ -639,7 +640,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		$("#fff" + id + "spec").prop("checked", c);
 
 		$("[id^=desttable" + id + "]").each(function (index) {
-			$(".fabled" + id).each(function () {
+			$("[id^=desttable" + id + "] .fabled").each(function () {
 				// .each to loop through elements
 				if (toggleFable.checked) {
 					$(this).closest("tr").hide();
@@ -658,7 +659,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		$("#fff" + id).prop("checked", c);
 
 		$("[id^=desttable" + id + "]").each(function (index) {
-			$(".fabled" + id).each(function () {
+			$("[id^=desttable" + id + "] .fabled").each(function () {
 				// .each to loop through elements
 				if (toggleFable.checked) {
 					$(this).closest("tr").hide();
