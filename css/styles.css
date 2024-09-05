@@ -224,10 +224,34 @@ table.dataTable td.dt-type-numeric {
   border-left: 0.25rem solid #6d9ab4;
 }
 
-#graphicDisplay {
-  background-image: url("../img/beans.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+.tyoto {
+  position: relative;
+  width: 70em;
+  margin-bottom: -7em;
+  margin-left: 6em;
+}
+
+@media (max-width: 1400px) {
+  .tyoto {
+    width: 60em;
+    margin-bottom: -5em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tyoto {
+    width: 50em;
+    margin-left: 8em;
+  }
+}
+
+@media (max-width: 992px) {
+  .tyoto {
+    display:block;
+    width:50em;
+    margin-left:-3em;
+    margin-bottom: 0em;
+  }
 }
 
 #boatSchedule,
