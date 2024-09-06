@@ -71,6 +71,8 @@ function displayAchievementData(type) {
 	var achiName;
 	var achiText;
 	var achiHeader;
+	var images =
+		'<img class="fullWidth " src="../img/achievements/' + type + '.png?v=2">';
 	if (type == "fugu") {
 		getRoutes = printRoutesIndigo(11, 12);
 		achiName = "balloon-catchers";
@@ -95,6 +97,12 @@ function displayAchievementData(type) {
 			"<p>Identical Cast is not advised in the Galadion Spectral Current as each use of it can be considered a loss of the most reliable Triple/Double Hook opportunity you have. It is possible that you will be unlucky and in a specific instance would have come out ahead if you used it but this is typically not the case.</p>";
 	} else if (type == "manta") {
 		getRoutes = printRoutesIndigo(8, 12);
+		images =
+			'<img class="fullWidth " src="../img/achievements/' +
+			type +
+			'1.png"><img class="fullWidth " src="../img/achievements/' +
+			type +
+			'2.png">';
 		achiName = "sticking-it-to-the-manta";
 		achiHeader = "What Did Mantas Do To You?";
 		achiText =
@@ -149,6 +157,12 @@ function displayAchievementData(type) {
 			"<p>This objective is possible to complete in Kugane but the One River Spectral Current is insurance that is slightly less reliable if going on an early boat.</p>";
 	} else if (type == "shrimp") {
 		getRoutes = printRoutesRuby(4, 3);
+		images =
+			'<img class="fullWidth " src="../img/achievements/' +
+			type +
+			'1.png"><img class="fullWidth " src="../img/achievements/' +
+			type +
+			'2.png">';
 		achiName = "shrimp-smorgasbord";
 		achiHeader = "What Did Shrimp Do To You?";
 		achiText =
@@ -162,9 +176,9 @@ function displayAchievementData(type) {
 		achiHeader +
 		"</h1><div class='card achievementDesc'> <div class='card-body'>" +
 		achiText +
-		'</div></div><div class="row"><div class="col-xl-9"><img class="fullWidth " src="../img/achievements/' +
-		type +
-		'.png" ></div><div class="col-xl-3">' +
+		'</div></div><div class="row"><div class="col-xl-9">' +
+		images +
+		'</div><div class="col-xl-3">' +
 		getRoutes +
 		'<br><h2>Seeking more information?</h2><br><h5> <a href="https://guides.ffxivteamcraft.com/guide/ocean-fishing-bonus-achievements#' +
 		achiName +

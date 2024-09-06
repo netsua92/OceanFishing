@@ -68,10 +68,8 @@ function sheetDataHandlerIndigo(sheetData) {
 	var test = setInterval(function () {
 		convertTime(false);
 		if (activeRowIDpers == "") {
-			console.log("fuck");
 			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
 		} else {
-			console.log("fuckity");
 			$("#boatSchedule>tbody>#" + activeRowIDpers).addClass("activeRow");
 		}
 
@@ -149,10 +147,8 @@ function sheetDataHandlerRuby(sheetData) {
 	var test = setInterval(function () {
 		convertTime(false);
 		if (activeRowIDpers == "") {
-			console.log("fuck");
 			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
 		} else {
-			console.log("fuckity");
 			$("#boatSchedule>tbody>#" + activeRowIDpers).addClass("activeRow");
 		}
 

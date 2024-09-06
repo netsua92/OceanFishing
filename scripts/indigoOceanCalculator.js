@@ -151,7 +151,7 @@ var today = year + "-" + month + "-" + day;
 
 function convertTime(firstTime = true) {
 	var x = Date.now();
-	var selectedTime = subtractTimeFromDate(new Date(x), 6.5);
+	var selectedTime = subtractTimeFromDate(new Date(x), 6.7);
 	var selectedTwoHourChunk = Math.floor(
 		selectedTime.getTime() / 1000 / (60 * 60 * 2)
 	);

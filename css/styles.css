@@ -226,31 +226,26 @@ table.dataTable td.dt-type-numeric {
 
 .tyoto {
   position: relative;
-  width: 70em;
-  margin-bottom: -7em;
-  margin-left: 6em;
+  width: 100%;
+  margin-bottom: -10em;
+  padding-top: 2em;
 }
 
 @media (max-width: 1400px) {
   .tyoto {
-    width: 60em;
-    margin-bottom: -5em;
+    margin-bottom: -9em;
   }
 }
 
 @media (max-width: 1200px) {
   .tyoto {
-    width: 50em;
-    margin-left: 8em;
+    margin-bottom: -7.5em;
   }
 }
 
 @media (max-width: 992px) {
   .tyoto {
-    display:block;
-    width:50em;
-    margin-left:-3em;
-    margin-bottom: 0em;
+    margin-bottom: -6.5em;
   }
 }
 
