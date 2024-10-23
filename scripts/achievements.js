@@ -72,7 +72,7 @@ function displayAchievementData(type) {
 	var achiText;
 	var achiHeader;
 	var images =
-		'<img class="fullWidth " src="../img/achievements/' + type + '.png?v=2">';
+		'<img class="fullWidth " src="../img/achievements/' + type + '.png?v=3">';
 	if (type == "fugu") {
 		getRoutes = printRoutesIndigo(11, 12);
 		achiName = "balloon-catchers";
@@ -100,9 +100,9 @@ function displayAchievementData(type) {
 		images =
 			'<img class="fullWidth " src="../img/achievements/' +
 			type +
-			'1.png"><img class="fullWidth " src="../img/achievements/' +
+			'1.png?v=2"><img class="fullWidth " src="../img/achievements/' +
 			type +
-			'2.png">';
+			'2.png?v=2">';
 		achiName = "sticking-it-to-the-manta";
 		achiHeader = "What Did Mantas Do To You?";
 		achiText =
@@ -160,9 +160,9 @@ function displayAchievementData(type) {
 		images =
 			'<img class="fullWidth " src="../img/achievements/' +
 			type +
-			'1.png"><img class="fullWidth " src="../img/achievements/' +
+			'1.png?v=2"><img class="fullWidth " src="../img/achievements/' +
 			type +
-			'2.png">';
+			'2.png?v=2">';
 		achiName = "shrimp-smorgasbord";
 		achiHeader = "What Did Shrimp Do To You?";
 		achiText =
