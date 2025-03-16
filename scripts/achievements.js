@@ -49,11 +49,18 @@ var timeFormat = {
 };
 
 $(document).ready(function () {
+	if (window.location.href.indexOf("#") > -1) {
+		var type = window.location.hash.substring(1);
+		$('*[data-type="' + type + '"]').addClass("active");
+		displayAchievementData(type);
+	}
+
 	$(".achievementSelector").each(function () {
 		var $this = $(this);
 		$this.on("click", function () {
 			$(".achievementSelector").removeClass("active");
 			$(this).addClass("active");
+			window.location.hash = $(this).data("type");
 			displayAchievementData($(this).data("type"));
 		});
 	});

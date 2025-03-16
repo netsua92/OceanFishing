@@ -126,6 +126,24 @@ body>footer {
   position:relative;
 }
 
+.notCatchable {
+  opacity:.25;
+}
+
+.caughtRow {
+  --bs-table-bg: #274d20;
+}
+
+.caughtFish {
+  width: 35px;
+  height: 50px;
+  accent-color: #274d20;
+}
+
+.caughtFish:hover {
+  accent-color: #487940;
+}
+
 .iconMedium {
   width:75px;
 }

@@ -13,17 +13,26 @@
 
   <link href="../css/navbar-static.css" rel="stylesheet">
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../css/styles.css?v=3" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/checklist.css" rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
   <script src="../scripts/jquery-3.7.1.min.js" type="text/javascript" defer></script>
   <script src="../assets/js/color-modes.js"></script>
   <script src='../assets/dist/js/bootstrap.bundle.min.js'></script>
-  <script src="../scripts/popper.min.js"></script>
-  <script src="../scripts/achievements.js?v=6" type="text/javascript" defer></script>
+  <script src="../scripts/datatables.min.js" type="text/javascript" defer></script>
+  <script src="../scripts/dataTables.bootstrap5.min.js" type="text/javascript" defer></script>
+  <script src="../scripts/moment.js" type="text/javascript" defer></script>
 
-  <title>Ocean Fishing Tracker | Achievements</title>
+  <script src="../scripts/gFuncs.js?v=9" type="text/javascript" defer></script>
+  <script src="../scripts/getSheetData.js" type="text/javascript" defer></script>
+
+
+  <script src="../scripts/checklist.js?v=2" type="text/javascript" defer></script>
+  <script src="../scripts/checklist-indigo.js?v=1" type="text/javascript" defer></script>
+
+  <title>Ocean Fishing Tracker | Indigo Checklist</title>
 </head>
 
 <body>
@@ -58,6 +67,13 @@
     <symbol id="twitter" viewBox="0 0 16 16">
       <path
         d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+    </symbol>
+    <symbol id="github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+    </symbol>
+    <symbol id="tomestone" viewBox="0 0 16 16">
+      <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+      <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z"/>
     </symbol>
   </svg>
 
@@ -132,7 +148,13 @@
             <a class="nav-link" href="../schedules/">Schedules</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  active" aria-current="page" href="#">Achievements</a>
+            <a class="nav-link active" aria-current="page" href="#">Checklist (Indigo)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../checklist-ruby">Checklist (Ruby)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../achievements/">Achievements</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../FAQ/">FAQ</a>
@@ -145,119 +167,14 @@
     </div>
   </nav>
 
-  <main class="container-fluid">
-    <div class="bg-body-tertiary rounded fullPadding">
-
-      <h2>Achievements</h2>
-      <h5>Select the achievement you want to see below</h5>
-
-      <div class="row">
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="octo" data-bs-toggle="tooltip" data-bs-title="What Did Octopodes Do To You?" data-bs-placement="bottom"><img
-              src="../img/octo_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="shark" data-bs-toggle="tooltip" data-bs-title="What Did Sharks Do To You?" data-bs-placement="bottom"><img
-              src="../img/shark_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="jelly" data-bs-toggle="tooltip" data-bs-title="What Did Jellyfish Do To You?" data-bs-placement="bottom"><img
-              src="../img/jelly_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="dragon" data-bs-toggle="tooltip" data-bs-title="What Did Seadragons Do To You?" data-bs-placement="bottom"><img
-              src="../img/dragon_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="fugu" data-bs-toggle="tooltip" data-bs-title="What Did Balloons Do To You?" data-bs-placement="bottom"><img
-              src="../img/balloon_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="crab" data-bs-toggle="tooltip" data-bs-title="What Did Crabs Do To You?" data-bs-placement="bottom"><img
-              src="../img/crab_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="manta" data-bs-toggle="tooltip" data-bs-title="What Did Mantas Do To You?" data-bs-placement="bottom" ><img
-              src="../img/manta_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="mussel" data-bs-toggle="tooltip" data-bs-title="What Did Shellfish Do To You?" data-bs-placement="bottom"><img
-              src="../img/mussel_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="squid" data-bs-toggle="tooltip" data-bs-title="What Did Squid Do To You?" data-bs-placement="bottom"><img
-              src="../img/squid_mark.png" class="iconMedium"></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-bait-primary btn-lg fullWidth achievementSelector" data-type="shrimp" data-bs-toggle="tooltip" data-bs-title="What Did Shrimp Do To You?" data-bs-placement="bottom"><img
-              src="../img/shrimp_mark.png" class="iconMedium"></button>
-        </div>
+  <main class="container-xxl">
+    <div class="bg-body-tertiary rounded">
+    <table id="checklistTable" class="table-striped table table-hover"><div id="throbber" class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
-
-
-      <div id="btnResult"></div>
-      <br>
-      <h2>How do I get started?</h2>
-      <h5>Finding/Forming a Party</h5>
-
-      <ul>
-        <li>Every objective but Sticking it to the Manta and Shrimp Smorgasbord is best attempted with a premade, full
-          8-person party of Lv. 80 - 90 fishers for Indigo achievements, and Lv. 90 fishers for Ruby achievements.
-          Parties are sometimes made for the solo/individual achievements as well for spectral current control, but are
-          not required, and if you do make/join one for it you do not need it to be a full party.</li>
-        <ul>
-          <li>All objectives can and have been completed in parties of less than 8 people. Jelled Together and Maritime
-            Dragonslayers are the ones easiest to successfuly complete with smaller parties.</li>
-        </ul>
-        <li>Before the time for registration on your target route begins, set up or search for a party under the
-          Gathering Forays section of the Party Finder. Parties often start forming 15 - 30 minutes before registration
-          begins.</li>
-      </ul>
-      <ul>
-        <li>It is a good idea, especially if you are the party leader, to ensure that everyone who joins the party is
-          aware of what the objective is before queueing.</li>
-        <li>Mikah Tayuun (no relation) has <a
-            href="https://na.finalfantasyxiv.com/lodestone/character/27182703/blog/4721961/">made macros covering each
-            objective</a> that can be used to quickly and simply share stop-by-stop information with your party that can
-          be posted in the party chat beforehand and/or at the beginning of each stop.</li>
-      </ul>
-      <h5>Queueing Up</h5>
-      <ul>
-        <li>Registration ends 15 minutes past the hour when it opens. Your party can queue as late as 14m59s past the
-          hour with one non-standard Duty Finder language option selected to increase the odds that you are not paired
-          with other fishers outside your party.</li>
-        <ul>
-          <li>If playing on an NA or JA data centre, D or F are the best options. If playing on an EU data centre, J is
-            the best option.</li>
-          <li>This is not required but provides for greater control over spectral currents, allowing you to avoid
-            undesired ones and to get the desired ones (if they proc) extended to 3 minutes from the normal spectral
-            current length of 2 minutes.</li>
-        </ul>
-        <li>To change your Duty Finder language settings: open the Duty Finder and click the cogwheel in the top left.
-          The Duty Finder Settings window will open. Select one non-English language at the bottom and hit Confirm. Only
-          the party leader needs to do this.</li>
-      </ul>
-      <ul>
-        <li>Queueing late (10+ minutes past when registration opens) with limited Duty Finder language settings is the
-          most likely way to get a solo/party only boat, but it is not guaranteed. If other players queued with the same
-          options selected as you/your party, you will get paired with them.</li>
-        <ul>
-          <li> <i>If your party is paired with other players,</i> it's advised that you inform them of your party's
-            objective if you are attempting to control spectral currents. The best thing you can do when paired with
-            random players is to state your goal and politely ask them to go along with it.
-            Keep in mind that random players you are queued with have no obligation to work with your party. Players may
-            attempt to get a small/solo boat in order to focus ★★★★★ fish or just out of preference and might have goals
-            that conflict with yours. If they do not help or proc a current you do not want, this is not a reportable
-            offence or something that ruins an objective.
-            Spectral current extensions were added in patch 5.4 and the jellyfish, seadragon, shark, and octopus
-            objectives have existed since patch 5.2. These objectives were all possible without extensions, and so are
-            any of the others.</li>
-        </ul>
-        <li>If you do this, don't forget to return your Duty Finder language settings back to what they normally are
-          afterwards.</li>
-      </ul>
-
-    </div>
+    </div></table>
+  </div>
   </main>
 
   <footer class="py-3 my-1">
@@ -266,17 +183,18 @@
       <li class="nav-item"><a href="../Indigo/" class="nav-link px-2 text-body-secondary">Indigo</a></li>
       <li class="nav-item"><a href="../ruby/" class="nav-link px-2 text-body-secondary">Ruby</a></li>
       <li class="nav-item"><a href="../schedules/" class="nav-link px-2 text-body-secondary">Schedules</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Achievements</a></li>
+      <li class="nav-item"><a href="../checklist-indigo/" class="nav-link px-2 text-body-secondary">Checklist (Indigo)</a></li>
+      <li class="nav-item"><a href="../checklist-ruby/" class="nav-link px-2 text-body-secondary">Checklist (Ruby)</a></li>
+      <li class="nav-item"><a href="../achievements/" class="nav-link px-2 text-body-secondary">Achievements</a></li>
       <li class="nav-item"><a href="../FAQ/" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-      <li class="nav-item"><a href="../about/" class="nav-link px-2 text-body-secondary">About</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
     </ul>
     <p class="text-center">
       <a class="link-body-emphasis iconSocial" href="https://twitter.com/TyotoTayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
           height="24">
           <use xlink:href="#twitter" />
         </svg></a>
-      <a class="link-body-emphasis iconSocial" href="https://ko-fi.com/tyototayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
-          height="24">
+      <a class="link-body-emphasis iconSocial" href="https://ko-fi.com/tyototayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24" height="24">
           <use xlink:href="#kofi" />
         </svg></a>
       <a class="link-body-emphasis iconSocial" href="https://discord.gg/fishcord" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
