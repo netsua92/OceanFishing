@@ -92,7 +92,6 @@ function convertTime(firstTime = true) {
 		var images = routeImages[pattern[temp] - 1];
 
 		var timeUntilDepature = moment(stopTime).fromNow();
-
 		var cleanDate = moment(stopTime).format("MMM DD h:mm A");
 		dataSet.push([
 			cleanDate,
@@ -102,6 +101,19 @@ function convertTime(firstTime = true) {
 			routeNumber,
 			images,
 		]);
+		/*getUncaughtRoutes("ruby");
+		if (UncaughtRoutes["Route" + routeNumber]) {
+			dataSet.push([
+				cleanDate,
+				timeUntilDepature,
+				finalStopDisp,
+				optObjectives,
+				routeNumber,
+				images,
+			]);
+		} else {
+			i = i - 1;
+		}*/
 	}
 
 	var boatTable;

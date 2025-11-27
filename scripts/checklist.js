@@ -68,9 +68,22 @@ function sheetDataHandlerChecklist(sheetData) {
 				Special3Type: fish.WeatherSpecial3Type,
 			},
 			Fabled: fish.FabledTable,
+			Routes: {
+				Route1: strToBool(fish.Route1),
+				Route2: strToBool(fish.Route2),
+				Route3: strToBool(fish.Route3),
+				Route4: strToBool(fish.Route4),
+				Route5: strToBool(fish.Route5),
+				Route6: strToBool(fish.Route6),
+				Route7: strToBool(fish.Route7),
+				Route8: strToBool(fish.Route8),
+				Route9: strToBool(fish.Route9),
+				Route10: strToBool(fish.Route10),
+				Route11: strToBool(fish.Route11),
+				Route12: strToBool(fish.Route12),
+			},
 			Caught: "",
 		};
-
 		if (newFish.TimeFrameDay === "" || newFish.TimeFrameDay === "Yes") {
 			newFish.TimeFrameDay =
 				"<img src='../img/ocDay.png' alt='Day' data-bs-toggle='tooltip' data-bs-title='Catchable during Day'>";
@@ -139,9 +152,9 @@ function sheetDataHandlerChecklist(sheetData) {
 	});
 
 	if (caughtFish != null) {
-		console.log("loading page, reading in localStorage Fish");
+		//console.log("loading page, reading in localStorage Fish");
 		caughtFish.forEach(function (item) {
-			console.log("fish = " + item.Fish + " | Caught : " + item.Caught);
+			//console.log("fish = " + item.Fish + " | Caught : " + item.Caught);
 			var tr = $(
 				'*[data-bs-title="' + item.Fish.replace(/'/g, "") + '"]'
 			).closest("tr");
@@ -173,26 +186,12 @@ function sheetDataHandlerChecklist(sheetData) {
 		}
 		var data = table.cell(tr, 1).node();
 
-		if (caughtFish === null) {
-			caughtFish = [
-				{
-					Fish: data.innerText.split("\n")[0],
-					Caught: this.checked,
-				},
-			];
-		} else {
-			const elem = caughtFish.find(
-				({ Fish }) => Fish === data.innerText.split("\n")[0]
-			);
+		const elem = caughtFish.find(
+			({ Fish }) => Fish === data.innerText.split("\n")[0]
+		);
 
-			if (elem) {
-				elem.Caught = this.checked;
-			} else {
-				caughtFish.push({
-					Fish: data.innerText.split("\n")[0],
-					Caught: this.checked,
-				});
-			}
+		if (elem) {
+			elem.Caught = this.checked;
 		}
 
 		localStorage.setItem(
@@ -263,166 +262,35 @@ function styleRowCL(row, id, type) {
 		row.Fish.replace(/'/g, "") +
 		"' tabindex='0'>";
 
-	//Hookset Images
-	if (row.Hookset == "Powerful") {
-		row.Hookset =
-			"<div><img src='../img/Powerful.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Powerful Hookset' tabindex='0'>";
+	if (caughtFish === null) {
+		caughtFish = [
+			{
+				Fish: row.Fish,
+				Caught: false,
+				Routes: row.Routes,
+			},
+		];
 	} else {
-		row.Hookset =
-			"<div><img src='../img/Precision.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Precision Hookset' tabindex='0'>";
+		const elem = caughtFish.find(({ Fish }) => Fish === row.Fish);
+
+		if (!elem) {
+			caughtFish.push({
+				Fish: row.Fish,
+				Caught: false,
+				Routes: row.Routes,
+			});
+		}
 	}
 
-	//Species Images
-	switch (row.Species) {
-		case "Manta":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Manta' tabindex='0'></span>";
-			break;
-		case "Fugu":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Fugu' tabindex='0'></span>";
-			break;
-		case "Crab":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Crab' tabindex='0'></span>";
-			break;
-		case "Seadragon":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Dragon' tabindex='0'></span>";
-			break;
-		case "Jellyfish":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Jellyfish' tabindex='0'></span>";
-			break;
-		case "Octopus":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Octo' tabindex='0'></span>";
-			break;
-		case "Shark":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shark' tabindex='0'></span>";
-			break;
-		case "Shellfish":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shellfish' tabindex='0'></span>";
-			break;
-		case "Squid":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Squid' tabindex='0'></span>";
-			break;
-		case "Shrimp":
-			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shrimp' tabindex='0'></span>";
-			break;
-		default:
-			break;
-	}
-
-	//Hookset !!! bites
-	switch (row.Bite) {
-		case "!":
-			row.Hookset =
-				row.Hookset +
-				'  <span class="translate-middle badge bitebadge rounded-pill bg-success">!<span class="visually-hidden"> ! </span></span></div>';
-			break;
-		case "!!":
-			row.Hookset =
-				row.Hookset +
-				'  <span class="translate-middle badge bitebadge rounded-pill bg-primary">!!<span class="visually-hidden">!!</span></span></div>';
-			break;
-		default:
-			row.Hookset =
-				row.Hookset +
-				'  <span class="translate-middle badge bitebadge rounded-pill bg-danger">!!!<span class="visually-hidden">!!!</span></span></div>';
-			break;
-	}
-	//TH Scores
-	if (typeof row.TH[0] == "string") {
-		var tempRange = new splitRange(row.TH[0]);
-		var math1 = parseFloat(row.Points) * parseFloat(tempRange[0]);
-		var math2 = parseFloat(row.Points) * parseFloat(tempRange[1]);
-
-		row.TH[0] = math1 + " - " + math2 + " (" + row.TH[0] + ")";
-		row.TH[1] = math1;
-	} else {
-		var math = parseFloat(row.TH[0]) * parseFloat(row.Points);
-		row.TH[0] = math + " (" + row.TH[0] + ")";
-		row.TH[1] = math;
-	}
-
-	//DH Scores
-	if (typeof row.DH[0] == "string") {
-		var tempRange = new splitRange(row.DH[0]);
-
-		var math1 = parseFloat(row.Points) * parseFloat(tempRange[0]);
-		var math2 = parseFloat(row.Points) * parseFloat(tempRange[1]);
-
-		row.DH[0] = math1 + " - " + math2 + " (" + row.DH[0] + ")";
-		row.DH[1] = math1;
-	} else {
-		var math = parseFloat(row.DH[0]) * parseFloat(row.Points);
-		row.DH[0] = math + " (" + row.DH[0] + ")";
-		row.DH[1] = math;
-	}
-
-	//Append if Fabled onto points
-	if (row.Fabled == "No") {
-		row.Bait.BestBait += "<span class='fabled' hidden>FabledTrue</span>";
-	}
-
-	//Weather
-	var rowWeather = "";
-	if (row.Weather.FairSkies !== "Yes") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Fair Skies.png' alt='Fair Skies' data-bs-toggle='tooltip' data-bs-title='Fair Skies' tabindex='0'>";
-	}
-	if (row.Weather.Clouds !== "Yes") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Clouds.png' alt='Clouds' data-bs-toggle='tooltip' data-bs-title='Clouds' tabindex='0'>";
-	}
-	if (row.Weather.Fog !== "Yes") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Fog.png' alt='Fog' data-bs-toggle='tooltip' data-bs-title='Fog' tabindex='0'>";
-	}
-	if (row.Weather.Special1 !== "Yes") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/" +
-			row.Weather.Special1Type +
-			".png' alt='" +
-			row.Weather.Special1Type +
-			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Weather.Special1Type +
-			"' tabindex='0'>";
-	}
-	if (row.Weather.Special2 !== "Yes") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/" +
-			row.Weather.Special2Type +
-			".png' alt='" +
-			row.Weather.Special2Type +
-			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Weather.Special2Type +
-			"' tabindex='0'>";
-	}
-	if (row.Weather.Special3 == "No") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/" +
-			row.Weather.Special3Type +
-			".png' alt='" +
-			row.Weather.Special3Type +
-			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Weather.Special3Type +
-			"' tabindex='0'>";
-	}
-	if (row.Weather.ClearSkies !== "Yes") {
-		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Clear Skies.png' alt='Clear Skies' data-bs-toggle='tooltip' data-bs-title='Clear Skies' tabindex='0'>";
-	}
-	if (rowWeather == "") {
-		row.ClearSkies = "Any";
-	} else {
-		row.ClearSkies = "Not " + rowWeather;
-	}
+	localStorage.setItem(
+		"caughtFishLS-" + rubyorindigo,
+		JSON.stringify(caughtFish)
+	);
 
 	return row;
+}
+
+function strToBool(input) {
+	input = input === "Yes";
+	return input;
 }

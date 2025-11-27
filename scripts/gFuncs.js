@@ -14,6 +14,20 @@ var imgSunset =
 
 let specialBait = "Special Bait";
 let SpecialBaitStripped = "SpecialBait";
+var UncaughtRoutes = {
+	Route1: false,
+	Route2: false,
+	Route3: false,
+	Route4: false,
+	Route5: false,
+	Route6: false,
+	Route7: false,
+	Route8: false,
+	Route9: false,
+	Route10: false,
+	Route11: false,
+	Route12: false,
+};
 
 function subtractTimeFromDate(objDate, intHours) {
 	var numberOfMlSeconds = objDate;
@@ -130,6 +144,23 @@ function addStars(num) {
 		stars += "★";
 	}
 	return stars;
+}
+
+function getUncaughtRoutes(color) {
+	caughtFish = JSON.parse(localStorage.getItem("caughtFishLS-" + color));
+	if (caughtFish != null) {
+		caughtFish.forEach(function (item) {
+			if (!item.Caught) {
+				console.log(item);
+				for (const [k, v] of Object.entries(item.Routes)) {
+					//console.log("k = " + k + " v =" + v);
+					if (v === true) {
+						UncaughtRoutes[k] = true;
+					}
+				}
+			}
+		});
+	}
 }
 
 function styleRow(row, id, type) {
