@@ -25,7 +25,16 @@
 
     gtag('config', 'G-52XQCTW4Y6');
   </script>
-  <script src="../scripts/localeUtil.js?v=1" defer></script>
-  <script src="../scripts/localize.js?v=1" defer></script>
+
+  <!-- Bootstrap Bundle JS (includes dropdown plugin) - load only if not already loaded by page -->
+  <script>
+    if (typeof bootstrap === 'undefined') {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
+      document.body.appendChild(script);
+    }
+  </script>
+
+    <!-- locale scripts are loaded dynamically after footer injection -->
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />

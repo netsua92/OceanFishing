@@ -202,10 +202,10 @@ function convertTime(firstTime = true) {
 
 	boatTable = new DataTable("#boatSchedule", {
 		columns: [
-			{ title: "Time" },
-			{ title: "Boarding Starts" },
-			{ title: "Destination" },
-			{ title: "Optional Objectives" },
+			{ title: translateWord("schedule.time") },
+			{ title: translateWord("schedule.boardingstarts") },
+			{ title: translateWord("schedule.destination") },
+			{ title: translateWord("schedule.optionalobjectives") },
 			{ title: "Route Number", visible: false },
 			{ title: "" },
 		],
