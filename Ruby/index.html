@@ -9,125 +9,44 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-    <link href="../css/navbar-static.css" rel="stylesheet">
-    <link href="../assets/dist/css/bootstrap.min.css?v=9" rel="stylesheet">
-    <link href="../css/datatables.min.css" rel="stylesheet">
-    <link href="../css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="../css/styles.css?v=9" rel="stylesheet">
+    <link href="../css/navbar-static.css?v=1" rel="stylesheet">
+    <link href="../assets/dist/css/bootstrap.min.css?v=10" rel="stylesheet">
+    <link href="../css/datatables.min.css?v=1" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap5.min.css?v=1" rel="stylesheet">
+    <link href="../css/styles.css?v=10" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <script src="../scripts/jquery-3.7.1.min.js" type="text/javascript" defer></script>
-    <script src="../scripts/popper.min.js" type="text/javascript" defer></script>
-    <script src="../scripts/cleanSheetData.js?v=10" type="text/javascript" defer></script>
-    <script src="../scripts/moment.js" type="text/javascript" defer></script>
-    <script src="../scripts/gFuncs.js?v=9" type="text/javascript" defer></script>
-    <script src="../scripts/getSheetData.js" type="text/javascript" defer></script>
-    <script src="../scripts/datatables.min.js" type="text/javascript" defer></script>
-    <script src="../scripts/dataTables.bootstrap5.min.js" type="text/javascript" defer></script>
-    <script src="../assets/js/color-modes.js"></script>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/jquery-3.7.1.min.js?v=1" type="text/javascript" defer></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" defer></script>
+    <script src="../scripts/popper.min.js?v=1" type="text/javascript" defer></script>
+    <script src="../scripts/cleanSheetData.js?v=11" type="text/javascript" defer></script>
+    <script src="../scripts/moment.js?v=1" type="text/javascript" defer></script>
+    <script src="../scripts/gFuncs.js?v=10" type="text/javascript" defer></script>
+    <script src="../scripts/getSheetData.js?v=1" type="text/javascript" defer></script>
+    <script src="../scripts/datatables.min.js?v=1" type="text/javascript" defer></script>
+    <script src="../scripts/dataTables.bootstrap5.min.js?v=1" type="text/javascript" defer></script>
+    <script src="../assets/js/color-modes.js?v=1"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js?v=1"></script>
 
-    <script src="../scripts/displayStops.js?v=9" type="text/javascript" defer></script>
+    <script src="../scripts/displayStops.js?v=10" type="text/javascript" defer></script>
 
-    <script src="../scripts/ruby.js?v=9" type="text/javascript" defer></script>
-    <script src="../scripts/rubyOceanCalculator.js?v=10" type="text/javascript" defer></script>
-    <script src="../scripts/navbar.js" type="text/javascript" defer></script>
+    <script src="../scripts/ruby.js?v=10" type="text/javascript" defer></script>
+    <script src="../scripts/rubyOceanCalculator.js?v=11" type="text/javascript" defer></script>
+    <script src="../scripts/headerandfooter.js?v=1" type="text/javascript" defer></script>
     <title>Ocean Fishing Tracker | Ruby</title>
 </head>
 
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-        <symbol id="check2" viewBox="0 0 16 16">
-            <path
-                d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-        </symbol>
-        <symbol id="circle-half" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
-        </symbol>
-        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-            <path
-                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
-            <path
-                d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
-        </symbol>
-        <symbol id="sun-fill" viewBox="0 0 16 16">
-            <path
-                d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
-        </symbol>
-        <symbol id="discord" viewBox="0 0 16 16">
-            <path
-                d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
-        </symbol>
-        <symbol id="kofi" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6zM13 12.5a2 2 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5M2.64 13.825 1.123 7h11.754l-1.517 6.825A1.5 1.5 0 0 1 9.896 15H4.104a1.5 1.5 0 0 1-1.464-1.175" />
-            <path
-                d="m4.4.8-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 3.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 6.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 9.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8" />
-        </symbol>
-        <symbol id="twitter" viewBox="0 0 16 16">
-            <path
-                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-        </symbol>
-    </svg>
-
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-            <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                <use href="#circle-half"></use>
-            </svg>
-            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                    aria-pressed="false">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                        <use href="#sun-fill"></use>
-                    </svg>
-                    Light
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                    aria-pressed="false">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                        <use href="#moon-stars-fill"></use>
-                    </svg>
-                    Dark
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-                    aria-pressed="true">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                        <use href="#circle-half"></use>
-                    </svg>
-                    Auto
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-        </ul>
-    </div>
-
     <span id="navbar"></span>
-
+  <div id="header"></div>
     <main>
         <div class="container-xxl">
             <div class="bg-body-tertiary p-5 rounded">
                 <div class="row">                
                 
                     <div class="col-sm-6"><h1>Ruby Route</h1></div>
-                    <div class="col-sm-6"><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true">Toggle Schedule</button></div>
+                    <div class="col-sm-6"><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true" data-localize="table.toggleschedule">Toggle Schedule</button></div>
                 </div>
                 <div class="row">
                     <table id="boatSchedule" ><div id="throbber" class="d-flex justify-content-center">
@@ -164,208 +83,185 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="dest1-tab-pane" role="tabpanel"
-                            aria-labelledby="dest1-tab" tabindex="0">
-                            <div id="Toggles1reg">
-                                <div class="row">
-                                    <div class="col-md-2"><h5 class="headingforfishtable">Normal Zone</h5></div>
-                                    <div class="col-md-8">
-                                <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="3">Ragworm</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="4">Krill</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="5">Plump Worm</button>
-                                    <button type="button" id="moochBaitToggle1reg"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="6">Mooch</button>
-                                    <button type="button" class="btn btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="7">Versatile
-                                        Lure</button>
-                                </p></div>
-                                
-                                <div class="col-md-2">
-                                <div class="form-check form-switch fabledCheck">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="fff1">
-                                    <label class="form-check-label" for="fff1">Fabled Fish Focus</label>
-                                </div></div>
-
-                                <!-- Toggle Bait: <a class="toggle-vis" data-column="3">Ragworm</a> - <a class="toggle-vis" data-column="4">Krill</a> - <a class="toggle-vis" data-column="5">Plump Worm</a> -<a id="moochBaitToggle1reg" class="toggle-vis" data-column="6">Mooch</a> - <a class="toggle-vis" data-column="7">Versatile Lure</a> -->
-                            </div></div>
-                            <div id="desttable1regContainer">
-                                <table id="desttable1reg" class="table-striped table table-hover table-responsive">
-                                </table>
-                            </div>
-
-                            <hr>
-                            <div id="Toggles1spec">
-                                <div class="row">
-                                <div class="col-md-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
+                    <div class="tab-pane fade show active" id="dest1-tab-pane" role="tabpanel"
+                        aria-labelledby="dest1-tab" tabindex="0">
+                        <div id="Toggles1reg">
+                            <div class="row">
+                                <div class="col-md-2"><h5 class="headingforfishtable" data-localize="table.normalzone">Normal Zone</h5></div>
                                 <div class="col-md-8">
-                                <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="3">Ragworm</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="4">Krill</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="5">Plump Worm</button>
-                                    <button type="button" id="moochBaitToggle1spec"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="6">Mooch</button>
-                                    <button type="button" id="specialBaitToggle1spec"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="7">Special Bait</button>
-                                    <button type="button" class="btn btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="8">Versatile
-                                        Lure</button>
-                                </p></div>
+                            <p class="d-inline-flex gap-1 padding-toggles">
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="3"data-localize="bait.ragworm"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="4" data-localize="bait.krill"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="5"  data-localize="bait.plumpworm">Plump Worm</button>
+                                <button type="button" id="moochBaitToggle1reg" class="btn btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="6" data-localize="bait.mooch">Mooch</button>
+                                <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
+                                    aria-pressed="true" data-column="7" data-localize="bait.versatilelure">Versatile Lure</button>
+                            </p></div>
                                 
-                                <div class="col-md-2"><div class="form-check form-switch fabledCheck">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="fff1spec">
-                                    <label class="form-check-label" for="fff1spec">Fabled Fish Focus</label>
-                                </div></div>
-                            </div>
-                                <!--Toggle Bait: <a class="toggle-vis" data-column="3">Ragworm</a> - <a class="toggle-vis" data-column="4">Krill</a> - <a class="toggle-vis" data-column="5">Plump Worm</a> - <a id="moochBaitToggle1spec" class="toggle-vis" data-column="6">Mooch</a> - <a id="specialBaitToggle1spec" class="toggle-vis" data-column="7">Special Bait</a> - <a class="toggle-vis" data-column="8">Versatile Lure</a>-->
-                            </div>
-                            <div id="desttable1specContainer">
-                                <table id="desttable1spec" class="table-striped table table-hover table-responsive">
-                                </table>
-                            </div>
+                            <div class="col-md-2"><div class="form-check form-switch fabledCheck">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fff1">
+                                <label class="form-check-label" for="fff1" data-localize="table.fff">Fabled Fish Focus</label>
+                            </div></div></div>
+
+                            <!-- Toggle Bait: <a class="toggle-vis" data-column="3">Ragworm</a> - <a class="toggle-vis" data-column="4">Krill</a> - <a class="toggle-vis" data-column="5">Plump Worm</a> -<a id="moochBaitToggle1reg" class="toggle-vis" data-column="6">Mooch</a> - <a class="toggle-vis" data-column="7">Versatile Lure</a> -->
+                        </div>
+                        <div id="desttable1regContainer">
+                            <table id="desttable1reg" class="table-striped table table-hover"></table>
                         </div>
 
-                        <div class="tab-pane fade" id="dest2-tab-pane" role="tabpanel" aria-labelledby="dest2-tab"
-                            tabindex="0">
-
-                            <div id="Toggles2reg">
-                                <div class="row">
-                                    <div class="col-md-2"><h5 class="headingforfishtable">Normal Zone</h5></div>
-                                    <div class="col-md-8">
-                                <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="3">Ragworm</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="4">Krill</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="5">Plump Worm</button>
-                                    <button type="button" id="moochBaitToggle2reg"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="6">Mooch</button>
-                                    <button type="button" class="btn btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="7">Versatile
-                                        Lure</button>
-                                </p></div>
+                        <hr>
+                        <div id="Toggles1spec">
+                            <div class="row">
+                                <div class="col-md-2"><h5 class="headingforfishtable" data-localize="table.spectralcurrent">Spectral Current</h5></div>
+                                <div class="col-md-8">
+                            <p class="d-inline-flex gap-1 padding-toggles">
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="3"data-localize="bait.ragworm"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="4" data-localize="bait.krill"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="5"  data-localize="bait.plumpworm">Plump Worm</button>
+                                <button type="button" id="moochBaitToggle1spec" class="btn btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-localize="bait.mooch" data-column="6">Mooch</button>
+                                <button type="button" id="specialBaitToggle1spec"
+                                    class="btn btn-bait-primary toggle-vis" data-bs-toggle="button" aria-pressed="true"
+                                    data-column="7">Special Bait</button>
+                                <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
+                                    aria-pressed="true" data-localize="bait.versatilelure" data-column="8">Versatile Lure</button>
+                            </p></div>
                                 
-                                <div class="col-md-2">
-                                <div class="form-check form-switch fabledCheck">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="fff2">
-                                    <label class="form-check-label" for="fff2">Fabled Fish Focus</label>
-                                </div></div></div>
-                            </div>
-                            <div id="desttable2regContainer">
-                                <table id="desttable2reg" class="table-striped table table-hover table-responsive">
-                                </table>
-                            </div>
-                            <hr>
-                            <div id="Toggles2spec">
-                                <div class="row">
-                                    <div class="col-md-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
-                                    <div class="col-md-8">
-                                <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="3">Ragworm</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="4">Krill</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="5">Plump Worm</button>
-                                    <button type="button" id="moochBaitToggle2spec"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="6">Mooch</button>
-                                    <button type="button" id="specialBaitToggle2spec"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="7">Special Bait</button>
-                                    <button type="button" class="btn btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="8">Versatile
-                                        Lure</button>
-                                </p></div>
-                                
-                                <div class="col-md-2"><div class="form-check form-switch fabledCheck">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="fff2spec">
-                                    <label class="form-check-label" for="fff2spec">Fabled Fish Focus</label>
-                                </div></div></div>
-                            </div>
-                            <div id="desttable2specContainer">
-                                <table id="desttable2spec" class="table-striped table table-hover table-responsive">
-                                </table>
-                            </div>
+                            <div class="col-md-2"><div class="form-check form-switch fabledCheck">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fff1spec">
+                                <label class="form-check-label" for="fff1spec" data-localize="table.fff"></label>
+                            </div></div></div>
+                            <!--Toggle Bait: <a class="toggle-vis" data-column="3">Ragworm</a> - <a class="toggle-vis" data-column="4">Krill</a> - <a class="toggle-vis" data-column="5">Plump Worm</a> - <a id="moochBaitToggle1spec" class="toggle-vis" data-column="6">Mooch</a> - <a id="specialBaitToggle1spec" class="toggle-vis" data-column="7">Special Bait</a> - <a class="toggle-vis" data-column="8">Versatile Lure</a>-->
                         </div>
-
-                        <div class="tab-pane fade" id="dest3-tab-pane" role="tabpanel" aria-labelledby="dest3-tab"
-                            tabindex="0">
-                            <div id="Toggles3reg">
-                                <div class="row">
-                                    <div class="col-md-2"><h5 class="headingforfishtable">Normal Zone</h5></div>
-                                    <div class="col-md-8">
-                                <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="3">Ragworm</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="4">Krill</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="5">Plump Worm</button>
-                                    <button type="button" id="moochBaitToggle3reg"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="6">Mooch</button>
-                                    <button type="button" class="btn btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="7">Versatile
-                                        Lure</button>
-
-                                </p></div>
-                                
-                                <div class="col-md-2">
-                                <div class="form-check form-switch fabledCheck">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="fff3">
-                                    <label class="form-check-label" for="fff3">Fabled Fish Focus</label>
-                                </div></div></div>
-                            </div>
-                            <div id="desttable3regContainer">
-                                <table id="desttable3reg" class="table-striped table table-hover table-responsive">
-                                </table>
-                            </div>
-                            <hr>
-                            <div id="Toggles3spec">
-                                <div class="row">
-                                    <div class="col-md-2"><h5 class="headingforfishtable">Spectral Current</h5></div>
-                                    <div class="col-md-8">
-                                <p class="d-inline-flex gap-1 padding-toggles">Toggle Bait:
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="3">Ragworm</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="4">Krill</button>
-                                    <button type="button" class="btn active btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" data-column="5">Plump Worm</button>
-                                    <button type="button" id="moochBaitToggle3spec"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="6">Mooch</button>
-                                    <button type="button" id="specialBaitToggle3spec"
-                                        class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
-                                        aria-pressed="true" data-column="7">Special Bait</button>
-                                    <button type="button" class="btn btn-bait-primary toggle-vis"
-                                        data-bs-toggle="button" aria-pressed="true" data-column="8">Versatile
-                                        Lure</button>
-                                </p></div>
-                                
-                                <div class="col-md-2"><div class="form-check form-switch fabledCheck">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="fff3spec">
-                                    <label class="form-check-label" for="fff3spec">Fabled Fish Focus</label>
-                                </div></div></div>
-                            </div>
-                            <div id="desttable3specContainer">
-                                <table id="desttable3spec" class="table-striped table table-hover table-responsive">
-                                </table>
-                            </div>
+                        <div id="desttable1specContainer">
+                            <table id="desttable1spec" class="table-striped table table-hover"></table>
                         </div>
                     </div>
+
+                    <div class="tab-pane fade" id="dest2-tab-pane" role="tabpanel" aria-labelledby="dest2-tab"
+                        tabindex="0">
+
+                        <div id="Toggles2reg">
+                            <div class="row">
+                                <div class="col-md-2"><h5 class="headingforfishtable" data-localize="table.normalzone">Normal Zone</h5></div>
+                                <div class="col-md-8">
+                            <p class="d-inline-flex gap-1 padding-toggles">
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="3"data-localize="bait.ragworm"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="4" data-localize="bait.krill"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="5"  data-localize="bait.plumpworm">Plump Worm</button>
+                                <button type="button" id="moochBaitToggle2reg" class="btn btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="6" data-localize="bait.mooch">Mooch</button>
+                                <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
+                                    aria-pressed="true" data-column="7" data-localize="bait.versatilelure">Versatile Lure</button>
+                            </p></div>
+                                
+                            <div class="col-md-2"><div class="form-check form-switch fabledCheck">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fff2">
+                                <label class="form-check-label" for="fff2" data-localize="table.fff">Fabled Fish Focus</label>
+                            </div></div></div>
+                        </div>
+                        <div id="desttable2regContainer">
+                            <table id="desttable2reg" class="table-striped table table-hover"></table>
+                        </div>
+                        <hr>
+                        <div id="Toggles2spec">
+                            <div class="row">
+                                <div class="col-md-2"><h5 class="headingforfishtable" data-localize="table.spectralcurrent">Spectral Current</h5></div>
+                                <div class="col-md-8">
+                            <p class="d-inline-flex gap-1 padding-toggles">
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="3"data-localize="bait.ragworm"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="4" data-localize="bait.krill"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="5"  data-localize="bait.plumpworm">Plump Worm</button>
+                                <button type="button" id="moochBaitToggle2spec" class="btn btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="6" data-localize="bait.mooch">Mooch</button>
+                                <button type="button" id="specialBaitToggle2spec"
+                                    class="btn btn-bait-primary toggle-vis" data-bs-toggle="button" aria-pressed="true"
+                                    data-column="7">Special Bait</button>
+                                <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
+                                    aria-pressed="true" data-column="8" data-localize="bait.versatilelure">Versatile Lure</button>
+                            </p></div>
+                                
+                            <div class="col-md-2"><div class="form-check form-switch fabledCheck">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fff2spec">
+                                <label class="form-check-label" for="fff2spec" data-localize="table.fff">Fabled Fish Focus</label>
+                            </div></div></div>
+                        </div>
+                        <div id="desttable2specContainer">
+                            <table id="desttable2spec" class="table-striped table table-hover"></table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="dest3-tab-pane" role="tabpanel" aria-labelledby="dest3-tab"
+                        tabindex="0">
+                        <div id="Toggles3reg">
+                            <div class="row">
+                                <div class="col-md-2"><h5 class="headingforfishtable" data-localize="table.normalzone">Normal Zone</h5></div>
+                                <div class="col-md-8">
+                            <p class="d-inline-flex gap-1 padding-toggles">
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="3"data-localize="bait.ragworm"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="4" data-localize="bait.krill"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="5"  data-localize="bait.plumpworm">Plump Worm</button>
+                                <button type="button" id="moochBaitToggle3reg" class="btn btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="6" data-localize="bait.mooch">Mooch</button>
+                                <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
+                                    aria-pressed="true" data-column="7" data-localize="bait.versatilelure">Versatile Lure</button>
+                            </p></div>
+                                
+                            <div class="col-md-2"><div class="form-check form-switch fabledCheck">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fff3">
+                                <label class="form-check-label" for="fff3" data-localize="table.fff">Fabled Fish Focus</label>
+                            </div></div></div>
+                        </div>
+                        <div id="desttable3regContainer">
+                            <table id="desttable3reg" class="table-striped table table-hover"></table>
+                        </div>
+                        <hr>
+                        <div id="Toggles3spec">
+                            <div class="row">
+                                <div class="col-md-2"><h5 class="headingforfishtable" data-localize="table.spectralcurrent">Spectral Current</h5></div>
+                                <div class="col-md-8">
+                            <p class="d-inline-flex gap-1 padding-toggles">
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="3" data-localize="bait.ragworm"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="4" data-localize="bait.krill"></button>
+                                <button type="button" class="btn active btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" data-column="5" data-localize="bait.plumpworm">Plump Worm</button>
+                                <button type="button" id="moochBaitToggle3spec" class="btn btn-bait-primary toggle-vis"
+                                    data-bs-toggle="button" aria-pressed="true" data-column="6" data-localize="bait.mooch">Mooch</button>
+                                <button type="button" id="specialBaitToggle3spec"
+                                    class="btn btn-bait-primary toggle-vis" data-bs-toggle="button" aria-pressed="true"
+                                    data-column="7">Special Bait</button>
+                                <button type="button" class="btn btn-bait-primary toggle-vis" data-bs-toggle="button"
+                                    aria-pressed="true" data-column="8" data-localize="bait.versatilelure">Versatile Lure</button>
+                            </p></div>
+                                
+                            <div class="col-md-2"><div class="form-check form-switch fabledCheck">
+                                <input class="form-check-input" type="checkbox" role="switch" id="fff3spec">
+                                <label class="form-check-label" for="fff3spec" data-localize="table.fff">Fabled Fish Focus</label>
+                            </div></div></div>
+                        </div>
+                        <div id="desttable3specContainer">
+                            <table id="desttable3spec" class="table-striped table table-hover"></table>
+                        </div>
+                    </div>
+                </div>
 
 
                 </div>
@@ -374,29 +270,7 @@
     </main>
 
     <footer class="py-3 my-1">
-        <p class="text-center">
-            <a class="link-body-emphasis iconSocial" href="https://twitter.com/TyotoTayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
-                    height="24">
-                    <use xlink:href="#twitter" />
-                </svg></a>
-            <a class="link-body-emphasis iconSocial" href="https://ko-fi.com/tyototayuun" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24" height="24">
-                    <use xlink:href="#kofi" />
-                </svg></a>
-            <a class="link-body-emphasis iconSocial" href="https://discord.gg/fishcord" target="_blank" rel="noopener noreferrer"><svg class="bi" width="24"
-                    height="24">
-                    <use xlink:href="#discord" />
-                </svg></a>
-        </p>
     </footer>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-52XQCTW4Y6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-52XQCTW4Y6');
-</script>
 </body>
 
 </html>

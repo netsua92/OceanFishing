@@ -55,62 +55,6 @@ var getUrlParameter = function getUrlParameter(sParam) {
 	}
 	return false;
 };
-function destroyTables() {
-	/*if ($.fn.dataTable.isDataTable("#desttable1reg")) {
-		$("#desttable1reg").DataTable().destroy();
-		$("#desttable1reg").empty();
-	}
-	var table1spec = new DataTable("#desttable1spec");
-	var table2reg = new DataTable("#desttable2reg");
-	var table2spec = new DataTable("#desttable2spec");
-	var table3reg = new DataTable("#desttable3reg");
-	var table3spec = new DataTable("#desttable3spec");
-	table1spec.clear().destroy();
-	table2reg.clear().destroy();
-	table2spec.clear().destroy();
-	table3reg.clear().destroy();
-	table3spec.clear().destroy(); 
-
-	$("#desttable1regContainer").html(
-		'<table id="desttable1reg" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable1specContainer").html(
-		'<table id="desttable1spec" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable2regContainer").html(
-		'<table id="desttable2reg" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable2specContainer").html(
-		'<table id="desttable2spec" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable3regContainer").html(
-		'<table id="desttable3reg" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable3specContainer").html(
-		'<table id="desttable3spec" class="table-striped table table-hover"></table>'
-	);*/
-}
-
-function remakeTables() {
-	/*$("#desttable1regContainer").html(
-		'<table id="desttable1reg" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable1specContainer").html(
-		'<table id="desttable1spec" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable2regContainer").html(
-		'<table id="desttable2reg" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable2specContainer").html(
-		'<table id="desttable2spec" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable3regContainer").html(
-		'<table id="desttable3reg" class="table-striped table table-hover"></table>'
-	);
-	$("#desttable3specContainer").html(
-		'<table id="desttable3spec" class="table-striped table table-hover"></table>'
-	); */
-}
 
 function getTimeImg(time) {
 	switch (time) {
@@ -164,6 +108,8 @@ function getUncaughtRoutes(color) {
 }
 
 function styleRow(row, id, type) {
+	//var lang = $.cookie("language");
+
 	//Best Bait Image
 	if (row.Bait.BestBait.substring(0, 2) == "M!") {
 		row.Bait.BestBait = row.Bait.BestBait.replace("M!", "");
@@ -171,18 +117,18 @@ function styleRow(row, id, type) {
 			"<img class='iconSmall' src='../img/fish/" +
 			row.Bait.BestBait.replace(/'/g, "_") +
 			".png' alt='" +
-			row.Bait.BestBait +
+			row.Bait.BestBaitTranslated +
 			"' tabindex='0' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Bait.BestBait +
+			row.Bait.BestBaitTranslated +
 			"' tabindex='0'>";
 	} else {
 		row.Bait.BestBait =
 			"<img class='iconSmall' src='../img/bait/" +
 			row.Bait.BestBait.replace(/\s/g, "") +
 			".png' alt='" +
-			row.Bait.BestBait +
+			row.Bait.BestBaitTranslated +
 			"' tabindex='0' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Bait.BestBait +
+			row.Bait.BestBaitTranslated +
 			"'>";
 	}
 
@@ -194,11 +140,11 @@ function styleRow(row, id, type) {
 			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
-			row.Fish +
+			row.FishTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Fish.replace(/'/g, "") +
+			row.FishTranslated.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
-			row.Fish +
+			row.FishTranslated +
 			"</span>" +
 			addStars(row.Stars) +
 			"<img src='../img/bait/Mooch.png' class='iconMini moochIcon'> " +
@@ -210,11 +156,11 @@ function styleRow(row, id, type) {
 			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
-			row.Fish +
+			row.FishTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Fish.replace(/'/g, "") +
+			row.FishTranslated.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
-			row.Fish +
+			row.FishTranslated +
 			"</span>" +
 			addStars(row.Stars) +
 			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
@@ -227,11 +173,11 @@ function styleRow(row, id, type) {
 			"<div class='row'><div class='col-3 min50'><img class='iconSmall fabledFish' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
-			row.Fish +
+			row.FishTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Fish.replace(/'/g, "") +
+			row.FishTranslated.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
-			row.Fish +
+			row.FishTranslated +
 			"</span>" +
 			addStars(row.Stars) +
 			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
@@ -244,11 +190,11 @@ function styleRow(row, id, type) {
 			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
-			row.Fish +
+			row.FishTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Fish.replace(/'/g, "") +
+			row.FishTranslated.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
-			row.Fish +
+			row.FishTranslated +
 			"</span>" +
 			addStars(row.Stars) +
 			"<br/>" +
@@ -259,11 +205,11 @@ function styleRow(row, id, type) {
 			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
 			row.Fish.replace(/'/g, "_") +
 			".png' alt='" +
-			row.Fish +
+			row.FishTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Fish.replace(/'/g, "") +
+			row.FishTranslated.replace(/'/g, "") +
 			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
-			row.Fish +
+			row.FishTranslated +
 			"</span>" +
 			addStars(row.Stars) +
 			"</div></div>";
@@ -272,53 +218,77 @@ function styleRow(row, id, type) {
 	//Hookset Images
 	if (row.Hookset == "Powerful") {
 		row.Hookset =
-			"<div><img src='../img/Powerful.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Powerful Hookset' tabindex='0'>";
+			"<div><img src='../img/Powerful.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+			row.hooksetName +
+			"' tabindex='0'>";
 	} else {
 		row.Hookset =
-			"<div><img src='../img/Precision.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Precision Hookset' tabindex='0'>";
+			"<div><img src='../img/Precision.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+			row.hooksetName +
+			"' tabindex='0'>";
 	}
 
 	//Species Images
 	switch (row.Species) {
 		case "Manta":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Manta' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/manta_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Fugu":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Fugu' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/balloon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Crab":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Crab' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/crab_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Seadragon":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Dragon' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/dragon_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Jellyfish":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Jellyfish' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/jelly_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Octopus":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Octo' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/octo_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Shark":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shark' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shark_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Shellfish":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shellfish' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mussel_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Squid":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Squid' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/squid_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		case "Shrimp":
 			row.Species =
-				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='Shrimp' tabindex='0'></span>";
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
 			break;
 		default:
 			break;
@@ -328,18 +298,18 @@ function styleRow(row, id, type) {
 	switch (row.Bite) {
 		case "!":
 			row.Hookset =
-				row.Hookset +
-				'  <span class="translate-middle badge bitebadge rounded-pill bg-success">!<span class="visually-hidden"> ! </span></span></div>';
+				'<span class="badge bitebadge bg-success">!<span class="visually-hidden"> ! </span></span></div>' +
+				row.Hookset;
 			break;
 		case "!!":
 			row.Hookset =
-				row.Hookset +
-				'  <span class="translate-middle badge bitebadge rounded-pill bg-primary">!!<span class="visually-hidden">!!</span></span></div>';
+				'<span class="badge bitebadge bg-primary">!!<span class="visually-hidden">!!</span></span></div>' +
+				row.Hookset;
 			break;
 		default:
 			row.Hookset =
-				row.Hookset +
-				'  <span class="translate-middle badge bitebadge rounded-pill bg-danger">!!!<span class="visually-hidden">!!!</span></span></div>';
+				'<span class="badge bitebadge bg-danger">!!!<span class="visually-hidden">!!!</span></span></div>' +
+				row.Hookset;
 			break;
 	}
 	//TH Scores
@@ -380,24 +350,36 @@ function styleRow(row, id, type) {
 	var rowWeather = "";
 	if (row.Weather.FairSkies !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Fair Skies.png' alt='Fair Skies' data-bs-toggle='tooltip' data-bs-title='Fair Skies' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Fair Skies.png' alt='" +
+			translateWord("table.fairskies") +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
+			translateWord("table.fairskies") +
+			"' tabindex='0'>";
 	}
 	if (row.Weather.Clouds !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Clouds.png' alt='Clouds' data-bs-toggle='tooltip' data-bs-title='Clouds' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Clouds.png' alt='" +
+			translateWord("table.clouds") +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
+			translateWord("table.clouds") +
+			"' tabindex='0'>";
 	}
 	if (row.Weather.Fog !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Fog.png' alt='Fog' data-bs-toggle='tooltip' data-bs-title='Fog' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Fog.png' alt='" +
+			translateWord("table.fog") +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
+			translateWord("table.fog") +
+			"' tabindex='0'>";
 	}
 	if (row.Weather.Special1 !== "Yes") {
 		rowWeather +=
 			"<img class='iconMini' src='../img/Weather/" +
 			row.Weather.Special1Type +
 			".png' alt='" +
-			row.Weather.Special1Type +
+			row.Weather.Special1TypeTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Weather.Special1Type +
+			row.Weather.Special1TypeTranslated +
 			"' tabindex='0'>";
 	}
 	if (row.Weather.Special2 !== "Yes") {
@@ -405,9 +387,9 @@ function styleRow(row, id, type) {
 			"<img class='iconMini' src='../img/Weather/" +
 			row.Weather.Special2Type +
 			".png' alt='" +
-			row.Weather.Special2Type +
+			row.Weather.Special2TypeTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Weather.Special2Type +
+			row.Weather.Special2TypeTranslated +
 			"' tabindex='0'>";
 	}
 	if (row.Weather.Special3 == "No") {
@@ -415,19 +397,28 @@ function styleRow(row, id, type) {
 			"<img class='iconMini' src='../img/Weather/" +
 			row.Weather.Special3Type +
 			".png' alt='" +
-			row.Weather.Special3Type +
+			row.Weather.Special3TypeTranslated +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.Weather.Special3Type +
+			row.Weather.Special3TypeTranslated +
 			"' tabindex='0'>";
 	}
 	if (row.Weather.ClearSkies !== "Yes") {
 		rowWeather +=
-			"<img class='iconMini' src='../img/Weather/Clear Skies.png' alt='Clear Skies' data-bs-toggle='tooltip' data-bs-title='Clear Skies' tabindex='0'>";
+			"<img class='iconMini' src='../img/Weather/Clear Skies.png' alt='" +
+			translateWord("table.clearskies") +
+			"' data-bs-toggle='tooltip' data-bs-title='" +
+			translateWord("table.clearskies") +
+			"' tabindex='0'>";
 	}
+
 	if (rowWeather == "") {
-		row.ClearSkies = "Any";
+		row.ClearSkies = translateWord("table.any");
 	} else {
-		row.ClearSkies = "Not " + rowWeather;
+		if (checkLanguage() == "jp") {
+			row.ClearSkies = rowWeather + " " + translateWord("table.not");
+		} else {
+			row.ClearSkies = translateWord("table.not") + " " + rowWeather;
+		}
 	}
 
 	return row;
@@ -445,7 +436,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		//Set Special Bait text to what the special bait is
 		if (type == "spec") {
 			if (row.Bait.SpecialType != "") {
-				specialBait = row.Bait.SpecialType;
+				specialBait = row.Bait.SpecialTypeTranslated;
 				SpecialBaitStripped = row.Bait.SpecialType.replace(/\s/g, "");
 				$("#specialBaitToggle" + id + type).html(specialBait);
 				specBait = true;
@@ -479,9 +470,12 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		table = new DataTable("#desttable" + id + type, {
 			data: newtempDataSet,
 			columns: [
-				{ data: { _: "Fish", type: "Fish", sort: "Stars" }, title: "Fish" },
-				{ data: "Hookset", title: "Hook" },
-				{ data: "Bait.BestBait", title: "Best Bait" },
+				{
+					data: { _: "Fish", type: "Fish", sort: "Stars" },
+					title: translateWord("table.fish"),
+				},
+				{ data: "Hookset", title: translateWord("table.hook") },
+				{ data: "Bait.BestBait", title: translateWord("table.bestbait") },
 				{
 					data: {
 						_: "Bait.Ragworm.0",
@@ -543,14 +537,14 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						"<img class='iconSmall' src='../img/bait/VersatileLure.png' alt='Versatile Lure'>",
 					visible: false,
 				},
-				{ data: "Points", title: "Points" },
+				{ data: "Points", title: translateWord("table.points") },
 				{
 					data: {
 						_: "DH.0",
 						type: "DH.1",
 						sort: "DH.1",
 					},
-					title: "DH (Yield)",
+					title: translateWord("table.dhyield"),
 				},
 				{
 					data: {
@@ -558,9 +552,9 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						type: "TH.1",
 						sort: "TH.1",
 					},
-					title: "TH (Yield)",
+					title: translateWord("table.thyield"),
 				},
-				{ data: "Species", title: "Species" },
+				{ data: "Species", title: translateWord("table.species") },
 			],
 			paging: false,
 			destroy: true,
@@ -572,9 +566,12 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		table = new DataTable("#desttable" + id + type, {
 			data: newtempDataSet,
 			columns: [
-				{ data: { _: "Fish", type: "Fish", sort: "Stars" }, title: "Fish" },
-				{ data: "Hookset", title: "Hook" },
-				{ data: "Bait.BestBait", title: "Best Bait" },
+				{
+					data: { _: "Fish", type: "Fish", sort: "Stars" },
+					title: translateWord("table.fish"),
+				},
+				{ data: "Hookset", title: translateWord("table.hook") },
+				{ data: "Bait.BestBait", title: translateWord("table.bestbait") },
 				{
 					data: {
 						_: "Bait.Ragworm.0",
@@ -622,14 +619,14 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						"<img class='iconSmall' src='../img/bait/VersatileLure.png' alt='Versatile Lure'>",
 					visible: false,
 				},
-				{ data: "Points", title: "Points" },
+				{ data: "Points", title: translateWord("table.points") },
 				{
 					data: {
 						_: "DH.0",
 						type: "DH.1",
 						sort: "DH.1",
 					},
-					title: "DH (Yield)",
+					title: translateWord("table.dhyield"),
 				},
 				{
 					data: {
@@ -637,13 +634,13 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 						type: "TH.1",
 						sort: "TH.1",
 					},
-					title: "TH (Yield)",
+					title: translateWord("table.thyield"),
 				},
 				{
 					data: "ClearSkies",
-					title: "Weather",
+					title: translateWord("table.weather"),
 				},
-				{ data: "Species", title: "Species" },
+				{ data: "Species", title: translateWord("table.species") },
 			],
 			paging: false,
 			destroy: true,

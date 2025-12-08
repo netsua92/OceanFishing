@@ -14,19 +14,19 @@ var patternIndigo = [
 	3, 6, 7, 10, 1, 4, 8, 11, 5, 9, 12, 3, 6, 7, 10, 1, 4, 8, 11, 2, 9, 12, 3, 6,
 ];
 
-var routeNamesIndigo = [
-	"Seadragons/Coral Manta",
-	"Octopus",
-	"Sothis & Elasmosaurus",
-	"Sothis & Stonescale",
-	"Jellyfish",
-	"Shark/Coral Manta",
-	"Hafgufa & Elasmosaurus",
-	"Mantas",
-	"Crabs/Seafaring Toad",
-	"Hafgufa & Placodus",
-	"Fugu/Stonescale",
-	"Fugu/Mantas",
+var routeNameKeysIndigo = [
+	"routes.seadragonscoralmanta",
+	"routes.octopus",
+	"routes.sothiselasmosaurus",
+	"routes.sothisstonescale",
+	"routes.jellyfish",
+	"routes.sharkscoralmanta",
+	"routes.hafgufaelasmosaurus",
+	"routes.mantas",
+	"routes.crabsseafaringtoad",
+	"routes.hafgufaplacodus",
+	"routes.fugustonescale",
+	"routes.fugumantas",
 ];
 
 var patternRuby = [
@@ -35,16 +35,16 @@ var patternRuby = [
 	3, 4, 5, 6, 1, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
 ];
 
-var routeNamesRuby = [
-	"Glass Dragon & Jewel",
-	"Squid/Glass Dragon",
-	"Shellfish/Shrimp",
-	"Shrimp/Hells' Claw",
-	"Shellfish/Taniwha",
-	"Squid/Taniwha",
+var routeNameKeysRuby = [
+	"routes.glassdragonjewel",
+	"routes.squidglassdragon",
+	"routes.shellfishshrimp",
+	"routes.shrimphellsclaw",
+	"routes.shellfishtaniwha",
+	"routes.squidtaniwha",
 ];
 
-var timeRegion = "en-US";
+var timeRegion = getUserLocale();
 var timeFormat = {
 	weekday: "short",
 	month: "short",
@@ -55,24 +55,59 @@ var timeFormat = {
 	timeZoneName: "short",
 };
 
-//generate drop down list
-var temptext = '<label for="routeNumber" class="form-label">Route: </label>  ';
-temptext += '<select id="routeNumber"  class="form-select">';
-for (var i = 0; i < routeNamesIndigo.length; i++) {
-	temptext +=
-		"<option value=" + (i + 1) + ">" + routeNamesIndigo[i] + "</option>";
+// Format date and time in user's locale
+function formatDateTime(date) {
+	return new Intl.DateTimeFormat(timeRegion, timeFormat).format(date);
 }
-temptext += "</select><br>";
-document.getElementById("droplistIndigo").innerHTML = temptext;
 
-temptext = '<label for="routeNumber" class="form-label">Route: </label>  ';
-temptext += '<select id="routeNumber"  class="form-select">';
-for (var i = 0; i < routeNamesRuby.length; i++) {
-	temptext +=
-		"<option value=" + (i + 1) + ">" + routeNamesRuby[i] + "</option>";
+// generate drop down lists (callable so we can re-render after translations load)
+function updateRouteDroplists() {
+	try {
+		var temptext =
+			'<label for="routeNumber" class="form-label">' +
+			translateWord("schedule.route:") +
+			"  </label>  ";
+		temptext += '<select id="routeNumber"  class="form-select">';
+		for (var i = 0; i < routeNameKeysIndigo.length; i++) {
+			var label =
+				typeof translateWord === "function"
+					? translateWord(routeNameKeysIndigo[i])
+					: routeNameKeysIndigo[i];
+			temptext += "<option value=" + (i + 1) + ">" + label + "</option>";
+		}
+		temptext += "</select><br>";
+		var elIndigo = document.getElementById("droplistIndigo");
+		if (elIndigo) elIndigo.innerHTML = temptext;
+
+		temptext =
+			'<label for="routeNumber" class="form-label">' +
+			translateWord("schedule.route:") +
+			"  </label>  ";
+		temptext += '<select id="routeNumber"  class="form-select">';
+		for (var j = 0; j < routeNameKeysRuby.length; j++) {
+			var labelR =
+				typeof translateWord === "function"
+					? translateWord(routeNameKeysRuby[j])
+					: routeNameKeysRuby[j];
+			temptext += "<option value=" + (j + 1) + ">" + labelR + "</option>";
+		}
+		temptext += "</select><br>";
+		var elRuby = document.getElementById("droplistRuby");
+		if (elRuby) elRuby.innerHTML = temptext;
+	} catch (e) {
+		// ignore if DOM not ready
+	}
 }
-temptext += "</select><br>";
-document.getElementById("droplistRuby").innerHTML = temptext;
+
+// initial render
+updateRouteDroplists();
+
+// re-render when translations are loaded
+if (window.jQuery) {
+	$(document).on("translationsLoaded", updateRouteDroplists);
+} else {
+	document.addEventListener("translationsLoaded", updateRouteDroplists);
+}
 
 //Force myDate box to start at today's date
 //thank you stackoverflow
@@ -110,11 +145,15 @@ function convertTimeIndigo() {
 				? tempTime + i - patternIndigo.length
 				: tempTime + i;
 		temptext += "<tr><td>";
-		temptext += new Date(
+		var dateObj = new Date(
 			(selectedTwoHourChunk + i + 4) * (1000 * 60 * 60 * 2)
-		).toLocaleString(timeRegion, timeFormat);
+		);
+		temptext += formatDateTime(dateObj);
 		temptext += "</td><td>";
-		temptext += routeNamesIndigo[patternIndigo[temp] - 1];
+		temptext +=
+			typeof translateWord === "function"
+				? translateWord(routeNameKeysIndigo[patternIndigo[temp] - 1])
+				: routeNameKeysIndigo[patternIndigo[temp] - 1];
 		temptext += "</td></tr>";
 	}
 
@@ -147,11 +186,15 @@ function convertTimeRuby() {
 				? tempTime + i - patternRuby.length
 				: tempTime + i;
 		temptext += "<tr><td>";
-		temptext += new Date(
+		var dateObj = new Date(
 			(selectedTwoHourChunk + i + 4) * (1000 * 60 * 60 * 2)
-		).toLocaleString(timeRegion, timeFormat);
+		);
+		temptext += formatDateTime(dateObj);
 		temptext += "</td><td>";
-		temptext += routeNamesRuby[patternRuby[temp] - 1];
+		temptext +=
+			typeof translateWord === "function"
+				? translateWord(routeNameKeysRuby[patternRuby[temp] - 1])
+				: routeNameKeysRuby[patternRuby[temp] - 1];
 		temptext += "</td></tr>";
 	}
 
@@ -197,7 +240,7 @@ function printRoutesIndigo() {
 		//convert from twoHourChunks to real time
 		//SUBTRACT offset to get real time
 		var tempoop = new Date((matchedTimes[i] - offset) * (1000 * 60 * 60 * 2));
-		temptext += tempoop.toLocaleString(timeRegion, timeFormat);
+		temptext += formatDateTime(tempoop);
 		temptext += "</td></tr>";
 	}
 
@@ -243,7 +286,7 @@ function printRoutesRuby() {
 		//convert from twoHourChunks to real time
 		//SUBTRACT offset to get real time
 		var tempoop = new Date((matchedTimes[i] - offset) * (1000 * 60 * 60 * 2));
-		temptext += tempoop.toLocaleString(timeRegion, timeFormat);
+		temptext += formatDateTime(tempoop);
 		temptext += "</td></tr>";
 	}
 

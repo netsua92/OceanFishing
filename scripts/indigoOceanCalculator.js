@@ -9,19 +9,19 @@ var pattern = [
 	3, 6, 7, 10, 1, 4, 8, 11, 5, 9, 12, 3, 6, 7, 10, 1, 4, 8, 11, 2, 9, 12, 3, 6,
 ];
 
-var routeNames = [
-	"Seadragons/Coral Manta",
-	"Octopus",
-	"Sothis & Elasmosaurus",
-	"Sothis & Stonescale",
-	"Jellyfish",
-	"Sharks/Coral Manta",
-	"Hafgufa & Elasmosaurus",
-	"Mantas",
-	"Crabs/Seafaring Toad",
-	"Hafgufa & Placodus",
-	"Fugu/Stonescale",
-	"Fugu/Mantas",
+var routeNameKeys = [
+	"routes.seadragonscoralmanta",
+	"routes.octopus",
+	"routes.sothiselasmosaurus",
+	"routes.sothisstonescale",
+	"routes.jellyfish",
+	"routes.sharkscoralmanta",
+	"routes.hafgufaelasmosaurus",
+	"routes.mantas",
+	"routes.crabsseafaringtoad",
+	"routes.hafgufaplacodus",
+	"routes.fugustonescale",
+	"routes.fugumantas",
 ];
 
 var routeImages = [
@@ -54,20 +54,30 @@ var schedules = [
 	"Ciel at Sunset, Rhotano at Night, Sound at Day",
 ];
 
-var finalStop = [
-	imgSunset + '<span class="desttextrt">Northern Strait of Merlthor</span>',
-	imgNight + '<span class="desttextrt">Northern Strait of Merlthor</span>',
-	imgDay + '<span class="desttextrt">Northern Strait of Merlthor</span>',
-	imgSunset + '<span class="desttextrt">Rhotano Sea</span>',
-	imgNight + '<span class="desttextrt">Rhotano Sea</span>',
-	imgDay + '<span class="desttextrt">Rhotano Sea</span>',
-	imgSunset + '<span class="desttextrt">Bloodbrine Sea</span>',
-	imgNight + '<span class="desttextrt">Bloodbrine Sea</span>',
-	imgDay + '<span class="desttextrt">Bloodbrine Sea</span>',
-	imgSunset + '<span class="desttextrt">Rothlyt Sound</span>',
-	imgNight + '<span class="desttextrt">Rothlyt Sound</span>',
-	imgDay + '<span class="desttextrt">Rothlyt Sound</span>',
+var finalStopKeys = [
+	{ img: imgSunset, key: "destination.thenorthernstraitofmerlthor" },
+	{ img: imgNight, key: "destination.thenorthernstraitofmerlthor" },
+	{ img: imgDay, key: "destination.thenorthernstraitofmerlthor" },
+	{ img: imgSunset, key: "destination.rhotanosea" },
+	{ img: imgNight, key: "destination.rhotanosea" },
+	{ img: imgDay, key: "destination.rhotanosea" },
+	{ img: imgSunset, key: "destination.thebloodbrinesea" },
+	{ img: imgNight, key: "destination.thebloodbrinesea" },
+	{ img: imgDay, key: "destination.thebloodbrinesea" },
+	{ img: imgSunset, key: "destination.therothlytsound" },
+	{ img: imgNight, key: "destination.therothlytsound" },
+	{ img: imgDay, key: "destination.therothlytsound" },
 ];
+
+function getFinalStop(index) {
+	if (!finalStopKeys[index]) return "";
+	var stop = finalStopKeys[index];
+	var label =
+		typeof translateWord === "function" ? translateWord(stop.key) : stop.key;
+	return stop.img + '<span class="desttextrt">' + label + "</span>";
+}
+
+var finalStop = [];
 
 var finalTime = [
 	"Sunset",
@@ -99,7 +109,7 @@ var timeImages = [
 	imgDay,
 ];
 
-var timeRegion = "en-US";
+var timeRegion = getUserLocale();
 var timeFormat = {
 	weekday: "short",
 	month: "short",
@@ -117,6 +127,66 @@ var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day;
+
+function formatCleanDate(date) {
+	var timeRegion = getUserLocale();
+	var dateOptions = {
+		month: "short",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		hour12: true,
+	};
+	return new Intl.DateTimeFormat(timeRegion, dateOptions).format(date);
+}
+
+function getTimeUntilDeparture(stopTime) {
+	var now = Date.now();
+	var diff = stopTime.getTime() - now;
+	var minutes = Math.floor(diff / (1000 * 60));
+	var hours = Math.floor(minutes / 60);
+	var days = Math.floor(hours / 24);
+
+	if (days > 0) {
+		var label =
+			typeof translateWord === "function"
+				? translateWord("schedule.inaday")
+				: "in a day";
+		return label;
+	} else if (hours > 0) {
+		if (hours === 1) {
+			var label =
+				typeof translateWord === "function"
+					? translateWord("schedule.in1hour")
+					: "in 1 hour";
+			return label;
+		} else {
+			var hoursLabel =
+				typeof translateWord === "function"
+					? translateWord("schedule.inhours")
+					: "in {0} hours";
+			return hoursLabel.replace("{0}", hours);
+		}
+	} else if (minutes > 0) {
+		if (minutes === 1) {
+			var label =
+				typeof translateWord === "function"
+					? translateWord("schedule.1minuteago")
+					: "1 minute ago";
+			return label;
+		} else {
+			var minutesLabel =
+				typeof translateWord === "function"
+					? translateWord("schedule.minutesago")
+					: "{0} minutes ago";
+			return minutesLabel.replace("{0}", minutes);
+		}
+	} else {
+		return typeof translateWord === "function"
+			? translateWord("schedule.boardingstarts")
+			: "Boarding Starts";
+	}
+}
 
 function convertTime(firstTime = true) {
 	var x = Date.now();
@@ -141,13 +211,15 @@ function convertTime(firstTime = true) {
 		);
 
 		var routeNumber = pattern[temp];
-		var finalStopDisp = finalStop[pattern[temp] - 1];
-		var optObjectives = routeNames[pattern[temp] - 1];
+		var finalStopDisp = getFinalStop(pattern[temp] - 1);
+		var optObjectives =
+			typeof translateWord === "function"
+				? translateWord(routeNameKeys[pattern[temp] - 1])
+				: routeNameKeys[pattern[temp] - 1];
 		var images = routeImages[pattern[temp] - 1];
 
-		var timeUntilDepature = moment(stopTime).fromNow();
-
-		var cleanDate = moment(stopTime).format("MMM DD h:mm A");
+		var timeUntilDepature = getTimeUntilDeparture(stopTime);
+		var cleanDate = formatCleanDate(stopTime);
 		dataSet.push([
 			cleanDate,
 			timeUntilDepature,

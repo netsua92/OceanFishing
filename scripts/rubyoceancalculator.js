@@ -6,14 +6,22 @@ var pattern = [
 	3, 4, 5, 6, 1, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
 ];
 
-var routeNames = [
-	"Glass Dragon & Jewel",
-	"Squid/Glass Dragon",
-	"Shellfish/Shrimp",
-	"Shrimp/Hells' Claw",
-	"Shellfish/Taniwha",
-	"Squid/Taniwha",
+var routeNameKeys = [
+	"routes.glassdragonjewel",
+	"routes.squidglassdragon",
+	"routes.shellfishshrimp",
+	"routes.shrimphellsclaw",
+	"routes.shellfishtaniwha",
+	"routes.squidtaniwha",
 ];
+
+function getRouteName(index) {
+	if (!routeNameKeys[index]) return "";
+	var key = routeNameKeys[index];
+	return typeof translateWord === "function" ? translateWord(key) : key;
+}
+
+var routeNames = routeNameKeys; // backward compatibility alias
 
 var routeImages = [
 	"<img src='../img/opobj/Glass Dragon.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Jewel of Plum Spring.png' class='iconSmall routetableOpObj'>",
@@ -33,18 +41,27 @@ var schedules = [
 	"Sirensong Sea at Day, Kugane at Sunset, Ruby Sea at Night",
 ];
 
-var finalStop = [
-	imgDay + '<span class="desttextrt">One River</span>',
-	imgDay + '<span class="desttextrt">Ruby Sea</span>',
-	imgSunset + '<span class="desttextrt">One River</span>',
-	imgSunset + '<span class="desttextrt">Ruby Sea</span>',
-	imgNight + '<span class="desttextrt">One River</span>',
-	imgNight + '<span class="desttextrt">Ruby Sea</span>',
+var finalStopKeys = [
+	{ img: imgDay, key: "destination.theoneriver" },
+	{ img: imgDay, key: "destination.therubysea" },
+	{ img: imgSunset, key: "destination.theoneriver" },
+	{ img: imgSunset, key: "destination.therubysea" },
+	{ img: imgNight, key: "destination.theoneriver" },
+	{ img: imgNight, key: "destination.therubysea" },
 ];
 
+function getFinalStop(index) {
+	if (!finalStopKeys[index]) return "";
+	var stop = finalStopKeys[index];
+	var label =
+		typeof translateWord === "function" ? translateWord(stop.key) : stop.key;
+	return stop.img + '<span class="desttextrt">' + label + "</span>";
+}
+
+var finalStop = [];
 var finalTime = ["Day", "Day", "Sunset", "Sunset", "Night", "Night"];
 
-var timeRegion = "en-US";
+var timeRegion = getUserLocale(); // Use centralized version instead
 var timeFormat = {
 	weekday: "short",
 	month: "short",
@@ -62,6 +79,66 @@ var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day;
+
+function formatCleanDate(date) {
+	var timeRegion = getUserLocale();
+	var dateOptions = {
+		month: "short",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		hour12: true,
+	};
+	return new Intl.DateTimeFormat(timeRegion, dateOptions).format(date);
+}
+
+function getTimeUntilDeparture(stopTime) {
+	var now = Date.now();
+	var diff = stopTime.getTime() - now;
+	var minutes = Math.floor(diff / (1000 * 60));
+	var hours = Math.floor(minutes / 60);
+	var days = Math.floor(hours / 24);
+
+	if (days > 0) {
+		var label =
+			typeof translateWord === "function"
+				? translateWord("schedule.inaday")
+				: "in a day";
+		return label;
+	} else if (hours > 0) {
+		if (hours === 1) {
+			var label =
+				typeof translateWord === "function"
+					? translateWord("schedule.in1hour")
+					: "in 1 hour";
+			return label;
+		} else {
+			var hoursLabel =
+				typeof translateWord === "function"
+					? translateWord("schedule.inhours")
+					: "in {0} hours";
+			return hoursLabel.replace("{0}", hours);
+		}
+	} else if (minutes > 0) {
+		if (minutes === 1) {
+			var label =
+				typeof translateWord === "function"
+					? translateWord("schedule.1minuteago")
+					: "1 minute ago";
+			return label;
+		} else {
+			var minutesLabel =
+				typeof translateWord === "function"
+					? translateWord("schedule.minutesago")
+					: "{0} minutes ago";
+			return minutesLabel.replace("{0}", minutes);
+		}
+	} else {
+		return typeof translateWord === "function"
+			? translateWord("schedule.boardingstarts")
+			: "Boarding Starts";
+	}
+}
 
 function convertTime(firstTime = true) {
 	var x = Date.now();
@@ -87,12 +164,12 @@ function convertTime(firstTime = true) {
 		);
 
 		var routeNumber = pattern[temp];
-		var finalStopDisp = finalStop[pattern[temp] - 1];
-		var optObjectives = routeNames[pattern[temp] - 1];
+		var finalStopDisp = getFinalStop(pattern[temp] - 1);
+		var optObjectives = getRouteName(pattern[temp] - 1);
 		var images = routeImages[pattern[temp] - 1];
 
-		var timeUntilDepature = moment(stopTime).fromNow();
-		var cleanDate = moment(stopTime).format("MMM DD h:mm A");
+		var timeUntilDepature = getTimeUntilDeparture(stopTime);
+		var cleanDate = formatCleanDate(stopTime);
 		dataSet.push([
 			cleanDate,
 			timeUntilDepature,

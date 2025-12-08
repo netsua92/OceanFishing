@@ -1,0 +1,21 @@
+{
+	"navigation": {
+		"home": "Home",
+		"indigo": "Indigo",
+		"ruby": "Ruby",
+		"schedules": "Schedules",
+		"achievements": "Achievements",
+		"quick-guides": "Quick Guides",
+		"faq": "FAQ",
+		"about": "About"
+	},
+	"title": "Select Your Route",
+	"indigoCard": {
+		"title": "Indigo Route",
+		"subTitle": "Board this vessel to chart the waters of the Bloodbrine Sea, Rothlyt Sound or the Straits of Merlthor!"
+	},
+	"rubyCard": {
+		"title": "Ruby Route",
+		"subTitle": "Board this vessel to try your luck in the waters of the Ruby Sea, the One River, or off the coast of Kugane!"
+	}
+}

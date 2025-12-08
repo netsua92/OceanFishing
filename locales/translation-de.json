@@ -1,0 +1,15 @@
+{
+	"navigation.home": "Home",
+	"navigation.indigo": "Indigo",
+	"navigation.ruby": "Ruby",
+	"navigation.schedules": "Schedules",
+	"navigation.achievements": "Achievements",
+	"navigation.quick-guides": "Quick Guides",
+	"navigation.faq": "FAQ",
+	"navigation.about": "About",
+	"title": "Select Your Route",
+	"indigoCard.title": "Indigo Route",
+	"indigoCard.subTitle": "Board this vessel to chart the waters of the Bloodbrine Sea, Rothlyt Sound or the Straits of Merlthor!",
+	"rubyCard.title": "Ruby Route",
+	"rubyCard.subTitle": "Board this vessel to try your luck in the waters of the Ruby Sea, the One River, or off the coast of Kugane!"
+}

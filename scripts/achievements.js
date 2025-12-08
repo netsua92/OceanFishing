@@ -7,19 +7,19 @@ var patternIndigo = [
 	3, 6, 7, 10, 1, 4, 8, 11, 5, 9, 12, 3, 6, 7, 10, 1, 4, 8, 11, 2, 9, 12, 3, 6,
 ];
 
-var routeNamesIndigo = [
-	"Seadragons/Coral Manta",
-	"Octopus",
-	"Sothis & Elasmosaurus",
-	"Sothis & Stonescale",
-	"Jelly",
-	"Shark/Coral Manta",
-	"Hafgufa & Elasmosaurus",
-	"Mantas",
-	"Crabs/Seafaring Toad",
-	"Hafgufa & Placodus",
-	"Fugu/Stonescale",
-	"Fugu/Mantas",
+var routeNameKeysIndigo = [
+	"routes.seadragonscoralmanta",
+	"routes.octopus",
+	"routes.sothiselasmosaurus",
+	"routes.sothisstonescale",
+	"routes.jellyfish",
+	"routes.sharkscoralmanta",
+	"routes.hafgufaelasmosaurus",
+	"routes.mantas",
+	"routes.crabsseafaringtoad",
+	"routes.hafgufaplacodus",
+	"routes.fugustonescale",
+	"routes.fugumantas",
 ];
 
 var patternRuby = [
@@ -28,16 +28,16 @@ var patternRuby = [
 	3, 4, 5, 6, 1, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
 ];
 
-var routeNamesRuby = [
-	"Glass Dragon & Jewel",
-	"Squid/Glass Dragon",
-	"Shellfish/Shrimp",
-	"Shrimp/Hells' Claw",
-	"Shellfish/Taniwha",
-	"Squid/Taniwha",
+var routeNameKeysRuby = [
+	"routes.glassdragonjewel",
+	"routes.squidglassdragon",
+	"routes.shellfishshrimp",
+	"routes.shrimphellsclaw",
+	"routes.shellfishtaniwha",
+	"routes.squidtaniwha",
 ];
 
-var timeRegion = "en-US";
+var timeRegion = getUserLocale();
 var timeFormat = {
 	weekday: "short",
 	month: "short",
@@ -47,6 +47,11 @@ var timeFormat = {
 	minute: "2-digit",
 	timeZoneName: "short",
 };
+
+// Format date and time in user's locale
+function formatDateTime(date) {
+	return new Intl.DateTimeFormat(timeRegion, timeFormat).format(date);
+}
 
 $(document).ready(function () {
 	if (window.location.href.indexOf("#") > -1) {
@@ -235,9 +240,12 @@ function printRoutesIndigo(rn1, rn2) {
 		//convert from twoHourChunks to real time
 		//SUBTRACT offset to get real time
 		var tempoop = new Date((matchedTimes[i] - offset) * (1000 * 60 * 60 * 2));
-		temptext += tempoop.toLocaleString(timeRegion, timeFormat);
+		temptext += formatDateTime(tempoop);
 		temptext += "</td><td>";
-		temptext += routeNamesIndigo[routeNumberArr[i] - 1];
+		temptext +=
+			typeof translateWord === "function"
+				? translateWord(routeNameKeysIndigo[routeNumberArr[i] - 1])
+				: routeNameKeysIndigo[routeNumberArr[i] - 1];
 		temptext += "</td></tr>";
 	}
 
@@ -289,9 +297,12 @@ function printRoutesRuby(rn1, rn2) {
 		//convert from twoHourChunks to real time
 		//SUBTRACT offset to get real time
 		var tempoop = new Date((matchedTimes[i] - offset) * (1000 * 60 * 60 * 2));
-		temptext += tempoop.toLocaleString(timeRegion, timeFormat);
+		temptext += formatDateTime(tempoop);
 		temptext += "</td><td>";
-		temptext += routeNamesRuby[routeNumberArr[i] - 1];
+		temptext +=
+			typeof translateWord === "function"
+				? translateWord(routeNameKeysRuby[routeNumberArr[i] - 1])
+				: routeNameKeysRuby[routeNumberArr[i] - 1];
 		temptext += "</td></tr>";
 	}
 
