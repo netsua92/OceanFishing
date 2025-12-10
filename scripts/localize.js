@@ -105,21 +105,24 @@ document.addEventListener(
 function localizePage() {
 	var userLang = checkLanguage();
 
-	$.getJSON("../locales/translation-" + userLang + ".json", function (data) {
-		translations = data;
-		$("[data-localize]").each(function () {
-			var key = $(this).attr("data-localize");
-			//console.log(key);
-			$(this).html(data[key]);
-		});
+	$.getJSON(
+		"../locales/translation-" + userLang + ".json?v=1",
+		function (data) {
+			translations = data;
+			$("[data-localize]").each(function () {
+				var key = $(this).attr("data-localize");
+				//console.log(key);
+				$(this).html(data[key]);
+			});
 
-		// Notify other scripts that translations are loaded
-		try {
-			$(document).trigger("translationsLoaded");
-		} catch (e) {
-			// ignore
+			// Notify other scripts that translations are loaded
+			try {
+				$(document).trigger("translationsLoaded");
+			} catch (e) {
+				// ignore
+			}
 		}
-	});
+	);
 
 	$.cookie("language", userLang, { path: "/" });
 }

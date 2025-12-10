@@ -147,6 +147,7 @@ function getTimeUntilDeparture(stopTime) {
 	var hours = Math.floor(minutes / 60);
 	var days = Math.floor(hours / 24);
 
+	// Handle upcoming departures (positive time)
 	if (days > 0) {
 		var label =
 			typeof translateWord === "function"
@@ -171,20 +172,32 @@ function getTimeUntilDeparture(stopTime) {
 		if (minutes === 1) {
 			var label =
 				typeof translateWord === "function"
+					? translateWord("schedule.in1minute")
+					: "in 1 minute";
+			return label;
+		} else {
+			var minutesLabel =
+				typeof translateWord === "function"
+					? translateWord("schedule.inminutes")
+					: "in {0} minutes";
+			return minutesLabel.replace("{0}", minutes);
+		}
+	} else {
+		// Handle departures that have started (negative time)
+		var absMins = Math.abs(minutes);
+		if (absMins === 1) {
+			var label =
+				typeof translateWord === "function"
 					? translateWord("schedule.1minuteago")
-					: "1 minute ago";
+					: "started 1 minute ago";
 			return label;
 		} else {
 			var minutesLabel =
 				typeof translateWord === "function"
 					? translateWord("schedule.minutesago")
-					: "{0} minutes ago";
-			return minutesLabel.replace("{0}", minutes);
+					: "started {0} minutes ago";
+			return minutesLabel.replace("{0}", absMins);
 		}
-	} else {
-		return typeof translateWord === "function"
-			? translateWord("schedule.boardingstarts")
-			: "Boarding Starts";
 	}
 }
 
