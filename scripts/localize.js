@@ -106,7 +106,7 @@ function localizePage() {
 	var userLang = checkLanguage();
 
 	$.getJSON(
-		"../locales/translation-" + userLang + ".json?v=1",
+		"../locales/translation-" + userLang + ".json?v=2",
 		function (data) {
 			translations = data;
 			$("[data-localize]").each(function () {
