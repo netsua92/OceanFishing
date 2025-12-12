@@ -30,6 +30,12 @@ $(document).ready(function () {
 		// sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
 		sheetName: indigosheetname,
 		query: "SELECT *",
-		callback: sheetDataHandlerIndigo,
+		callback: function (sheetData) {
+			sheetDataHandlerIndigo(sheetData);
+			// Signal that sheet data is loaded
+			if (typeof ContentReady !== "undefined") {
+				ContentReady.sheetDataLoaded();
+			}
+		},
 	});
 });

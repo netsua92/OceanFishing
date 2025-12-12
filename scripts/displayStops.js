@@ -9,158 +9,242 @@ function displayStops(route, routeNumber, dataObj) {
 			{
 				stop1: "Southern",
 				stopTime1: "Night",
-				stopDisplayName1: translateWord(
-					"destination.thesouthernstraitofmerlthor"
-				),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesouthernstraitofmerlthor")
+						: "The Southern Strait of Merlthor",
 				stop2: "Galadion",
 				stopTime2: "Day",
-				stopDisplayName2: translateWord("destination.galadionbay"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.galadionbay")
+						: "Galadion Bay",
 				stop3: "Northern",
 				stopTime3: "Sunset",
-				stopDisplayName3: translateWord(
-					"destination.thenorthernstraitofmerlthor"
-				),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thenorthernstraitofmerlthor")
+						: "The Northern Strait of Merlthor",
 			},
 			{
 				stop1: "Southern",
 				stopTime1: "Day",
-				stopDisplayName1: translateWord(
-					"destination.thesouthernstraitofmerlthor"
-				),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesouthernstraitofmerlthor")
+						: "The Southern Strait of Merlthor",
 				stop2: "Galadion",
 				stopTime2: "Sunset",
-				stopDisplayName2: translateWord("destination.galadionbay"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.galadionbay")
+						: "Galadion Bay",
 				stop3: "Northern",
 				stopTime3: "Night",
-				stopDisplayName3: translateWord(
-					"destination.thenorthernstraitofmerlthor"
-				),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thenorthernstraitofmerlthor")
+						: "The Northern Strait of Merlthor",
 			},
 			{
 				stop1: "Southern",
 				stopTime1: "Sunset",
-				stopDisplayName1: translateWord(
-					"destination.thesouthernstraitofmerlthor"
-				),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesouthernstraitofmerlthor")
+						: "The Southern Strait of Merlthor",
 				stop2: "Galadion",
 				stopTime2: "Night",
-				stopDisplayName2: translateWord("destination.galadionbay"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.galadionbay")
+						: "Galadion Bay",
 				stop3: "Northern",
 				stopTime3: "Day",
-				stopDisplayName3: translateWord(
-					"destination.thenorthernstraitofmerlthor"
-				),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thenorthernstraitofmerlthor")
+						: "The Northern Strait of Merlthor",
 			},
 			{
 				stop1: "Galadion",
 				stopTime1: "Night",
-				stopDisplayName1: translateWord("destination.galadionbay"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.galadionbay")
+						: "Galadion Bay",
 				stop2: "Southern",
 				stopTime2: "Day",
-				stopDisplayName2: translateWord(
-					"destination.thesouthernstraitofmerlthor"
-				),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thesouthernstraitofmerlthor")
+						: "The Southern Strait of Merlthor",
 				stop3: "Rhotano",
 				stopTime3: "Sunset",
-				stopDisplayName3: translateWord("destination.rhotanosea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.rhotanosea")
+						: "Rhotano Sea",
 			},
 			{
 				stop1: "Galadion",
 				stopTime1: "Day",
-				stopDisplayName1: translateWord("destination.galadionbay"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.galadionbay")
+						: "Galadion Bay",
 				stop2: "Southern",
 				stopTime2: "Sunset",
-				stopDisplayName2: translateWord(
-					"destination.thesouthernstraitofmerlthor"
-				),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thesouthernstraitofmerlthor")
+						: "The Southern Strait of Merlthor",
 				stop3: "Rhotano",
 				stopTime3: "Night",
-				stopDisplayName3: translateWord("destination.rhotanosea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.rhotanosea")
+						: "Rhotano Sea",
 			},
 			{
 				stop1: "Galadion",
 				stopTime1: "Sunset",
-				stopDisplayName1: translateWord("destination.galadionbay"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.galadionbay")
+						: "Galadion Bay",
 				stop2: "Southern",
 				stopTime2: "Night",
-				stopDisplayName2: translateWord(
-					"destination.thesouthernstraitofmerlthor"
-				),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thesouthernstraitofmerlthor")
+						: "The Southern Strait of Merlthor",
 				stop3: "Rhotano",
 				stopTime3: "Day",
-				stopDisplayName3: translateWord("destination.rhotanosea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.rhotanosea")
+						: "Rhotano Sea",
 			},
 			{
 				stop1: "Cieldalaes",
 				stopTime1: "Night",
-				stopDisplayName1: translateWord("destination.thecieldalaes"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thecieldalaes")
+						: "The Cieldalaes",
 				stop2: "Northern",
 				stopTime2: "Day",
-				stopDisplayName2: translateWord(
-					"destination.thenorthernstraitofmerlthor"
-				),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thenorthernstraitofmerlthor")
+						: "The Northern Strait of Merlthor",
 				stop3: "Blood",
 				stopTime3: "Sunset",
-				stopDisplayName3: translateWord("destination.thebloodbrinesea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thebloodbrinesea")
+						: "The Bloodbrine Sea",
 			},
 			{
 				stop1: "Cieldalaes",
 				stopTime1: "Day",
-				stopDisplayName1: translateWord("destination.thecieldalaes"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thecieldalaes")
+						: "The Cieldalaes",
 				stop2: "Northern",
 				stopTime2: "Sunset",
-				stopDisplayName2: translateWord(
-					"destination.thenorthernstraitofmerlthor"
-				),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thenorthernstraitofmerlthor")
+						: "The Northern Strait of Merlthor",
 				stop3: "Blood",
 				stopTime3: "Night",
-				stopDisplayName3: translateWord("destination.thebloodbrinesea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thebloodbrinesea")
+						: "The Bloodbrine Sea",
 			},
 			{
 				stop1: "Cieldalaes",
 				stopTime1: "Sunset",
-				stopDisplayName1: translateWord("destination.thecieldalaes"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thecieldalaes")
+						: "The Cieldalaes",
 				stop2: "Northern",
 				stopTime2: "Night",
-				stopDisplayName2: translateWord(
-					"destination.thenorthernstraitofmerlthor"
-				),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thenorthernstraitofmerlthor")
+						: "The Northern Strait of Merlthor",
 				stop3: "Blood",
 				stopTime3: "Day",
-				stopDisplayName3: translateWord("destination.thebloodbrinesea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thebloodbrinesea")
+						: "The Bloodbrine Sea",
 			},
 			{
 				stop1: "Cieldalaes",
 				stopTime1: "Night",
-				stopDisplayName1: translateWord("destination.thecieldalaes"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thecieldalaes")
+						: "The Cieldalaes",
 				stop2: "Rhotano",
 				stopTime2: "Day",
-				stopDisplayName2: translateWord("destination.rhotanosea"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.rhotanosea")
+						: "Rhotano Sea",
 				stop3: "Rothlyt",
 				stopTime3: "Sunset",
-				stopDisplayName3: translateWord("destination.therothlytsound"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.therothlytsound")
+						: "The Rothlyt Sound",
 			},
 			{
 				stop1: "Cieldalaes",
 				stopTime1: "Day",
-				stopDisplayName1: translateWord("destination.thecieldalaes"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thecieldalaes")
+						: "The Cieldalaes",
 				stop2: "Rhotano",
 				stopTime2: "Sunset",
-				stopDisplayName2: translateWord("destination.rhotanosea"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.rhotanosea")
+						: "Rhotano Sea",
 				stop3: "Rothlyt",
 				stopTime3: "Night",
-				stopDisplayName3: translateWord("destination.therothlytsound"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.therothlytsound")
+						: "The Rothlyt Sound",
 			},
 			{
 				stop1: "Cieldalaes",
 				stopTime1: "Sunset",
-				stopDisplayName1: translateWord("destination.thecieldalaes"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thecieldalaes")
+						: "The Cieldalaes",
 				stop2: "Rhotano",
 				stopTime2: "Night",
-				stopDisplayName2: translateWord("destination.rhotanosea"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.rhotanosea")
+						: "Rhotano Sea",
 				stop3: "Rothlyt",
 				stopTime3: "Day",
-				stopDisplayName3: translateWord("destination.therothlytsound"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.therothlytsound")
+						: "The Rothlyt Sound",
 			},
 		];
 	} else if (route == "Ruby") {
@@ -168,68 +252,122 @@ function displayStops(route, routeNumber, dataObj) {
 			{
 				stop1: "Sirensong",
 				stopTime1: "Sunset",
-				stopDisplayName1: translateWord("destination.thesirensongsea"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
 				stop2: "Kugane",
 				stopTime2: "Night",
-				stopDisplayName2: translateWord("destination.kugane"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.kugane")
+						: "Kugane",
 				stop3: "One River",
 				stopTime3: "Day",
-				stopDisplayName3: translateWord("destination.theoneriver"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.theoneriver")
+						: "The One River",
 			},
 			{
 				stop1: "Sirensong",
 				stopTime1: "Sunset",
-				stopDisplayName1: translateWord("destination.thesirensongsea"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
 				stop2: "Kugane",
 				stopTime2: "Night",
-				stopDisplayName2: translateWord("destination.kugane"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.kugane")
+						: "Kugane",
 				stop3: "Ruby Sea",
 				stopTime3: "Day",
-				stopDisplayName3: translateWord("destination.therubysea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.therubysea")
+						: "The Ruby Sea",
 			},
 			{
 				stop1: "Sirensong",
 				stopTime1: "Night",
-				stopDisplayName1: translateWord("destination.thesirensongsea"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
 				stop2: "Kugane",
 				stopTime2: "Day",
-				stopDisplayName2: translateWord("destination.kugane"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.kugane")
+						: "Kugane",
 				stop3: "One River",
 				stopTime3: "Sunset",
-				stopDisplayName3: translateWord("destination.theoneriver"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.theoneriver")
+						: "The One River",
 			},
 			{
 				stop1: "Sirensong",
 				stopTime1: "Night",
-				stopDisplayName1: translateWord("destination.thesirensongsea"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
 				stop2: "Kugane",
 				stopTime2: "Day",
-				stopDisplayName2: translateWord("destination.kugane"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.kugane")
+						: "Kugane",
 				stop3: "Ruby Sea",
 				stopTime3: "Sunset",
-				stopDisplayName3: translateWord("destination.therubysea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.therubysea")
+						: "The Ruby Sea",
 			},
 			{
 				stop1: "Sirensong",
 				stopTime1: "Day",
-				stopDisplayName1: translateWord("destination.thesirensongsea"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
 				stop2: "Kugane",
 				stopTime2: "Sunset",
-				stopDisplayName2: translateWord("destination.kugane"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.kugane")
+						: "Kugane",
 				stop3: "One River",
 				stopTime3: "Night",
-				stopDisplayName3: translateWord("destination.theoneriver"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.theoneriver")
+						: "The One River",
 			},
 			{
 				stop1: "Sirensong",
 				stopTime1: "Day",
-				stopDisplayName1: translateWord("destination.thesirensongsea"),
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
 				stop2: "Kugane",
 				stopTime2: "Sunset",
-				stopDisplayName2: translateWord("destination.kugane"),
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.kugane")
+						: "Kugane",
 				stop3: "Ruby Sea",
 				stopTime3: "Night",
-				stopDisplayName3: translateWord("destination.therubysea"),
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.therubysea")
+						: "The Ruby Sea",
 			},
 		];
 	} else {

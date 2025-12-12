@@ -6,45 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Schedule for upcoming ocean fishing voyages on the Indigo Route.">
     <meta name="author" content="Xina with data from Tyo'to Tayuun">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-    <link href="../css/navbar-static.css?v=1" rel="stylesheet">
-    <link href="../assets/dist/css/bootstrap.min.css?v=10" rel="stylesheet">
-    <link href="../css/datatables.min.css?v=1" rel="stylesheet">
-    <link href="../css/dataTables.bootstrap5.min.css?v=1" rel="stylesheet">
-    <link href="../css/styles.css?v=10" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    
-    <script src="../scripts/jquery-3.7.1.min.js?v=1" type="text/javascript"></script>    
-    <script src="../assets/js/color-modes.js?v=1"></script>  
-    <script src="../assets/js/cookie.js?v=1"></script>
-    <script src="../scripts/headerandfooter.js?v=2" type="text/javascript" defer></script>
+    <!-- Common styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/css/navbar-static.css?v=1" rel="stylesheet">
+    <link href="/assets/dist/css/bootstrap.min.css?v=10" rel="stylesheet">
+    <link href="/css/styles.css?v=11" rel="stylesheet">
 
-    <script src="../scripts/popper.min.js?v=1" type="text/javascript"></script>
+    <!-- DataTables CSS -->
+    <link href="../css/datatables.min.css?v=1" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap5.min.css?v=1" rel="stylesheet">
+
+    <style>
+        #pageContent { opacity: 0; transition: opacity 0.4s ease; }
+        body.content-ready #pageContent { opacity: 1; }
+    </style>
+
+    <!-- Common scripts -->
+    <script src="/scripts/jquery-3.7.1.min.js?v=1" type="text/javascript" defer></script>
+    <script src="/assets/js/cookie.js?v=1" defer></script>
+    <script src="/assets/js/color-modes.js?v=1"></script>
+    <script src="/scripts/contentReady.js?v=1" type="text/javascript" defer></script>
+    <script src="/scripts/localeUtil.js?v=1" type="text/javascript" defer></script>
+    <script src="/scripts/headerandfooter.js?v=3" type="text/javascript" defer></script>
+    <script src="/assets/dist/js/bootstrap.bundle.min.js?v=1"></script>
+
+    <!-- Page-specific scripts -->
+    <script src="../scripts/popper.min.js?v=1" type="text/javascript" defer></script>
     <script src="../scripts/cleanSheetData.js?v=11" type="text/javascript" defer></script>
     <script src="../scripts/moment.js?v=1" type="text/javascript" defer></script>
     <script src="../scripts/gFuncs.js?v=10" type="text/javascript" defer></script>
     <script src="../scripts/getSheetData.js?v=1" type="text/javascript" defer></script>
     <script src="../scripts/datatables.min.js?v=1" type="text/javascript" defer></script>
     <script src="../scripts/dataTables.bootstrap5.min.js?v=1" type="text/javascript" defer></script>
-    <script src="../assets/js/color-modes.js?v=1"></script>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js?v=1"></script>
-
-    <script src="../scripts/displayStops.js?v=10" type="text/javascript" defer></script>
-
-    <script src="../scripts/indigo.js?v=10" type="text/javascript" defer></script>
-    <script src="../scripts/indigoOceanCalculator.js?v=13" type="text/javascript" defer></script>
+    <script src="../scripts/displayStops.js?v=11" type="text/javascript" defer></script>
+    <script src="../scripts/indigo.js?v=11" type="text/javascript" defer></script>
+    <script src="../scripts/indigoOceanCalculator.js?v=14" type="text/javascript" defer></script>
 
     <title>Ocean Fishing Tracker | Indigo</title>
 </head>
 
 <body>
-    <span id="navbar"></span>
-  <div id="header"></div>
+        <div id="pageContent">
+                <span id="navbar"></span>
+            <div id="header"></div>
 
-    <main class="container-xxl">
+                <main class="container-xxl">
         <div class="bg-body-tertiary p-5 rounded">
             <div class="row">                
                 <div class="col-sm-6"><h1 data-localize="indigoroute">Indigo Route</h1></div>
@@ -266,10 +274,45 @@
 
             </div>
         </div>
-    </main>
+        </main>
 
-    <footer class="py-3 my-1">
-    </footer>
+        <footer class="py-3 my-1">
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay">
+        <div class="text-center">
+            <div class="spinner-border text-primary mb-3" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+            <p class="text-muted"></p>
+        </div>
+    </div>
+
+    <script>
+        // Hide loading overlay and show content when everything is ready
+        if (typeof ContentReady !== "undefined") {
+            ContentReady.onReady(function () {
+                var overlay = document.getElementById("loadingOverlay");
+                if (overlay) {
+                    overlay.classList.add("hidden");
+                }
+                document.body.classList.add("content-ready");
+            });
+        } else {
+            // Fallback if ContentReady isn't available
+            document.addEventListener("DOMContentLoaded", function () {
+                setTimeout(function () {
+                    document.body.classList.add("content-ready");
+                    var overlay = document.getElementById("loadingOverlay");
+                    if (overlay) {
+                        overlay.classList.add("hidden");
+                    }
+                }, 1000);
+            });
+        }
+    </script>
 </body>
 
 </html>

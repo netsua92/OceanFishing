@@ -65,7 +65,9 @@ function updateRouteDroplists() {
 	try {
 		var temptext =
 			'<label for="routeNumber" class="form-label">' +
-			translateWord("schedule.route:") +
+			(typeof translateWord === "function"
+				? translateWord("schedule.route:")
+				: "Route:") +
 			"  </label>  ";
 		temptext += '<select id="routeNumber"  class="form-select">';
 		for (var i = 0; i < routeNameKeysIndigo.length; i++) {

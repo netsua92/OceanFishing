@@ -3,6 +3,26 @@ body {
   height: 100%;
 }
 
+/* Loading overlay for data-heavy pages (ruby/indigo) */
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+#loadingOverlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 td {
   vertical-align:middle;
 }
