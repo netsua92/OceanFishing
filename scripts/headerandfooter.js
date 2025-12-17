@@ -1,11 +1,11 @@
 $(document).ready(function () {
 	// Use absolute paths so loading works from any page depth
-	$("#header").load("/header.html", function () {
+	$("#header").load("/header.html?v=1", function () {
 		// After header loaded, load footer then ensure locale scripts are loaded and executed
-		$("footer").load("/footer.html", function () {
+		$("footer").load("/footer.html?v=1", function () {
 			// Load locale utility first, then localize (absolute paths)
 			$.getScript("/scripts/localeUtil.js?v=1").done(function () {
-				$.getScript("/scripts/localize.js?v=2");
+				$.getScript("/scripts/localize.js?v=3");
 			});
 		});
 

@@ -150,7 +150,12 @@ function checkLanguage() {
 	} else {
 		userLang =
 			navigator.language.split("-")[0] || navigator.userLanguage.split("-")[0];
-		if (userLang != "en" && userLang != "fr" && userLang != "jp") {
+		if (
+			userLang != "en" &&
+			userLang != "fr" &&
+			userLang != "jp" &&
+			userLang != "de"
+		) {
 			userLang = "en";
 		}
 	}
