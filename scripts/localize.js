@@ -7,6 +7,10 @@ $(document).ready(function () {
 	bindLanguageSwitcher();
 });
 
+$(document).on("headerInjected", function () {
+    localizePage();
+});
+
 function bindLanguageSwitcher() {
 	function attach() {
 		if ($("#languageSwitcher").length === 0) return false;
@@ -25,7 +29,6 @@ function bindLanguageSwitcher() {
 			$(this).addClass("active").attr("aria-pressed", "true");
 
 			$.cookie("language", languageValue, { path: "/" });
-			localizePage();
 			location.reload();
 		});
 
@@ -60,7 +63,6 @@ $(document).on("click.localizeFallback", "[data-language-value]", function (e) {
 		.attr("aria-pressed", "false");
 	$btn.addClass("active").attr("aria-pressed", "true");
 	$.cookie("language", languageValue, { path: "/" });
-	localizePage();
 	location.reload();
 });
 
@@ -91,7 +93,6 @@ document.addEventListener(
 
 					// Set cookie and reload
 					$.cookie("language", languageValue, { path: "/" });
-					localizePage();
 					location.reload();
 					return;
 				}
@@ -103,28 +104,41 @@ document.addEventListener(
 );
 
 function localizePage() {
-	var userLang = checkLanguage();
+    var userLang = (checkLanguage() || "en").toLowerCase();
+    if (!["en", "fr", "jp", "de"].includes(userLang)) userLang = "en";
 
-	$.getJSON(
-		"../locales/translation-" + userLang + ".json?v=2",
-		function (data) {
-			translations = data;
-			$("[data-localize]").each(function () {
-				var key = $(this).attr("data-localize");
-				//console.log(key);
-				$(this).html(data[key]);
-			});
+    var url = "/locales/translation-" + userLang + ".json?v=2";
 
-			// Notify other scripts that translations are loaded
-			try {
-				$(document).trigger("translationsLoaded");
-			} catch (e) {
-				// ignore
-			}
-		}
-	);
+    fetch(url, { cache: "no-store" })
+        .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status + " for " + url);
+            return res.text();
+        })
+        .then(function (text) {
+            // Strip BOM + surrounding whitespace before JSON parse
+            var cleaned = text.replace(/^\uFEFF/, "").trim();
 
-	$.cookie("language", userLang, { path: "/" });
+            // Debug first bytes if parse fails
+            try {
+                translations = JSON.parse(cleaned);
+            } catch (e) {
+                console.error("JSON parse failed for", url);
+                console.error("First 200 chars:", cleaned.slice(0, 200));
+                throw e;
+            }
+
+            $("[data-localize]").each(function () {
+                var key = $(this).attr("data-localize");
+                $(this).html(translations[key]);
+            });
+
+            $(document).trigger("translationsLoaded");
+        })
+        .catch(function (err) {
+            console.error("Translation load error:", err);
+        });
+
+    $.cookie("language", userLang, { path: "/" });
 }
 
 function translateWord(wordKey) {
@@ -145,6 +159,7 @@ function checkCookie(cookieName) {
 }
 
 function checkLanguage() {
+	var userLang;
 	if (checkCookie("language")) {
 		userLang = $.cookie("language");
 	} else {

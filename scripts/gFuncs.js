@@ -68,18 +68,24 @@ function getTimeImg(time) {
 }
 
 function splitRange(rangeString) {
-	var x1 = 0;
-	var y1 = 0;
-	if (rangeString != "" || rangeString != null) {
-		var f = rangeString.split("-");
+    var x1 = 0;
+    var y1 = 0;
 
-		if (f[0] != "") {
-			x1 = parseFloat(f[0]);
-			y1 = parseFloat(f[1]);
-		}
-	}
+    if (rangeString !== "" && rangeString != null) {
+        var parts = String(rangeString).split("-");
 
-	return [x1, y1];
+        if (parts[0].trim() !== "") {
+            x1 = parseFloat(parts[0].trim());
+            if (parts.length > 1 && parts[1].trim() !== "") {
+                y1 = parseFloat(parts[1].trim());
+            } else {
+                // Single value like "2" means 2-2
+                y1 = x1;
+            }
+        }
+    }
+
+    return [x1, y1];
 }
 
 function addStars(num) {
@@ -314,32 +320,34 @@ function styleRow(row, id, type) {
 	}
 	//TH Scores
 	if (typeof row.TH[0] == "string") {
-		var tempRange = new splitRange(row.TH[0]);
-		var math1 = parseFloat(row.Points) * parseFloat(tempRange[0]);
-		var math2 = parseFloat(row.Points) * parseFloat(tempRange[1]);
+    var thRaw = row.TH[0].trim();
+    var thIsRange = thRaw.indexOf("-") !== -1;
+    var thRange = splitRange(thRaw);
+    var th1 = parseFloat(row.Points) * parseFloat(thRange[0]);
+    var th2 = parseFloat(row.Points) * parseFloat(thRange[1]);
 
-		row.TH[0] = math1 + " - " + math2 + " (" + row.TH[0] + ")";
-		row.TH[1] = math1;
-	} else {
-		var math = parseFloat(row.TH[0]) * parseFloat(row.Points);
-		row.TH[0] = math + " (" + row.TH[0] + ")";
-		row.TH[1] = math;
-	}
-
+    if (thIsRange) {
+        row.TH[0] = th1 + " - " + th2 + " (" + thRaw + ")";
+    } else {
+        row.TH[0] = th1 + " (" + thRaw + ")";
+    }
+    row.TH[1] = th1;
+}
 	//DH Scores
 	if (typeof row.DH[0] == "string") {
-		var tempRange = new splitRange(row.DH[0]);
+    var dhRaw = row.DH[0].trim();
+    var dhIsRange = dhRaw.indexOf("-") !== -1;
+    var dhRange = splitRange(dhRaw);
+    var dh1 = parseFloat(row.Points) * parseFloat(dhRange[0]);
+    var dh2 = parseFloat(row.Points) * parseFloat(dhRange[1]);
 
-		var math1 = parseFloat(row.Points) * parseFloat(tempRange[0]);
-		var math2 = parseFloat(row.Points) * parseFloat(tempRange[1]);
-
-		row.DH[0] = math1 + " - " + math2 + " (" + row.DH[0] + ")";
-		row.DH[1] = math1;
-	} else {
-		var math = parseFloat(row.DH[0]) * parseFloat(row.Points);
-		row.DH[0] = math + " (" + row.DH[0] + ")";
-		row.DH[1] = math;
-	}
+    if (dhIsRange) {
+        row.DH[0] = dh1 + " - " + dh2 + " (" + dhRaw + ")";
+    } else {
+        row.DH[0] = dh1 + " (" + dhRaw + ")";
+    }
+    row.DH[1] = dh1;
+}
 
 	//Append if Fabled onto points
 	if (row.Fabled == "No") {
@@ -414,7 +422,7 @@ function styleRow(row, id, type) {
 	if (rowWeather == "") {
 		row.ClearSkies = translateWord("table.any");
 	} else {
-		if (checkLanguage() == "jp") {
+		if (getCurrentLangSafe() === "jp") {
 			row.ClearSkies = rowWeather + " " + translateWord("table.not");
 		} else {
 			row.ClearSkies = translateWord("table.not") + " " + rowWeather;
@@ -459,6 +467,10 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 			temprow = styleRow(row, id, type);
 		} else {
 			temprow = row;
+		}
+
+		if (temprow.ClearSkies === undefined || temprow.ClearSkies === null) {
+    		temprow.ClearSkies = "";
 		}
 		newtempDataSet.push(temprow);
 	});
@@ -639,6 +651,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 				{
 					data: "ClearSkies",
 					title: translateWord("table.weather"),
+					defaultContent: "",
 				},
 				{ data: "Species", title: translateWord("table.species") },
 			],
@@ -743,4 +756,9 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	}
 
 	tempDataSet = "";
+}
+function getCurrentLangSafe() {
+    if (typeof checkLanguage === "function") return checkLanguage();
+    if ($.cookie) return $.cookie("language") || "en";
+    return "en";
 }

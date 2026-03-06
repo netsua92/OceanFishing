@@ -3,10 +3,6 @@ $(document).ready(function () {
 	$("#header").load("/header.html?v=1", function () {
 		// After header loaded, load footer then ensure locale scripts are loaded and executed
 		$("footer").load("/footer.html?v=1", function () {
-			// Load locale utility first, then localize (absolute paths)
-			$.getScript("/scripts/localeUtil.js?v=1").done(function () {
-				$.getScript("/scripts/localize.js?v=3");
-			});
 		});
 
 		// Load navbar after header (so IDs exist or path resolution is consistent)
@@ -15,6 +11,9 @@ $(document).ready(function () {
 			if (typeof ContentReady !== "undefined") {
 				ContentReady.headerFooterLoaded();
 			}
+
+			$(document).trigger("headerInjected");
+			
 			// Use window.location.pathname to get just the path part (no protocol/host)
 			var pathname = window.location.pathname;
 			var pathSegments = pathname.split("/").filter(function (s) {
