@@ -105,7 +105,7 @@ document.addEventListener(
 
 function localizePage() {
     var userLang = (checkLanguage() || "en").toLowerCase();
-    if (!["en", "fr", "jp", "de"].includes(userLang)) userLang = "en";
+    if (!["en", "fr", "jp", "de", "ko"].includes(userLang)) userLang = "en";
 
     var url = "/locales/translation-" + userLang + ".json?v=2";
 
@@ -169,7 +169,8 @@ function checkLanguage() {
 			userLang != "en" &&
 			userLang != "fr" &&
 			userLang != "jp" &&
-			userLang != "de"
+			userLang != "de" &&
+			userLang != "ko"
 		) {
 			userLang = "en";
 		}

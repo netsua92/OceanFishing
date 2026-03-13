@@ -422,7 +422,7 @@ function styleRow(row, id, type) {
 	if (rowWeather == "") {
 		row.ClearSkies = translateWord("table.any");
 	} else {
-		if (getCurrentLangSafe() === "jp") {
+		if (getCurrentLangSafe() === "jp" || getCurrentLangSafe() === "ko") {
 			row.ClearSkies = rowWeather + " " + translateWord("table.not");
 		} else {
 			row.ClearSkies = translateWord("table.not") + " " + rowWeather;
