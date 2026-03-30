@@ -207,6 +207,15 @@ function convertTime(firstTime = true) {
 	}
 
 	var boatTable;
+	var activeRowIds = [];
+
+	if (!firstTime) {
+		$("#boatSchedule>tbody>tr.activeRow").each(function () {
+			if (this.id) {
+				activeRowIds.push(this.id);
+			}
+		});
+	}
 
 	if (!firstTime) {
 		boatTable = $("#boatSchedule").DataTable();
@@ -266,5 +275,14 @@ function convertTime(firstTime = true) {
 		ordering: false,
 		info: false,
 	});
+
+	if (activeRowIds.length > 0) {
+		activeRowIds.forEach(function (rowId) {
+			var row = document.getElementById(rowId);
+			if (row) {
+				row.classList.add("activeRow");
+			}
+		});
+	}
 	return dataSet[0][4];
 }

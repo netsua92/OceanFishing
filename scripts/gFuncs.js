@@ -115,6 +115,8 @@ function getUncaughtRoutes(color) {
 
 function styleRow(row, id, type) {
 	//var lang = $.cookie("language");
+	var noQuoteIntuition = row.Intuition.replace(/"/g, "\'");
+
 
 	//Best Bait Image
 	if (row.Bait.BestBait.substring(0, 2) == "M!") {
@@ -171,6 +173,8 @@ function styleRow(row, id, type) {
 			addStars(row.Stars) +
 			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
 			row.Intuition +
+			"</div>" + 
+			"<div class='contentMax d-block d-lg-none'><img src='../img/Intuition.png' class='iconMini' alt='Intuition'> " + row.Intuition +
 			"</div></div>";
 	} else if (row.Fish.substring(0, 2) == "F!") {
 		//Fabled Fish
@@ -188,6 +192,8 @@ function styleRow(row, id, type) {
 			addStars(row.Stars) +
 			'<br/><img src="../img/Intuition.png" class="iconMini" alt="Intuition"> ' +
 			row.Intuition +
+			"</div>" + 
+			"<div class='contentMax d-block d-lg-none'><img src='../img/Intuition.png' class='iconMini' alt='Intuition'> " + row.Intuition +
 			"</div></div>";
 	} else if (row.Fish.substring(0, 2) == "T!") {
 		//Trigger Fish

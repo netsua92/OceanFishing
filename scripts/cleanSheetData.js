@@ -78,7 +78,10 @@ function sheetDataHandlerIndigo(sheetData) {
 		if (activeRowIDpers == "") {
 			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
 		} else {
-			$("#boatSchedule>tbody>#" + activeRowIDpers).addClass("activeRow");
+			var activeRow = document.getElementById(activeRowIDpers);
+			if (activeRow) {
+				activeRow.classList.add("activeRow");
+			}
 		}
 
 		if ($("#boatscheduletoggle").hasClass("active")) {
@@ -165,7 +168,10 @@ function sheetDataHandlerRuby(sheetData) {
 		if (activeRowIDpers == "") {
 			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
 		} else {
-			$("#boatSchedule>tbody>#" + activeRowIDpers).addClass("activeRow");
+			var activeRow = document.getElementById(activeRowIDpers);
+			if (activeRow) {
+				activeRow.classList.add("activeRow");
+			}
 		}
 
 		if ($("#boatscheduletoggle").hasClass("active")) {
