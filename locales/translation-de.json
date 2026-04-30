@@ -69,6 +69,8 @@
 	"table.shellfish": "Schalentier",
 	"table.squid": "Tintenfisch",
 	"table.shrimp": "Garnele",
+	"table.prehistoric": "Prehistoric",
+	"table.mantis": "Mantis",
 
 	"destination.galadionbay": "Galadion-Bucht",
 	"destination.thesouthernstraitofmerlthor": "Merlthorstraße (Süd)",
@@ -81,6 +83,8 @@
 	"destination.kugane": "Kugane-Gewässer",
 	"destination.therubysea": "Rubinsee",
 	"destination.theoneriver": "Einzig",
+	"destination.thavnair": "The Thavnairian Coast",
+	"destination.unnamed": "The Unnamed Island",
 
 	"schedule.time": "Zeit",
 	"schedule.boardingstarts": "Anmeldung",
@@ -121,5 +125,8 @@
 	"routes.shellfishshrimp": "Schalentiere/Garnelen",
 	"routes.shrimphellsclaw": "Garnelen/Höllenkrabbe",
 	"routes.shellfishtaniwha": "Schalentiere/Taniwha",
-	"routes.squidtaniwha": "Tintenfische/Taniwha"
+	"routes.squidtaniwha": "Tintenfische/Taniwha",
+	"routes.mantistaniwha": "Mantis/Taniwha",
+	"routes.mantismanasvin": "Mantis & Manasvin",
+	"routes.prehistoricakupara": "Prehistoric & Akupara"
 }

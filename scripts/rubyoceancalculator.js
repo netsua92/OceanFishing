@@ -1,16 +1,26 @@
 var activeRowIDpers = "";
 
-var pattern = [
-	1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 3, 4,
-	5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 5, 6, 1, 2,
-	3, 4, 5, 6, 1, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
-];
+var pattern = [1,2,1,3,4,5,4,6,7,8,7,9,
+2,1,3,4,5,4,6,7,8,7,9,1,
+1,3,4,5,4,6,7,8,7,9,1,2,
+3,4,5,4,6,7,8,7,9,1,2,1,
+4,5,4,6,7,8,7,9,1,2,1,3,
+5,4,6,7,8,7,9,1,2,1,3,4,
+4,6,7,8,7,9,1,2,1,3,4,5,
+6,7,8,7,9,1,2,1,3,4,5,4,
+7,8,7,9,1,2,1,3,4,5,4,6,
+8,7,9,1,2,1,3,4,5,4,6,7,
+7,9,1,2,1,3,4,5,4,6,7,8,
+9,1,2,1,3,4,5,4,6,7,8,7];
 
 var routeNameKeys = [
+	"routes.prehistoricakupara",
 	"routes.glassdragonjewel",
 	"routes.squidglassdragon",
+	"routes.mantistaniwha",
 	"routes.shellfishshrimp",
 	"routes.shrimphellsclaw",
+	"routes.mantismanasvin",
 	"routes.shellfishtaniwha",
 	"routes.squidtaniwha",
 ];
@@ -24,28 +34,35 @@ function getRouteName(index) {
 var routeNames = routeNameKeys; // backward compatibility alias
 
 var routeImages = [
+	"<img src='../img/opobj/Prehistoric.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Akupara.png' class='iconSmall routetableOpObj'>",
 	"<img src='../img/opobj/Glass Dragon.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Jewel of Plum Spring.png' class='iconSmall routetableOpObj'>",
 	"<img src='../img/opobj/Squids.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Glass Dragon.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Mantis.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Taniwha.png' class='iconSmall routetableOpObj'>",
 	"<img src='../img/opobj/Shellfish.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Shrimp.png' class='iconSmall routetableOpObj'>",
 	"<img src='../img/opobj/Shrimp.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Hells Claw.png' class='iconSmall routetableOpObj'>",
+	"<img src='../img/opobj/Mantis.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Manasvin.png' class='iconSmall routetableOpObj'>",
 	"<img src='../img/opobj/Shellfish.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Taniwha.png' class='iconSmall routetableOpObj'>",
 	"<img src='../img/opobj/Squids.png' class='iconSmall routetableOpObj'><img src='../img/opobj/Taniwha.png' class='iconSmall routetableOpObj'>",
 ];
 
-var schedules = [
-	"Sirensong Sea at Sunset, Kugane at Night, One River at Day",
-	"Sirensong Sea at Sunset, Kugane at Night, Ruby Sea at Day",
-	"Sirensong Sea at Night, Kugane at Day, One River at Sunset",
-	"Sirensong Sea at Night, Kugane at Day, Ruby Sea at Sunset",
-	"Sirensong Sea at Day, Kugane at Sunset, One River at Night",
-	"Sirensong Sea at Day, Kugane at Sunset, Ruby Sea at Night",
-];
+var schedules = ["Unnamed Island at Sunset, Sirensong Sea at Night, Thavnair at Day",
+"Sirensong Sea at Sunset, Kugane at Night, The One River at Day",
+"Sirensong Sea at Sunset, Kugane at Night, The Ruby Sea at Day",
+"Unnamed Island at Night, Sirensong Sea at Day, Thavnair at Sunset",
+"Sirensong Sea at Night, Kugane at Day, The One River at Sunset",
+"Sirensong Sea at Night, Kugane at Day, The Ruby Sea at Sunset",
+"Unnamed Island at Day, Sirensong Sea at Sunset, Thavnair at Night",
+"Sirensong Sea at Day, Kugane at Sunset, The One River at Night",
+"Sirensong Sea at Day, Kugane at Sunset, The Ruby Sea at Night"];
 
 var finalStopKeys = [
+	{ img: imgDay, key: "destination.thavnair" },
 	{ img: imgDay, key: "destination.theoneriver" },
 	{ img: imgDay, key: "destination.therubysea" },
+	{ img: imgSunset, key: "destination.thavnair" },
 	{ img: imgSunset, key: "destination.theoneriver" },
 	{ img: imgSunset, key: "destination.therubysea" },
+	{ img: imgNight, key: "destination.thavnair" },
 	{ img: imgNight, key: "destination.theoneriver" },
 	{ img: imgNight, key: "destination.therubysea" },
 ];
@@ -59,7 +76,7 @@ function getFinalStop(index) {
 }
 
 var finalStop = [];
-var finalTime = ["Day", "Day", "Sunset", "Sunset", "Night", "Night"];
+var finalTime = ["Day", "Day","Day", "Sunset", "Sunset","Sunset", "Night", "Night", "Night"];
 
 var timeRegion = getUserLocale(); // Use centralized version instead
 var timeFormat = {
@@ -162,7 +179,7 @@ function convertTime(firstTime = true) {
 	);
 
 	//align the number that is assigned to the next two hour block to the pattern array
-	var offset = 44;
+	var offset = 92;
 	var tempTime = (selectedTwoHourChunk + offset) % pattern.length;
 
 	var dataSet = [];
@@ -191,19 +208,6 @@ function convertTime(firstTime = true) {
 			routeNumber,
 			images,
 		]);
-		/*getUncaughtRoutes("ruby");
-		if (UncaughtRoutes["Route" + routeNumber]) {
-			dataSet.push([
-				cleanDate,
-				timeUntilDepature,
-				finalStopDisp,
-				optObjectives,
-				routeNumber,
-				images,
-			]);
-		} else {
-			i = i - 1;
-		}*/
 	}
 
 	var boatTable;

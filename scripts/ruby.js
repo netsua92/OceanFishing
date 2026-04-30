@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 	var lang = resolveLang();
 	var langCode = (lang || "en").toUpperCase(); // EN, FR, JP, DE
-	var csvUrl = "/fishdata/ruby-" + langCode + ".csv";
+	var csvUrl = "/fishdata/ruby-" + langCode + ".csv?v=" + Date.now();
 
 	fetch(csvUrl)
 		.then(function (res) {
@@ -34,6 +34,7 @@ $(document).ready(function () {
 			tryInitRubyTable();
 		})
 		.catch(function (err) {
+			console.log("Error loading Ruby CSV:" + csvUrl, err);
 			console.error("Ruby CSV load error:", err);
 			// Optional fallback so page doesn't stay in loading state forever
 			if (typeof ContentReady !== "undefined") {

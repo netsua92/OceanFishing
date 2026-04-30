@@ -250,6 +250,26 @@ function displayStops(route, routeNumber, dataObj) {
 	} else if (route == "Ruby") {
 		var schedules = [
 			{
+				stop1: "Unnamed",
+				stopTime1: "Sunset",
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.unnamed")
+						: "The Unnamed Island",
+				stop2: "Sirensong",
+				stopTime2: "Night",
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
+				stop3: "Thavnair",
+				stopTime3: "Day",
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thavnair")
+						: "The Thavnairian Coast",
+			},
+			{
 				stop1: "Sirensong",
 				stopTime1: "Sunset",
 				stopDisplayName1:
@@ -290,6 +310,26 @@ function displayStops(route, routeNumber, dataObj) {
 						: "The Ruby Sea",
 			},
 			{
+				stop1: "Unnamed",
+				stopTime1: "Night",
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.unnamed")
+						: "The Unnamed Island",
+				stop2: "Sirensong",
+				stopTime2: "Day",
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
+				stop3: "Thavnair",
+				stopTime3: "Sunset",
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thavnair")
+						: "The Thavnairian Coast",
+			},
+			{
 				stop1: "Sirensong",
 				stopTime1: "Night",
 				stopDisplayName1:
@@ -328,6 +368,26 @@ function displayStops(route, routeNumber, dataObj) {
 					typeof translateWord === "function"
 						? translateWord("destination.therubysea")
 						: "The Ruby Sea",
+			},
+			{
+				stop1: "Unnamed",
+				stopTime1: "Day",
+				stopDisplayName1:
+					typeof translateWord === "function"
+						? translateWord("destination.unnamed")
+						: "The Unnamed Island",
+				stop2: "Sirensong",
+				stopTime2: "Sunset",
+				stopDisplayName2:
+					typeof translateWord === "function"
+						? translateWord("destination.thesirensongsea")
+						: "The Sirensong Sea",
+				stop3: "Thavnair",
+				stopTime3: "Night",
+				stopDisplayName3:
+					typeof translateWord === "function"
+						? translateWord("destination.thavnair")
+						: "The Thavnairian Coast",
 			},
 			{
 				stop1: "Sirensong",

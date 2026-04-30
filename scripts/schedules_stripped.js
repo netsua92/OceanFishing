@@ -29,17 +29,27 @@ var routeNameKeysIndigo = [
 	"routes.fugumantas",
 ];
 
-var patternRuby = [
-	1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 3, 4,
-	5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 5, 6, 1, 2,
-	3, 4, 5, 6, 1, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
-];
+var patternRuby = [1,2,1,3,4,5,4,6,7,8,7,9,
+2,1,3,4,5,4,6,7,8,7,9,1,
+1,3,4,5,4,6,7,8,7,9,1,2,
+3,4,5,4,6,7,8,7,9,1,2,1,
+4,5,4,6,7,8,7,9,1,2,1,3,
+5,4,6,7,8,7,9,1,2,1,3,4,
+4,6,7,8,7,9,1,2,1,3,4,5,
+6,7,8,7,9,1,2,1,3,4,5,4,
+7,8,7,9,1,2,1,3,4,5,4,6,
+8,7,9,1,2,1,3,4,5,4,6,7,
+7,9,1,2,1,3,4,5,4,6,7,8,
+9,1,2,1,3,4,5,4,6,7,8,7];
 
 var routeNameKeysRuby = [
+	"routes.prehistoricakupara",
 	"routes.glassdragonjewel",
 	"routes.squidglassdragon",
+	"routes.mantistaniwha",
 	"routes.shellfishshrimp",
 	"routes.shrimphellsclaw",
+	"routes.mantismanasvin",
 	"routes.shellfishtaniwha",
 	"routes.squidtaniwha",
 ];
@@ -173,7 +183,7 @@ function convertTimeRuby() {
 	);
 
 	//align the number that is assigned to the next two hour block to the pattern array
-	var offset = 44;
+	var offset = 92;
 	var tempTime = (selectedTwoHourChunk + offset) % patternRuby.length;
 
 	var temptext = "";
@@ -261,7 +271,7 @@ function printRoutesRuby() {
 	);
 
 	//line up the patten array to the 2 hour segment count
-	var offset = 41;
+	var offset = 92;
 	var temptime = (currentTwoHourChunks + offset) % patternRuby.length;
 
 	var temptext = "";
