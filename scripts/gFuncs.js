@@ -361,6 +361,18 @@ function styleRow(row, id, type) {
 				row.SpeciesTranslated +
 				"' tabindex='0'></span>";
 			break;
+		case "Prehistoric":
+			row.Species =
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/prehistoric_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
+			break;
+		case "Mantis":
+			row.Species =
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mantis_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
+			break;
 		default:
 			break;
 	}
@@ -814,15 +826,14 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	});
 
 	if (type == "spec") {
-		$("[id^=desttable" + id + type + "]").each(function (index) {
-			let columnspec = table.column(7);
-			if ($(this).find(".fabledFish").length > 0) {
-				columnspec.visible(true);
-				$("#specialBaitToggle" + id + type).addClass("active");
-			} else {
-				$("#specialBaitToggle" + id + type).removeClass("active");
-			}
-		});
+		let columnspec = table.column(7);
+		if (specBait) {
+			columnspec.visible(true);
+			$("#specialBaitToggle" + id + type).addClass("active");
+		} else {
+			columnspec.visible(false);
+			$("#specialBaitToggle" + id + type).removeClass("active");
+		}
 	}
 
 	tempDataSet = "";

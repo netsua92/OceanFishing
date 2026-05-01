@@ -255,7 +255,7 @@ function displayStops(route, routeNumber, dataObj) {
 				stopDisplayName1:
 					typeof translateWord === "function"
 						? translateWord("destination.unnamed")
-						: "The Unnamed Island",
+						: "Unnamed Island",
 				stop2: "Sirensong",
 				stopTime2: "Night",
 				stopDisplayName2:
@@ -267,7 +267,7 @@ function displayStops(route, routeNumber, dataObj) {
 				stopDisplayName3:
 					typeof translateWord === "function"
 						? translateWord("destination.thavnair")
-						: "The Thavnairian Coast",
+						: "Thavnair",
 			},
 			{
 				stop1: "Sirensong",
@@ -315,7 +315,7 @@ function displayStops(route, routeNumber, dataObj) {
 				stopDisplayName1:
 					typeof translateWord === "function"
 						? translateWord("destination.unnamed")
-						: "The Unnamed Island",
+						: "Unnamed Island",
 				stop2: "Sirensong",
 				stopTime2: "Day",
 				stopDisplayName2:
@@ -327,7 +327,7 @@ function displayStops(route, routeNumber, dataObj) {
 				stopDisplayName3:
 					typeof translateWord === "function"
 						? translateWord("destination.thavnair")
-						: "The Thavnairian Coast",
+						: "Thavnair",
 			},
 			{
 				stop1: "Sirensong",
@@ -375,7 +375,7 @@ function displayStops(route, routeNumber, dataObj) {
 				stopDisplayName1:
 					typeof translateWord === "function"
 						? translateWord("destination.unnamed")
-						: "The Unnamed Island",
+						: "Unnamed Island",
 				stop2: "Sirensong",
 				stopTime2: "Sunset",
 				stopDisplayName2:
@@ -387,7 +387,7 @@ function displayStops(route, routeNumber, dataObj) {
 				stopDisplayName3:
 					typeof translateWord === "function"
 						? translateWord("destination.thavnair")
-						: "The Thavnairian Coast",
+						: "Thavnair",
 			},
 			{
 				stop1: "Sirensong",

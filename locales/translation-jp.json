@@ -83,8 +83,8 @@
 	"destination.kugane": "クガネ",
 	"destination.therubysea": "紅玉海",
 	"destination.theoneriver": "無二江",
-	"destination.thavnair": "The Thavnairian Coast",
-	"destination.unnamed": "The Unnamed Island",
+	"destination.thavnair": "Thavnair",
+	"destination.unnamed": "Unnamed Island",
 
 	"schedule.time": "時間・日付",
 	"schedule.boardingstarts": "受付開始",
@@ -127,6 +127,6 @@
 	"routes.shellfishtaniwha": "貝殻収集家・タニファ",
 	"routes.squidtaniwha": "スルメドラグーン・タニファ",
 	"routes.mantistaniwha": "Mantis/Taniwha",
-	"routes.mantismanasvin": "Mantis & Manasvin",
-	"routes.prehistoricakupara": "Prehistoric & Akupara"
+	"routes.mantismanasvin": "Mantis/Manasvin",
+	"routes.prehistoricakupara": "Prehistoric/Akupara"
 }

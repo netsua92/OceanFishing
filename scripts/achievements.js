@@ -22,17 +22,27 @@ var routeNameKeysIndigo = [
 	"routes.fugumantas",
 ];
 
-var patternRuby = [
-	1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 3, 4,
-	5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 5, 6, 1, 2,
-	3, 4, 5, 6, 1, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
-];
+var patternRuby = [1,2,1,3,4,5,4,6,7,8,7,9,
+2,1,3,4,5,4,6,7,8,7,9,1,
+1,3,4,5,4,6,7,8,7,9,1,2,
+3,4,5,4,6,7,8,7,9,1,2,1,
+4,5,4,6,7,8,7,9,1,2,1,3,
+5,4,6,7,8,7,9,1,2,1,3,4,
+4,6,7,8,7,9,1,2,1,3,4,5,
+6,7,8,7,9,1,2,1,3,4,5,4,
+7,8,7,9,1,2,1,3,4,5,4,6,
+8,7,9,1,2,1,3,4,5,4,6,7,
+7,9,1,2,1,3,4,5,4,6,7,8,
+9,1,2,1,3,4,5,4,6,7,8,7];
 
 var routeNameKeysRuby = [
+	"routes.prehistoricakupara",
 	"routes.glassdragonjewel",
 	"routes.squidglassdragon",
+	"routes.mantistaniwha",
 	"routes.shellfishshrimp",
 	"routes.shrimphellsclaw",
+	"routes.mantismanasvin",
 	"routes.shellfishtaniwha",
 	"routes.squidtaniwha",
 ];
@@ -148,7 +158,7 @@ function displayAchievementData(type) {
 			"<p>It is entirely possible to complete this objective in The Southern Strait of Merlthor. It is therefore possible to complete this objective on any route where just that stop is available at any time. Attempting it on this specific route provides the Rhotano Spectral Current as possible insurance.</p>" +
 			"<p>The advised target in The Southern Strait of Merlthor is La Noscean Jellyfish because they are much more efficient to fish for than a spectral current and Sea Nettles. In addition, skipping the spectral current there allows for an extended one at Rhotano Sea. If fishing for La Noscean Jellyfish properly, as advised, there is no chance of proccing an undesired spectral current.</p>";
 	} else if (type == "squid") {
-		getRoutes = printRoutesRuby(2, 6);
+		getRoutes = printRoutesRuby(3, 9);
 		achiName = "squid-squadron";
 		achiHeader = "What Did Squid Do To You?";
 		achiText =
@@ -156,7 +166,7 @@ function displayAchievementData(type) {
 			"<p>The two routes are not the only ones this achievement is viable on. All routes ending at The Ruby Sea are all viable. However, the one starting with The Sirensong Sea at Night does not have a squid in Sirensong's spectral current, meaning the current should be avoided if attempting this objective there at that time. </p>" +
 			"<p>Going on an early, 24-person boat is viable due to the flexibility of this objective as it does not require or uniquely benefit from specific currents being extended. Doing this allows the party to rely more on the 16 other people on the boat to proc the currents, making it easier for the party to fish for the normal zone squids more efficiently. </p>";
 	} else if (type == "mussel") {
-		getRoutes = printRoutesRuby(3, 5);
+		getRoutes = printRoutesRuby(5, 8);
 		achiName = "maximum-mussel";
 		achiHeader = "What Did Shellfish Do To You?";
 		achiText =
@@ -168,7 +178,7 @@ function displayAchievementData(type) {
 			"<p>Going on an early, 24-person boat is viable if wanting to take advantage of the Sirensong Spectral Current because Mermaid Scale is a good target when the current does occur. However, doing this will make it less likely for the party to get the One River Spectral Current.</p>" +
 			"<p>This objective is possible to complete in Kugane but the One River Spectral Current is insurance that is slightly less reliable if going on an early boat.</p>";
 	} else if (type == "shrimp") {
-		getRoutes = printRoutesRuby(4, 3);
+		getRoutes = printRoutesRuby(5, 6);
 		images =
 			'<img class="fullWidth " src="../img/achievements/' +
 			type +
@@ -181,8 +191,20 @@ function displayAchievementData(type) {
 			"<p>This achievement can be completed on any route as shrimp are available at all four new stops. When picking a route, one ending at The Ruby Sea at Sunset/Night is advised because of what is available in its spectral current and the bite time of the shrimp outside of the current.</p>" +
 			"<p>It is advised to skip Sirensong Spectral Current because Jade Mantis Shrimp is not a shrimp and Vivid Pink Shrimp is not a reliable target. It has a low bite rate, when compared to other objective fish, and may not be able to be fully isolated to blind Triple/Double Hook.</p>" +
 			"<p>Pink Shrimp also stops biting much sooner than Spectral Coelacanth. Fishing for the spectral current involves keeping the rod out for a substantially large period of time for a small chance to catch the Spectral fish which may or may not proc the current.</p>";
-	}
-
+	} else if (type== "prehistoric") {
+		getRoutes = printRoutesRuby(1, 0);
+		achiName = "prehistoric-professionals";
+		achiHeader = "What Even is That?";
+		achiText = "<p>This is a preliminary guide. All of the information herein is accurate but the full bite times for the normal zone and Spectral fish especially may be incomplete while still gathering bite time data.</p>" +
+					"<p>It is possible to complete this objective in any route ending at Thavnair. The suggested route has the highest total prehistoric fish available and the best target that there can be in the second zone. If intending to skip Sirensong Spectral Current, the exact route you take is less important but will be missing the objective fish with the highest yields.</p>" }
+	else if (type == "mantis") {
+		getRoutes = printRoutesRuby(4, 7);
+		achiName = "time-waits-for-no-mantis";
+		achiHeader = "What Did Stomatopods Do To You?";
+		achiText = "<p>This is a preliminary guide. All of the information herein is accurate but the full bite times for the normal zone and Spectral fish especially may be incomplete while still gathering bite time data.</p>" +
+					"<p>It is possible to complete this objective in any route ending at Thavnair. The route not included is only missing Tiger Mantis in the third stop.</p>" +
+					"<p>Going on a public boat allows for fishing for First Mate's Finger in the first stop as efficiently as possible with the possibility of the spectral current occurring if someone on the boat procs it.</p>" }
+	
 	document.getElementById("btnResult").innerHTML =
 		"<h1 class='achievementTitle'>" +
 		achiHeader +
@@ -195,7 +217,8 @@ function displayAchievementData(type) {
 		'<br><h2>Seeking more information?</h2><br><h5> <a href="https://guides.ffxivteamcraft.com/guide/ocean-fishing-bonus-achievements#' +
 		achiName +
 		'"  target="_blank" rel="noopener noreferrer">Read the in-depth guide</a>.</h5></div></div>';
-}
+	}
+
 
 function printRoutesIndigo(rn1, rn2) {
 	var rN = rn1;
@@ -265,7 +288,7 @@ function printRoutesRuby(rn1, rn2) {
 	);
 
 	//line up the patten array to the 2 hour segment count
-	var offset = 41;
+	var offset = 92;
 	var temptime = (currentTwoHourChunks + offset) % patternRuby.length;
 
 	var temptext = "";

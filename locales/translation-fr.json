@@ -83,8 +83,8 @@
 	"destination.kugane": "Baie de Kugane",
 	"destination.therubysea": "Mer de Rubis",
 	"destination.theoneriver": "Muni",
-	"destination.thavnair": "The Thavnairian Coast",
-	"destination.unnamed": "The Unnamed Island",
+	"destination.thavnair": "Thavnair",
+	"destination.unnamed": "Unnamed Island",
 
 	"schedule.time": "Horaire",
 	"schedule.boardingstarts": "Embarquement",
@@ -127,6 +127,6 @@
 	"routes.shellfishtaniwha": "Mollusques/Taniwha",
 	"routes.squidtaniwha": "Céphalopodes/Taniwha",
 	"routes.mantistaniwha": "Mantis/Taniwha",
-	"routes.mantismanasvin": "Mantis & Manasvin",
-	"routes.prehistoricakupara": "Prehistoric & Akupara"
+	"routes.mantismanasvin": "Mantis/Manasvin",
+	"routes.prehistoricakupara": "Prehistoric/Akupara"
 }

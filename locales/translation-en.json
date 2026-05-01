@@ -13,7 +13,7 @@
 	"navigation.about": "About",
 	"home.title": "Select Your Route",
 	"home.indigoCard.subTitle": "Board this vessel to chart the waters of the Bloodbrine Sea, Rothlyt Sound or the Straits of Merlthor!",
-	"home.rubyCard.subTitle": "Board this vessel to try your luck in the waters of the Ruby Sea, the One River, or off the coast of Kugane!",
+	"home.rubyCard.subTitle": "Board this vessel to try your luck in the waters of the Ruby Sea, the One River, Kugane, or off the coast of Thavnair!",
 
 	"bait.ragworm": "Ragworm",
 	"bait.krill": "Krill",
@@ -81,8 +81,8 @@
 	"destination.kugane": "Kugane",
 	"destination.therubysea": "The Ruby Sea",
 	"destination.theoneriver": "The One River",
-	"destination.thavnair": "The Thavnairian Coast",
-	"destination.unnamed": "The Unnamed Island",
+	"destination.thavnair": "Thavnair",
+	"destination.unnamed": "Unnamed Island",
 
 	"schedule.time": "Time",
 	"schedule.boardingstarts": "Boarding Starts",
@@ -125,6 +125,6 @@
 	"routes.shellfishtaniwha": "Shellfish/Taniwha",
 	"routes.squidtaniwha": "Squid/Taniwha",
 	"routes.mantistaniwha": "Mantis/Taniwha",
-	"routes.mantismanasvin": "Mantis & Manasvin",
-	"routes.prehistoricakupara": "Prehistoric & Akupara"
+	"routes.mantismanasvin": "Mantis/Manasvin",
+	"routes.prehistoricakupara": "Prehistoric/Akupara"
 }

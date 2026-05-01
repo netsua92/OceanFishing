@@ -83,8 +83,8 @@
 	"destination.kugane": "Kugane-Gewässer",
 	"destination.therubysea": "Rubinsee",
 	"destination.theoneriver": "Einzig",
-	"destination.thavnair": "The Thavnairian Coast",
-	"destination.unnamed": "The Unnamed Island",
+	"destination.thavnair": "Thavnair",
+	"destination.unnamed": "Unnamed Island",
 
 	"schedule.time": "Zeit",
 	"schedule.boardingstarts": "Anmeldung",
@@ -127,6 +127,6 @@
 	"routes.shellfishtaniwha": "Schalentiere/Taniwha",
 	"routes.squidtaniwha": "Tintenfische/Taniwha",
 	"routes.mantistaniwha": "Mantis/Taniwha",
-	"routes.mantismanasvin": "Mantis & Manasvin",
-	"routes.prehistoricakupara": "Prehistoric & Akupara"
+	"routes.mantismanasvin": "Mantis/Manasvin",
+	"routes.prehistoricakupara": "Prehistoric/Akupara"
 }
