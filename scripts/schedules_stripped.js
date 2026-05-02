@@ -92,10 +92,10 @@ function updateRouteDroplists() {
 		if (elIndigo) elIndigo.innerHTML = temptext;
 
 		temptext =
-			'<label for="routeNumber" class="form-label">' +
+			'<label for="routeNumberRuby" class="form-label">' +
 			translateWord("schedule.route:") +
 			"  </label>  ";
-		temptext += '<select id="routeNumber"  class="form-select">';
+		temptext += '<select id="routeNumberRuby"  class="form-select">';
 		for (var j = 0; j < routeNameKeysRuby.length; j++) {
 			var labelR =
 				typeof translateWord === "function"
@@ -262,7 +262,7 @@ function printRoutesIndigo() {
 }
 
 function printRoutesRuby() {
-	var rN = document.getElementById("routeNumber").value;
+	var rN = document.getElementById("routeNumberRuby").value;
 	var pQ = document.getElementById("printQuantityRuby").value;
 
 	var currentTime = new Date();
@@ -271,7 +271,7 @@ function printRoutesRuby() {
 	);
 
 	//line up the patten array to the 2 hour segment count
-	var offset = 92;
+	var offset = 89;
 	var temptime = (currentTwoHourChunks + offset) % patternRuby.length;
 
 	var temptext = "";

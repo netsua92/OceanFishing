@@ -288,7 +288,7 @@ function printRoutesRuby(rn1, rn2) {
 	);
 
 	//line up the patten array to the 2 hour segment count
-	var offset = 92;
+	var offset = 89;
 	var temptime = (currentTwoHourChunks + offset) % patternRuby.length;
 
 	var temptext = "";
