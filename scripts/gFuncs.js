@@ -113,14 +113,52 @@ function getUncaughtRoutes(color) {
 	}
 }
 
+function normalizeMaybeNullText(value, fallback) {
+    if (value === null || value === undefined) {
+        return fallback || "";
+    }
+    var text = String(value).trim();
+    if (text.toLowerCase() === "null" || text.toLowerCase() === "undefined") {
+        return fallback || "";
+    }
+    return text;
+}
+
+function normalizeRowTooltipFields(row) {
+    if (!row.Bait) row.Bait = {};
+    if (!row.Weather) row.Weather = {};
+
+    row.Intuition = normalizeMaybeNullText(row.Intuition);
+    row.FishTranslated = normalizeMaybeNullText(row.FishTranslated, normalizeMaybeNullText(row.Fish));
+    row.hooksetName = normalizeMaybeNullText(row.hooksetName, normalizeMaybeNullText(row.Hookset));
+    row.SpeciesTranslated = normalizeMaybeNullText(row.SpeciesTranslated, normalizeMaybeNullText(row.Species));
+
+    row.Bait.BestBait = normalizeMaybeNullText(row.Bait.BestBait);
+    row.Bait.BestBaitTranslated = normalizeMaybeNullText(row.Bait.BestBaitTranslated, row.Bait.BestBait);
+
+    row.Weather.Special1Type = normalizeMaybeNullText(row.Weather.Special1Type);
+    row.Weather.Special2Type = normalizeMaybeNullText(row.Weather.Special2Type);
+    row.Weather.Special3Type = normalizeMaybeNullText(row.Weather.Special3Type);
+    row.Weather.Special1TypeTranslated = normalizeMaybeNullText(row.Weather.Special1TypeTranslated, row.Weather.Special1Type);
+    row.Weather.Special2TypeTranslated = normalizeMaybeNullText(row.Weather.Special2TypeTranslated, row.Weather.Special2Type);
+    row.Weather.Special3TypeTranslated = normalizeMaybeNullText(row.Weather.Special3TypeTranslated, row.Weather.Special3Type);
+}
+
+
 function styleRow(row, id, type) {
+	 normalizeRowTooltipFields(row);
 	//var lang = $.cookie("language");
 	var noQuoteIntuition = row.Intuition.replace(/"/g, "\'");
 
 
 	//Best Bait Image
 	if (row.Bait.BestBait.substring(0, 2) == "M!") {
-		row.Bait.BestBait = row.Bait.BestBait.replace("M!", "");
+		if (row.Bait.BestBait.substring(2, 4) == "T!") {
+
+			row.Bait.BestBait = row.Bait.BestBait.replace("M!T!", "");
+		} else {
+			row.Bait.BestBait = row.Bait.BestBait.replace("M!", "");
+		}
 		row.Bait.BestBait =
 			"<img class='iconSmall' src='../img/fish/" +
 			row.Bait.BestBait.replace(/'/g, "_") +
@@ -142,21 +180,42 @@ function styleRow(row, id, type) {
 
 	//Fish Data
 	if (row.Fish.substring(0, 2) == "M!") {
+		if (row.Fish.substring(2, 4) == "T!") {
+		//Mooch Trigger Fish
+			row.Fish = row.Fish.replace("M!T!", "");
+
+			console.log(row.Fish);
+			row.Fish =
+				"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
+				row.Fish.replace(/'/g, "_") +
+				".png' alt='" +
+				row.FishTranslated +
+				"' data-bs-toggle='tooltip' data-bs-title='" +
+				row.FishTranslated.replace(/'/g, "") +
+				"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
+				row.FishTranslated +
+				"</span>" +
+				addStars(row.Stars) +
+				"<img src='../img/bait/Mooch.png' class='iconMini moochIcon'> " +
+				row.Intuition +
+				"</div></div>";
+		} else {
 		//Mooch
-		row.Fish = row.Fish.replace("M!", "");
-		row.Fish =
-			"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
-			row.Fish.replace(/'/g, "_") +
-			".png' alt='" +
-			row.FishTranslated +
-			"' data-bs-toggle='tooltip' data-bs-title='" +
-			row.FishTranslated.replace(/'/g, "") +
-			"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
-			row.FishTranslated +
-			"</span>" +
-			addStars(row.Stars) +
-			"<img src='../img/bait/Mooch.png' class='iconMini moochIcon'> " +
-			"</div></div>";
+				row.Fish = row.Fish.replace("M!", "");
+				row.Fish =
+				"<div class='row'><div class='col-3 min50'><img class='iconSmall' src='../img/fish/" +
+				row.Fish.replace(/'/g, "_") +
+				".png' alt='" +
+				row.FishTranslated +
+				"' data-bs-toggle='tooltip' data-bs-title='" +
+				row.FishTranslated.replace(/'/g, "") +
+				"' tabindex='0'></div><div class='col d-none d-lg-block'><span class='d-none d-lg-block'>" +
+				row.FishTranslated +
+				"</span>" +
+				addStars(row.Stars) +
+				"<img src='../img/bait/Mooch.png' class='iconMini moochIcon'> " +
+				"</div></div>";
+		}
 	} else if (row.Fish.substring(0, 2) == "I!") {
 		//Intuition Fish
 		row.Fish = row.Fish.replace("I!", "");
@@ -299,6 +358,18 @@ function styleRow(row, id, type) {
 		case "Shrimp":
 			row.Species =
 				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/shrimp_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
+			break;
+		case "Prehistoric":
+			row.Species =
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/prehistoric_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
+				row.SpeciesTranslated +
+				"' tabindex='0'></span>";
+			break;
+		case "Mantis":
+			row.Species =
+				"&nbsp;&nbsp;<span class=\" badge speciesbadge rounded-pill\"><img src='../img/mantis_mark.png' class='iconSmaller' data-bs-toggle='tooltip' data-bs-title='" +
 				row.SpeciesTranslated +
 				"' tabindex='0'></span>";
 			break;
@@ -724,9 +795,14 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	const tooltipTriggerList = document.querySelectorAll(
 		'[data-bs-toggle="tooltip"]'
 	);
-	const tooltipList = [...tooltipTriggerList].map(
-		(tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-	);
+	const tooltipList = [...tooltipTriggerList]
+    .filter(function (el) {
+        var title = el.getAttribute("data-bs-title") || el.getAttribute("title");
+        return normalizeMaybeNullText(title) !== "";
+    })
+    .map(function (el) {
+        return new bootstrap.Tooltip(el);
+    });
 	const popoverTriggerList = document.querySelectorAll(
 		'[data-bs-toggle="popover"]'
 	);

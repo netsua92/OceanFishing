@@ -69,6 +69,8 @@
 	"table.shellfish": "Mollusque",
 	"table.squid": "Céphalopode",
 	"table.shrimp": "Crevette",
+	"table.prehistoric": "Prehistoric",
+	"table.mantis": "Mantis",
 
 	"destination.galadionbay": "Baie de Galadion",
 	"destination.thesouthernstraitofmerlthor": "Détroit sud de Merlthor",
@@ -81,6 +83,8 @@
 	"destination.kugane": "Baie de Kugane",
 	"destination.therubysea": "Mer de Rubis",
 	"destination.theoneriver": "Muni",
+	"destination.thavnair": "Thavnair",
+	"destination.unnamed": "Unnamed Island",
 
 	"schedule.time": "Horaire",
 	"schedule.boardingstarts": "Embarquement",
@@ -121,5 +125,8 @@
 	"routes.shellfishshrimp": "Mollusques/Crevettes",
 	"routes.shrimphellsclaw": "Crevettes/Pince-des-enfers",
 	"routes.shellfishtaniwha": "Mollusques/Taniwha",
-	"routes.squidtaniwha": "Céphalopodes/Taniwha"
+	"routes.squidtaniwha": "Céphalopodes/Taniwha",
+	"routes.mantistaniwha": "Mantis/Taniwha",
+	"routes.mantismanasvin": "Mantis/Manasvin",
+	"routes.prehistoricakupara": "Prehistoric/Akupara"
 }

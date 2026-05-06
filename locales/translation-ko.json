@@ -69,6 +69,8 @@
 	"table.shellfish": "조개",
 	"table.squid": "오징어",
 	"table.shrimp": "새우",
+	"table.prehistoric": "Prehistoric",
+	"table.mantis": "Mantis",
 
 	"destination.galadionbay": "갈라디온 만",
 	"destination.thesouthernstraitofmerlthor": "멜토르 해협 남쪽",
@@ -81,6 +83,9 @@
 	"destination.kugane": "쿠가네",
 	"destination.therubysea": "홍옥해",
 	"destination.theoneriver": "무이강",
+	"destination.thavnair": "Thavnair",
+	"destination.unnamed": "Unnamed Island",
+
 
 	"schedule.time": "시간",
 	"schedule.boardingstarts": "접수 시작",
@@ -121,5 +126,8 @@
 	"routes.shellfishshrimp": "조개/새우",
 	"routes.shrimphellsclaw": "새우/지옥뚜껑게",
 	"routes.shellfishtaniwha": "조개/타니와",
-	"routes.squidtaniwha": "오징어/타니와"
+	"routes.squidtaniwha": "오징어/타니와",
+	"routes.mantistaniwha": "Mantis/Taniwha",
+	"routes.mantismanasvin": "Mantis/Manasvin",
+	"routes.prehistoricakupara": "Prehistoric/Akupara"
 }
