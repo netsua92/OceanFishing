@@ -37,7 +37,7 @@
     }
 
     const themeSwitcherText = document.querySelector('#bd-theme-text')
-    const activeThemeIcon = document.querySelector('.theme-icon-active use')
+    const activeThemeIcon = document.querySelector('#bd-theme .theme-icon-active use')
     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
     const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
 
@@ -67,14 +67,21 @@
   window.addEventListener('DOMContentLoaded', () => {
     showActiveTheme(getPreferredTheme())
 
-    document.querySelectorAll('[data-bs-theme-value]')
-      .forEach(toggle => {
-        toggle.addEventListener('click', () => {
-          const theme = toggle.getAttribute('data-bs-theme-value')
-          setStoredTheme(theme)
-          setTheme(theme)
-          showActiveTheme(theme, true)
-        })
-      })
+    document.addEventListener('click', (e) => {
+      const toggle = e.target.closest('[data-bs-theme-value]')
+      if (!toggle) return
+      const theme = toggle.getAttribute('data-bs-theme-value')
+      setStoredTheme(theme)
+      setTheme(theme)
+      showActiveTheme(theme, true)
+    })
   })
+
+  const observer = new MutationObserver(() => {
+    if (document.querySelector('#bd-theme')) {
+      showActiveTheme(getPreferredTheme())
+      observer.disconnect()
+    }
+  })
+  observer.observe(document.documentElement, { childList: true, subtree: true })
 })()

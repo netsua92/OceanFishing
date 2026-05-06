@@ -525,6 +525,8 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 				SpecialBaitStripped = row.Bait.SpecialType.replace(/\s/g, "");
 				$("#specialBaitToggle" + id + type).html(specialBait);
 				specBait = true;
+			} else if (row.Bait.Special && row.Bait.Special[0] != "") {
+				specBait = true;
 			} else {
 				specialBait = "Special Bait";
 				SpecialBaitStripped = "SpecialBait";
@@ -810,6 +812,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 
 	if (!specBait) {
 		$("#specialBaitToggle" + id + type).addClass("disabled");
+		$("#specialBaitToggle" + id + type).attr("disabled", true).attr("tabindex", "-1");
 	}
 
 	$("[id^=desttable" + id + type + "]").each(function (index) {
@@ -818,22 +821,33 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 			column.visible(!column.visible());
 			$("#moochBaitToggle" + id + type).addClass("active");
 			$("#moochBaitToggle" + id + type).removeClass("disabled");
+			$("#moochBaitToggle" + id + type).removeAttr("disabled").removeAttr("tabindex");
 		} else {
 			column.visible(column.visible());
 			$("#moochBaitToggle" + id + type).addClass("disabled");
 			$("#moochBaitToggle" + id + type).removeClass("active");
+			$("#moochBaitToggle" + id + type).attr("disabled", true).attr("tabindex", "-1");
 		}
 	});
 
 	if (type == "spec") {
-		let columnspec = table.column(7);
-		if (specBait) {
-			columnspec.visible(true);
-			$("#specialBaitToggle" + id + type).addClass("active");
-		} else {
-			columnspec.visible(false);
-			$("#specialBaitToggle" + id + type).removeClass("active");
-		}
+		$("[id^=desttable" + id + type + "]").each(function (index) {
+			let columnspec = table.column(7);
+			var hasSpecialData = false;
+			columnspec.data().each(function (val) {
+				if (val && val !== "") hasSpecialData = true;
+			});
+			if (hasSpecialData || specBait) {
+				columnspec.visible(true);
+				$("#specialBaitToggle" + id + type).addClass("active");
+				$("#specialBaitToggle" + id + type).removeClass("disabled");
+				$("#specialBaitToggle" + id + type).removeAttr("disabled").removeAttr("tabindex");
+			} else {
+				$("#specialBaitToggle" + id + type).removeClass("active");
+				$("#specialBaitToggle" + id + type).addClass("disabled");
+				$("#specialBaitToggle" + id + type).attr("disabled", true).attr("tabindex", "-1");
+			}
+		});
 	}
 
 	tempDataSet = "";

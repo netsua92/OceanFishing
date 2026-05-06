@@ -32,6 +32,106 @@
             <a id="aboutNav" class="nav-link" href="../about/" data-localize="navigation.about"></a>
           </li>
         </ul>
+
+        <div class="d-flex align-items-center ms-auto gap-2 bd-mode-toggle">
+          <!-- Language Selector -->
+          <div class="dropdown">
+            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="language-text" type="button"
+              aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle Language">
+              <svg class="bi my-1" width="1em" height="1em">
+                <use href="#language"></use>
+              </svg>
+              <span class="visually-hidden">Toggle Language</span>
+            </button>
+            <ul id="languageSwitcher" class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="language-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-language-value="en"
+                  aria-pressed="true">
+                  <span class="fi fi-us"></span>
+                  English
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-language-value="de"
+                  aria-pressed="false">
+                  <span class="fi fi-de"></span>
+                  Deutsch
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-language-value="fr"
+                  aria-pressed="false">
+                  <span class="fi fi-fr"></span>
+                  Français
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-language-value="jp"
+                  aria-pressed="false">
+                  <span class="fi fi-jp"></span>
+                  日本語
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center disabled" data-language-value="cn"
+                  aria-pressed="false" disabled tabindex="-1">
+                  <span class="fi fi-cn"></span>
+                  中文-简体
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-language-value="ko"
+                  aria-pressed="false">
+                  <span class="fi fi-kr"></span>
+                  한국어
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Theme Selector -->
+          <div class="dropdown">
+            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+              aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+              <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                <use href="#circle-half"></use>
+              </svg>
+              <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                  aria-pressed="false">
+                  <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+                  Light
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                  aria-pressed="false">
+                  <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+                  Dark
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                  aria-pressed="true">
+                  <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+                  Auto
+                  <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
