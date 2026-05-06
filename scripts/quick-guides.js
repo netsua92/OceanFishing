@@ -20,6 +20,10 @@ var rubyguides = [
 	{ id: "shrimp-hells-claw", display: "Shrimp / Hells Claw" },
 	{ id: "squid-glass-dragon", display: "Squid / Glass Dragon" },
 	{ id: "squid-taniwha", display: "Squid / Taniwha" },
+	{ id: "mantis-manasvin", display: "Mantis / Manasvin" },
+	{ id: "mantis-taniwha", display: "Mantis / Taniwha" },
+	{ id: "prehistoric-akupara", display: "Prehistoric / Akupara" },
+
 ];
 
 $(document).ready(function () {
@@ -28,10 +32,10 @@ $(document).ready(function () {
 	for (let key in indigoguides) {
 		$("#guide-dropdown").append(
 			'<li><button type="button" class="dropdown-item d-flex align-items-center guideSelector" aria-pressed="false" data-guide-id="' +
-				indigoguides[key].id +
-				'">' +
-				indigoguides[key].display +
-				'<svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg></button></li>'
+			indigoguides[key].id +
+			'">' +
+			indigoguides[key].display +
+			'<svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg></button></li>'
 		);
 
 		//'<li><button type="button" class="dropdown-item d-flex align-items-center active" aria-pressed="true">'
@@ -40,10 +44,10 @@ $(document).ready(function () {
 	for (let key in rubyguides) {
 		$("#guide-dropdown").append(
 			'<li><button type="button" class="dropdown-item d-flex align-items-center guideSelector" aria-pressed="false" data-guide-id="' +
-				rubyguides[key].id +
-				'">' +
-				rubyguides[key].display +
-				'<svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg></button></li>'
+			rubyguides[key].id +
+			'">' +
+			rubyguides[key].display +
+			'<svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg></button></li>'
 		);
 	}
 
