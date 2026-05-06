@@ -294,6 +294,7 @@ function convertTime(firstTime = true) {
 				"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "")
 			);
 			$(row).addClass("stopsRow");
+			$(row).attr("tabindex", "0");
 			$(row).on("click", function () {
 				$(".stopsRow").each(function (i) {
 					$(this).removeClass("activeRow");

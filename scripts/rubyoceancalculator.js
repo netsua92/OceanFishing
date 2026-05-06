@@ -254,6 +254,7 @@ function convertTime(firstTime = true) {
 		createdRow: function (row, data, dataIndex) {
 			$(row).attr("data-route", data[4]);
 			$(row).addClass("stopsRow");
+			$(row).attr("tabindex", "0");
 			$(row).attr(
 				"id",
 				"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "")
