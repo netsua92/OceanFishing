@@ -135,7 +135,7 @@ function formatCleanDate(date) {
 		day: "2-digit",
 		hour: "2-digit",
 		minute: "2-digit",
-		hour12: true,
+		hour12: false,
 	};
 	return new Intl.DateTimeFormat(timeRegion, dateOptions).format(date);
 }

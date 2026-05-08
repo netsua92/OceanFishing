@@ -56,6 +56,7 @@ var timeFormat = {
 	hour: "2-digit",
 	minute: "2-digit",
 	timeZoneName: "short",
+	hour12:false,
 };
 
 // Format date and time in user's locale
