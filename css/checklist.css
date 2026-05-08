@@ -1,3 +1,131 @@
 table.dataTable td.dt-type-numeric {
     text-align: left !important;
   }
+  #pageContent {
+			opacity: 0;
+			transition: opacity 0.4s ease;
+		}
+
+		body.content-ready #pageContent {
+			opacity: 1;
+		}
+
+/* Skip the fade entirely for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	#pageContent {
+		transition: none;
+		opacity: 1;
+	}
+	body.content-ready #pageContent {
+		opacity: 1;
+	}
+}
+
+		.checklist-controls {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 0.75rem;
+			gap: 0.75rem;
+			flex-wrap: wrap;
+		}
+
+		.checklist-count {
+			margin: 0;
+			font-weight: 600;
+		}
+
+		.accordion-caught-count {
+			font-size: 0.9rem;
+			font-weight: 600;
+			opacity: 0.9;
+			margin-left: auto;
+			margin-right: 0.5rem;
+		}
+
+		#rubyChecklistContainer .accordion-button::after,
+		#indigoChecklistContainer .accordion-button::after {
+			margin-left: 0;
+		}
+
+		.fish-name {
+			font-weight: 500;
+		}
+
+		.fish-stop {
+			opacity: 0.8;
+			font-size: 0.95rem;
+		}
+
+		.checklist-icon-wrap {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			gap: 0.25rem;
+		}
+
+		.time-icon-small {
+			width: 20px;
+			height: auto;
+		}
+
+		.time-icon-shadow {
+			filter: drop-shadow(0 1px 1px #212529);
+		}
+
+/* Not-catchable: use both opacity AND grayscale so state isn't conveyed by opacity alone */
+.time-icon-small.notCatchable {
+	opacity: 0.3;
+	filter: grayscale(1) drop-shadow(0 1px 1px #212529);
+}
+
+		.selectedGreen td {
+			background-color: rgba(39, 77, 32, 0.35) !important;
+		}
+
+		[data-bs-theme="light"] .selectedGreen td {
+			background-color: rgba(170, 215, 160, 0.55) !important;
+		}
+
+/* Caught row: add a left border as a non-colour indicator of caught state */
+.selectedGreen td:first-child {
+	border-left: 3px solid #4caf50;
+}
+
+/* Minimum touch target size for checkboxes (WCAG 2.5.5) */
+.fish-check {
+	min-width: 1.25rem;
+	min-height: 1.25rem;
+	cursor: pointer;
+}
+
+/* Keyboard focus: show a row-level outline when any cell descendant is focused */
+tr:focus-within {
+	outline: 2px solid aqua;
+	outline-offset: -2px;
+}
+
+[data-bs-theme="light"] tr:focus-within {
+	outline-color: #0066cc;
+}
+
+[data-bs-theme="dark"]  .accordion-button:not(.collapsed){
+	background-color: #2a3b45;
+	color:var(--bs-body-color);
+}
+
+/* High-contrast / forced-colours mode */
+@media (forced-colors: active) {
+	.selectedGreen td {
+		outline: 2px solid Highlight !important;
+		background-color: transparent !important;
+	}
+	.selectedGreen td:first-child {
+		border-left-color: Highlight;
+	}
+	.time-icon-small.notCatchable {
+		opacity: 0.5;
+		filter: drop-shadow(0 1px 1px #212529);
+	}
+}

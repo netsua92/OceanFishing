@@ -96,6 +96,57 @@ function addStars(num) {
 	return stars;
 }
 
+function getChecklistCaughtState() {
+	try {
+		var raw = localStorage.getItem("caughtFishLS-combined");
+		if (!raw) return { ruby: {}, indigo: {} };
+		var parsed = JSON.parse(raw);
+		return { ruby: parsed.ruby || {}, indigo: parsed.indigo || {} };
+	} catch (e) {
+		return { ruby: {}, indigo: {} };
+	}
+}
+
+function isFishCaught(rawFishName) {
+	var path = window.location.pathname.toLowerCase();
+	var routeId = path.indexOf("ruby") !== -1 ? "ruby" : path.indexOf("indigo") !== -1 ? "indigo" : null;
+	if (!routeId) return false;
+	var normalized = String(rawFishName).replace(/^(?:[MITF]!)+/, "").trim();
+	var caughtState = getChecklistCaughtState();
+	var routeState = caughtState[routeId] || {};
+
+	// New format: exact entry key match if we have row context.
+	if (arguments.length > 1 && arguments[1]) {
+		var row = arguments[1];
+		var stop = String((row.StopTranslated || row.Stop || "")).trim().toLowerCase();
+		var day = String(row.TimeFrameDay || "").trim().toLowerCase();
+		var sunset = String(row.TimeFrameSunset || "").trim().toLowerCase();
+		var night = String(row.TimeFrameNight || "").trim().toLowerCase();
+		var bestBait = String((row.Bait && row.Bait.BestBait) || "").trim().toLowerCase();
+		var mission = String(row.Mission || "").trim().toLowerCase();
+		var species = String(row.Species || "").trim().toLowerCase();
+		var stateKey = [normalized, stop, day, sunset, night, bestBait, mission, species].join("|");
+		if (routeState[stateKey] === true) {
+			return true;
+		}
+	}
+
+	// Backward compatibility: old fish-name-only key.
+	if (routeState[normalized] === true) {
+		return true;
+	}
+
+	// Compatibility for newer keys when row context is unavailable.
+	var prefix = normalized + "|";
+	for (var key in routeState) {
+		if (Object.prototype.hasOwnProperty.call(routeState, key) && routeState[key] === true && key.indexOf(prefix) === 0) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 function getUncaughtRoutes(color) {
 	caughtFish = JSON.parse(localStorage.getItem("caughtFishLS-" + color));
 	if (caughtFish != null) {
@@ -149,10 +200,13 @@ function styleRow(row, id, type) {
 	 normalizeRowTooltipFields(row);
 	//var lang = $.cookie("language");
 	var noQuoteIntuition = row.Intuition.replace(/"/g, "\'");
+	var rawFishName = row.Fish;
 
 
 	//Best Bait Image
-	if (row.Bait.BestBait.substring(0, 2) == "M!") {
+	if (!row.Bait.BestBait || row.Bait.BestBait.trim() === "") {
+		row.Bait.BestBait = "<img class='iconSmall' src='../img/bait/Bait.png' alt='Any Bait' tabindex='0' data-bs-toggle='tooltip' data-bs-title='Any Bait'>";
+	} else if (row.Bait.BestBait.substring(0, 2) == "M!") {
 		if (row.Bait.BestBait.substring(2, 4) == "T!") {
 
 			row.Bait.BestBait = row.Bait.BestBait.replace("M!T!", "");
@@ -284,6 +338,14 @@ function styleRow(row, id, type) {
 			"</span>" +
 			addStars(row.Stars) +
 			"</div></div>";
+	}
+
+	//Caught badge from checklist
+	if (isFishCaught(rawFishName, row)) {
+		var caughtBadge = "<span class='badge bg-success mt-1' style='font-size:0.65em;'>&#10003; Caught</span>";
+		row.Fish = row.Fish
+			.replace("class='col-3 min50'>", "class='col-3 min50 d-flex flex-column align-items-center'>")
+			.replace("tabindex='0'></div>", "tabindex='0'>" + caughtBadge + "</div>");
 	}
 
 	//Hookset Images

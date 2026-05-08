@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Track fish caught on Indigo and Ruby routes.">
+	<meta name="author" content="Xina with data from Tyo'to Tayuun">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+	<link href="/css/navbar-static.css?v=1" rel="stylesheet">
+	<link href="/assets/dist/css/bootstrap.min.css?v=10" rel="stylesheet">
+	<link href="/css/datatables.min.css?v=1" rel="stylesheet">
+	<link href="/css/dataTables.bootstrap5.min.css?v=1" rel="stylesheet">
+	<link href="/css/styles.css?v=12" rel="stylesheet">
+	<link href="/css/checklist.css?v=3" rel="stylesheet">
+
+	<script src="/scripts/jquery-3.7.1.min.js?v=1" type="text/javascript" defer></script>
+	<script src="/assets/js/cookie.js?v=1" defer></script>
+	<script src="/assets/js/color-modes.js?v=1"></script>
+	<script src="/scripts/contentReady.js?v=1" type="text/javascript" defer></script>
+	<script src="/scripts/localeUtil.js?v=1" type="text/javascript" defer></script>
+	<script src="/scripts/headerandfooter.js?v=5" type="text/javascript" defer></script>
+	<script src="/assets/dist/js/bootstrap.bundle.min.js?v=1"></script>
+	<script src="/scripts/datatables.min.js?v=1" type="text/javascript" defer></script>
+	<script src="/scripts/dataTables.bootstrap5.min.js?v=1" type="text/javascript" defer></script>
+	<script src="/scripts/table-a11y.js?v=2" type="text/javascript" defer></script>
+	<script src="/scripts/localize.js?v=13" type="text/javascript" defer></script>
+	<script src="/scripts/checklist-combined.js?v=4" type="text/javascript" defer></script>
+
+	<title>Ocean Fishing Tracker | Checklist</title>
+</head>
+
+<body>
+	<div id="pageContent">
+		<span id="navbar"></span>
+		<div id="header"></div>
+
+		<main class="container-xxl">
+			<div class="bg-body-tertiary p-4 p-md-5 rounded mb-4">
+				<h1 class="mb-2">Checklist</h1>
+				<p class="mb-0">Mark fish as caught and keep your progress saved in your browser.</p>
+				<br>
+				<div class="d-flex gap-2 mb-3">
+					<button id="exportChecklistBtn" class="btn btn-outline-primary d-none" type="button">Export</button>
+					<label class="btn btn-outline-primary mb-0" for="importChecklistFile">Import
+						<input id="importChecklistFile" type="file" accept=".json" class="visually-hidden">
+					</label>
+				</div>
+			</div>
+
+			<div class="bg-body-tertiary rounded p-3 p-md-4 mb-4">
+				<ul class="nav nav-tabs" id="routeTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+						<button class="nav-link active" id="indigo-tab" data-bs-toggle="tab" data-bs-target="#indigo-pane"
+							type="button" role="tab" aria-controls="indigo-pane" aria-selected="true">Indigo</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="ruby-tab" data-bs-toggle="tab" data-bs-target="#ruby-pane"
+							type="button" role="tab" aria-controls="ruby-pane" aria-selected="false">Ruby</button>
+					</li>
+					
+				</ul>
+
+				<div class="tab-content pt-3" id="routeTabsContent">
+                    <div class="tab-pane fade show active" id="indigo-pane" role="tabpanel" aria-labelledby="indigo-tab" tabindex="0">
+						<div id="indigoChecklistContainer"></div>
+					</div>
+					<div class="tab-pane fade " id="ruby-pane" role="tabpanel" aria-labelledby="ruby-tab" tabindex="0">
+						<div id="rubyChecklistContainer"></div>
+					</div>
+					
+				</div>
+
+				<div id="checklistThrobber" class="d-flex justify-content-center py-4">
+					<div class="spinner-border" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="py-3 my-1"></footer>
+	</div>
+
+	<script>
+		// Show the page only after shared content signals readiness.
+		if (typeof ContentReady !== "undefined") {
+			ContentReady.onReady(function () {
+				document.body.classList.add("content-ready");
+			});
+		} else {
+			// Fallback for unexpected script loading order issues.
+			document.addEventListener("DOMContentLoaded", function () {
+				setTimeout(function () {
+					document.body.classList.add("content-ready");
+				}, 1000);
+			});
+		}
+	</script>
+</body>
+
+</html>
