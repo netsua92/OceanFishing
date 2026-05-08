@@ -1,12 +1,12 @@
 $(document).ready(function () {
 	// Use absolute paths so loading works from any page depth
-	$("#header").load("/header.html?v=1", function () {
+	$("#header").load("/header.html?v=2", function () {
 		// After header loaded, load footer then ensure locale scripts are loaded and executed
-		$("footer").load("/footer.html?v=1", function () {
+		$("footer").load("/footer.html?v=2", function () {
 		});
 
 		// Load navbar after header (so IDs exist or path resolution is consistent)
-		$("#navbar").load("/navbar.html", function () {
+		$("#navbar").load("/navbar.html?v=2", function () {
 			// Signal that header/footer/navbar are injected
 			if (typeof ContentReady !== "undefined") {
 				ContentReady.headerFooterLoaded();

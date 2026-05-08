@@ -934,8 +934,6 @@
 			period +
 			"' data-bs-toggle='tooltip' data-bs-title='" +
 			status +
-			" during " +
-			period +
 			"' class='" +
 			classNames +
 			"'" +
