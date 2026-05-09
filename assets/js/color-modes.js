@@ -9,6 +9,8 @@
 
   const getStoredTheme = () => localStorage.getItem('theme')
   const setStoredTheme = theme => localStorage.setItem('theme', theme)
+  const getStoredTimeFormat = () => localStorage.getItem('time-format')
+  const setStoredTimeFormat = format => localStorage.setItem('time-format', format)
 
   const getPreferredTheme = () => {
     const storedTheme = getStoredTheme()
@@ -18,6 +20,15 @@
 
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   }
+
+  const getPreferredTimeFormat = () => {
+    const storedFormat = getStoredTimeFormat()
+    return storedFormat === '12' ? '12' : '24'
+  }
+
+  // Expose helpers for page scripts that format times.
+  window.getPreferredTimeFormat = getPreferredTimeFormat
+  window.use12HourTime = () => getPreferredTimeFormat() === '12'
 
   const setTheme = theme => {
     if (theme === 'auto') {
@@ -57,6 +68,56 @@
     }
   }
 
+  const emitTimeFormatChanged = format => {
+    document.dispatchEvent(new CustomEvent('timeFormatChanged', {
+      detail: {
+        format,
+        use12Hour: format === '12'
+      }
+    }))
+  }
+
+  const showActiveTimeFormat = (format, focus = false) => {
+    const toggle = document.querySelector('#time-format-toggle')
+    if (!toggle) {
+      return
+    }
+
+    const label = document.querySelector('#time-format-label')
+    if (label) {
+      label.textContent = format === '12' ? '12H' : '24H'
+    }
+
+    toggle.setAttribute(
+      'aria-label',
+      format === '12' ? 'Toggle time format (12-hour)' : 'Toggle time format (24-hour)'
+    )
+
+    if (focus) {
+      toggle.focus()
+    }
+  }
+
+  const bindTimeFormatToggle = () => {
+    const toggle = document.querySelector('#time-format-toggle')
+    if (!toggle) {
+      return false
+    }
+
+    if (toggle.dataset.boundTimeFormat !== 'true') {
+      toggle.addEventListener('click', () => {
+        const nextFormat = getPreferredTimeFormat() === '24' ? '12' : '24'
+        setStoredTimeFormat(nextFormat)
+        showActiveTimeFormat(nextFormat, true)
+        emitTimeFormatChanged(nextFormat)
+      })
+      toggle.dataset.boundTimeFormat = 'true'
+    }
+
+    showActiveTimeFormat(getPreferredTimeFormat())
+    return true
+  }
+
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     const storedTheme = getStoredTheme()
     if (storedTheme !== 'light' && storedTheme !== 'dark') {
@@ -66,6 +127,7 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     showActiveTheme(getPreferredTheme())
+    bindTimeFormatToggle()
 
     document.addEventListener('click', (e) => {
       const toggle = e.target.closest('[data-bs-theme-value]')
@@ -78,9 +140,13 @@
   })
 
   const observer = new MutationObserver(() => {
+    bindTimeFormatToggle()
+
     if (document.querySelector('#bd-theme')) {
       showActiveTheme(getPreferredTheme())
-      observer.disconnect()
+      if (document.querySelector('#time-format-toggle')) {
+        observer.disconnect()
+      }
     }
   })
   observer.observe(document.documentElement, { childList: true, subtree: true })

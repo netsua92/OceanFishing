@@ -56,11 +56,16 @@ var timeFormat = {
 	hour: "2-digit",
 	minute: "2-digit",
 	timeZoneName: "short",
-	hour12:false,
+	hour12: false,
 };
+
+function use12HourTimeFormat() {
+	return typeof window.use12HourTime === "function" ? window.use12HourTime() : false;
+}
 
 // Format date and time in user's locale
 function formatDateTime(date) {
+	timeFormat.hour12 = use12HourTimeFormat();
 	return new Intl.DateTimeFormat(timeRegion, timeFormat).format(date);
 }
 
@@ -334,3 +339,10 @@ function printRoutesRuby(rn1, rn2) {
 
 	return temptext;
 }
+
+document.addEventListener("timeFormatChanged", function () {
+	var activeType = window.location.hash ? window.location.hash.substring(1) : "";
+	if (activeType) {
+		displayAchievementData(activeType);
+	}
+});

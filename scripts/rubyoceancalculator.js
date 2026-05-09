@@ -89,6 +89,10 @@ var timeFormat = {
 	timeZoneName: "short",
 };
 
+function use12HourTimeFormat() {
+	return typeof window.use12HourTime === "function" ? window.use12HourTime() : false;
+}
+
 var date = new Date();
 var day = date.getDate();
 var month = date.getMonth() + 1;
@@ -104,7 +108,7 @@ function formatCleanDate(date) {
 		day: "2-digit",
 		hour: "2-digit",
 		minute: "2-digit",
-		hour12: false,
+		hour12: use12HourTimeFormat(),
 	};
 	return new Intl.DateTimeFormat(timeRegion, dateOptions).format(date);
 }
@@ -291,3 +295,14 @@ function convertTime(firstTime = true) {
 	}
 	return dataSet[0][4];
 }
+
+document.addEventListener("timeFormatChanged", function () {
+	if (
+		typeof $ !== "undefined" &&
+		$.fn &&
+		$.fn.dataTable &&
+		$.fn.dataTable.isDataTable("#boatSchedule")
+	) {
+		convertTime(false);
+	}
+});

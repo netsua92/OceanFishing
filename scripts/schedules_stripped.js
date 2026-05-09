@@ -63,11 +63,16 @@ var timeFormat = {
 	hour: "2-digit",
 	minute: "2-digit",
 	timeZoneName: "short",
-	hour12:false,
+	hour12: false,
 };
+
+function use12HourTimeFormat() {
+	return typeof window.use12HourTime === "function" ? window.use12HourTime() : false;
+}
 
 // Format date and time in user's locale
 function formatDateTime(date) {
+	timeFormat.hour12 = use12HourTimeFormat();
 	return new Intl.DateTimeFormat(timeRegion, timeFormat).format(date);
 }
 
@@ -121,6 +126,21 @@ if (window.jQuery) {
 } else {
 	document.addEventListener("translationsLoaded", updateRouteDroplists);
 }
+
+document.addEventListener("timeFormatChanged", function () {
+	if (document.getElementById("indigoByTime")?.innerHTML.trim()) {
+		convertTimeIndigo();
+	}
+	if (document.getElementById("rubyByTime")?.innerHTML.trim()) {
+		convertTimeRuby();
+	}
+	if (document.getElementById("indigoSpecific")?.innerHTML.trim()) {
+		printRoutesIndigo();
+	}
+	if (document.getElementById("rubySpecific")?.innerHTML.trim()) {
+		printRoutesRuby();
+	}
+});
 
 //Force myDate box to start at today's date
 //thank you stackoverflow
