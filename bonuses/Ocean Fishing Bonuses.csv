@@ -1,0 +1,37 @@
+﻿Objective,Requirement,Percent,Order,Route
+Ocean Fishing Amateur,Complete one mission during an ocean fishing voyage.,5,1,Generic
+Ocean Fishing Enthusiast,Complete two missions during an ocean fishing voyage.,10,2,Generic
+Ocean Fishing Fanatic,Complete three missions during an ocean fishing voyage.,20,3,Generic
+Small Fish in a Big Pond,"Score 2,500 points or higher.",10,4,Generic
+Big Fish in a Small Pond,"Score 5,000 points or higher.",20,5,Generic
+A Rare Catch,Catch a ★★★★ fish.,10,6,Generic
+Catch of a Lifetime,Catch a ★★★★★ fish.,20,7,Generic
+Give a Man a Fish,Catch 15 or more fish when a spectral current is present.,10,8,Generic
+Teach a Man to Fish,Catch 35 or more fish when a spectral current is present.,20,9,Generic
+Fabled Fishers,"As a party, catch 3 or more ★★★★★ fish.",50,10,Generic
+Favored by Llymlaen,Cause a spectral current to occur.,10,11,Generic
+Bream Team: Galadion Bay,"As a party, catch 10 or more different fish in Galadion Bay.",10,12,Indigo
+Bream Team: Southern Strait of Merlthor,"Requirement: As a party, catch 10 or more different fish in the southern Strait of Merlthor.",10,13,Indigo
+Bream Team: Cieldalaes,"As a party, catch 10 or more different fish in the Cieldalaes.",10,14,Indigo
+Bream Team: Northern Strait of Merlthor,"As a party, catch 10 or more different fish in the northern Strait of Merlthor.",10,15,Indigo
+Bream Team: Rhotano Sea,"As a party, catch 10 or more different fish in the Rhotano Sea.",10,16,Indigo
+Bream Team: Bloodbrine Sea,"As a party, catch 10 or more different fish in the Bloodbrine Sea.",10,17,Indigo
+Bream Team: Rothlyt Sound,"As a party, catch 10 or more different fish in Rothlyt Sound.",10,18,Indigo
+Octopus Travelers,"As a party, catch 150 or more octopodes.",20,19,Indigo
+Certifiable Shark Hunters,"As a party, catch 200 or more sharks.",30,20,Indigo
+Jelled Together,"As a party, catch 150 or more jellyfish.",20,21,Indigo
+Maritime Dragonslayers,"As a party, catch 100 or more seahorses.",10,22,Indigo
+Balloon Catchers,"As a party, catch 250 or more fugu.",30,23,Indigo
+Crab Boat Crew,"As a party, catch 250 or more crabs.",30,24,Indigo
+Sticking it to the Manta,"As an individual, catch 25 or more mantas.",20,25,Indigo
+Bream Team: Unnamed Island,"As a party, catch 10 or more different fish off the coast of the unnamed island.",10,26,Ruby
+Bream Team: Sirensong Sea,"As a party, catch 10 or more different fish in the Sirensong Sea.",10,27,Ruby
+Bream Team: Kugane Coast,"As a party, catch 10 or more different fish at the Kugane coast.",10,28,Ruby
+Bream Team: Ruby Price,"As a party, catch 10 or more different fish in the Ruby Price.",10,29,Ruby
+Bream Team: Lower One River,"As a party, catch 10 or more different fish in the lower One River.",10,30,Ruby
+Bream Team: Thavnairian Coast,"As a party, catch 10 or more different fish off the Thavnairian coast.",10,31,Ruby
+Maximum Mussel,"As a party, catch 350 or more shellfish.",30,32,Ruby
+Squid Squadron,"As a party, catch 400 or more squid.",20,33,Ruby
+Shrimp Smorgasbord,"As an individual, catch 50 or more shrimp.",20,34,Ruby
+Prehistoric Professionals,"As a party, catch 300 or more prehistoric wavekin.",30,35,Ruby
+Time Waits for No Mantis,"As an individual, catch 50 or more mantis shrimp.",20,36,Ruby

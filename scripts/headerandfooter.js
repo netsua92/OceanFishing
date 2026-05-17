@@ -6,7 +6,7 @@ $(document).ready(function () {
 		});
 
 		// Load navbar after header (so IDs exist or path resolution is consistent)
-		$("#navbar").load("/navbar.html?v=2", function () {
+		$("#navbar").load("/navbar.html?v=3", function () {
 			// Signal that header/footer/navbar are injected
 			if (typeof ContentReady !== "undefined") {
 				ContentReady.headerFooterLoaded();
