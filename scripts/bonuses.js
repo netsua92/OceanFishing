@@ -76,7 +76,8 @@ class BonusCalculator {
           requirement: fields[1].trim(),
           percent: parseInt(fields[2].trim()),
           order: parseInt(fields[3].trim()),
-          route: (fields[4] || 'Generic').trim() || 'Generic'
+          route: (fields[4] || 'Generic').trim() || 'Generic',
+          category: (fields[5] || 'Generic').trim() || 'Generic'
         });
       }
     }
@@ -279,17 +280,31 @@ class BonusCalculator {
 
   updateRouteLocks() {
     const activeSpecificRoute = this.getActiveSpecificRoute();
+    const selectedCategories = new Set();
+
+    this.selectedBonuses.forEach(index => {
+      const category = (this.bonuses[index].category || 'generic').toLowerCase();
+      if (category && category !== 'generic') {
+        selectedCategories.add(category);
+      }
+    });
+
     const cards = document.querySelectorAll('.bonus-card');
 
     cards.forEach(card => {
       const index = parseInt(card.dataset.index, 10);
       const route = (this.bonuses[index].route || '').toLowerCase();
+      const category = (this.bonuses[index].category || 'generic').toLowerCase();
+      const isSelected = this.selectedBonuses.has(index);
 
       let shouldDisable = false;
       if (activeSpecificRoute === 'indigo' && route === 'ruby') {
         shouldDisable = true;
       }
       if (activeSpecificRoute === 'ruby' && route === 'indigo') {
+        shouldDisable = true;
+      }
+      if (!isSelected && category !== 'generic' && selectedCategories.has(category)) {
         shouldDisable = true;
       }
 
