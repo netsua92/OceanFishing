@@ -139,6 +139,9 @@ class BonusCalculator {
         card.className = 'bonus-card';
         card.dataset.index = index;
         card.dataset.percent = bonus.percent;
+        card.setAttribute('title', bonus.requirement);
+        card.setAttribute('data-bs-toggle', 'tooltip');
+        card.setAttribute('data-bs-placement', 'top');
 
         const imagePath = this.getImagePath(bonus.name);
         const imageHtml = imagePath
@@ -163,6 +166,18 @@ class BonusCalculator {
       }
       section.appendChild(routeGrid);
       grid.appendChild(section);
+    });
+
+    this.initializeCardTooltips();
+  }
+
+  initializeCardTooltips() {
+    if (typeof bootstrap === 'undefined' || !bootstrap.Tooltip) {
+      return;
+    }
+
+    document.querySelectorAll('.bonus-card').forEach(el => {
+      bootstrap.Tooltip.getOrCreateInstance(el);
     });
   }
 
