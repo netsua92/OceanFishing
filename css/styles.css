@@ -254,6 +254,40 @@ body>footer {
   margin-right:5px;
 }
 
+.schedule-tooltip {
+  --bs-tooltip-bg: #ffffff;
+  --bs-tooltip-color: #1f2937;
+  --bs-tooltip-opacity: 1;
+  --bs-tooltip-max-width: 340px;
+}
+
+.schedule-tooltip .tooltip-inner {
+  text-align: left;
+  border: 1px solid rgba(31, 41, 55, 0.15);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  line-height: 1.45;
+}
+
+.schedule-tooltip .timebadge {
+  background-color: #2f3440;
+  border: 1px solid rgba(230, 223, 181, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  margin: 0 4px;
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+.schedule-tooltip .scheduleTooltipIcon {
+  width: 20px;
+  filter: drop-shadow(0 1px 1px rgba(17, 24, 39, 0.45));
+}
+
+.schedule-tooltip .tooltip-inner br {
+  content: "";
+  display: block;
+  margin: 4px 0;
+}
+
 .row,
 .row>* {
   margin-right: 0px !important;

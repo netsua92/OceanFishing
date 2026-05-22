@@ -55,6 +55,54 @@ var schedules = ["Unnamed Island at Sunset, Sirensong Sea at Night, Thavnair at 
 "Sirensong Sea at Day, Kugane at Sunset, The One River at Night",
 "Sirensong Sea at Day, Kugane at Sunset, The Ruby Sea at Night"];
 
+var scheduleStopKeys = [
+	[
+		{ destinationKey: "destination.unnamed", timeKey: "table.sunset" },
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.night" },
+		{ destinationKey: "destination.thavnair", timeKey: "table.day" },
+	],
+	[
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.sunset" },
+		{ destinationKey: "destination.kugane", timeKey: "table.night" },
+		{ destinationKey: "destination.theoneriver", timeKey: "table.day" },
+	],
+	[
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.sunset" },
+		{ destinationKey: "destination.kugane", timeKey: "table.night" },
+		{ destinationKey: "destination.therubysea", timeKey: "table.day" },
+	],
+	[
+		{ destinationKey: "destination.unnamed", timeKey: "table.night" },
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.day" },
+		{ destinationKey: "destination.thavnair", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.night" },
+		{ destinationKey: "destination.kugane", timeKey: "table.day" },
+		{ destinationKey: "destination.theoneriver", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.night" },
+		{ destinationKey: "destination.kugane", timeKey: "table.day" },
+		{ destinationKey: "destination.therubysea", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.unnamed", timeKey: "table.day" },
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.sunset" },
+		{ destinationKey: "destination.thavnair", timeKey: "table.night" },
+	],
+	[
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.day" },
+		{ destinationKey: "destination.kugane", timeKey: "table.sunset" },
+		{ destinationKey: "destination.theoneriver", timeKey: "table.night" },
+	],
+	[
+		{ destinationKey: "destination.thesirensongsea", timeKey: "table.day" },
+		{ destinationKey: "destination.kugane", timeKey: "table.sunset" },
+		{ destinationKey: "destination.therubysea", timeKey: "table.night" },
+	],
+];
+
 var finalStopKeys = [
 	{ img: imgDay, key: "destination.thavnair" },
 	{ img: imgDay, key: "destination.theoneriver" },
@@ -72,7 +120,109 @@ function getFinalStop(index) {
 	var stop = finalStopKeys[index];
 	var label =
 		typeof translateWord === "function" ? translateWord(stop.key) : stop.key;
-	return stop.img + '<span class="desttextrt">' + label + "</span>";
+	return (
+		"<span class='final-stop-tooltip' data-schedule-index='" +
+		index +
+		"' tabindex='0'>" +
+		stop.img +
+		'<span class="desttextrt">' +
+		label +
+		"</span></span>"
+	);
+}
+
+function getScheduleTooltip(index) {
+	if (!scheduleStopKeys[index]) {
+		if (!schedules[index]) return "";
+		var fallbackTooltip = schedules[index];
+		if (typeof imgNight === "string") {
+			fallbackTooltip = fallbackTooltip.replace(
+				/(Unnamed Island|Sirensong Sea|Kugane|The One River|The Ruby Sea|Thavnair) at Night/g,
+				imgNight + " $1"
+			);
+		}
+		if (typeof imgDay === "string") {
+			fallbackTooltip = fallbackTooltip.replace(
+				/(Unnamed Island|Sirensong Sea|Kugane|The One River|The Ruby Sea|Thavnair) at Day/g,
+				imgDay + " $1"
+			);
+		}
+		if (typeof imgSunset === "string") {
+			fallbackTooltip = fallbackTooltip.replace(
+				/(Unnamed Island|Sirensong Sea|Kugane|The One River|The Ruby Sea|Thavnair) at Sunset/g,
+				imgSunset + " $1"
+			);
+		}
+		fallbackTooltip = fallbackTooltip.replace(/,\s*/g, "<br>");
+		return fallbackTooltip.replace(
+			/iconSmallest/g,
+			"iconSmallest scheduleTooltipIcon"
+		);
+	}
+
+	return scheduleStopKeys[index]
+		.map(function (stop) {
+			var destination =
+				typeof translateWord === "function"
+					? translateWord(stop.destinationKey)
+					: stop.destinationKey;
+			var badge = "";
+			if (stop.timeKey === "table.night") {
+				badge = imgNight;
+			} else if (stop.timeKey === "table.day") {
+				badge = imgDay;
+			} else if (stop.timeKey === "table.sunset") {
+				badge = imgSunset;
+			}
+
+			if (typeof badge === "string") {
+				badge = badge.replace(/iconSmallest/g, "iconSmallest scheduleTooltipIcon");
+			}
+
+			return badge + " " + destination;
+		})
+		.join("<br>");
+}
+
+function initializeFinalStopTooltips() {
+	if (typeof bootstrap === "undefined" || !bootstrap.Tooltip) {
+		return;
+	}
+
+	var finalStopEls = document.querySelectorAll("#boatSchedule .final-stop-tooltip");
+	finalStopEls.forEach(function (el) {
+		var existingTooltip = bootstrap.Tooltip.getInstance(el);
+		if (existingTooltip) {
+			existingTooltip.dispose();
+		}
+
+		var scheduleIndex = Number(el.getAttribute("data-schedule-index"));
+		var tooltip = getScheduleTooltip(scheduleIndex);
+		if (!tooltip) {
+			return;
+		}
+
+		el.setAttribute("data-bs-toggle", "tooltip");
+		el.setAttribute("data-bs-html", "true");
+		el.setAttribute("data-bs-custom-class", "schedule-tooltip");
+		el.setAttribute("data-bs-trigger", "hover");
+		el.setAttribute("data-bs-title", tooltip);
+		bootstrap.Tooltip.getOrCreateInstance(el, { trigger: "hover" });
+	});
+}
+
+function hideFinalStopTooltips() {
+	if (typeof bootstrap === "undefined" || !bootstrap.Tooltip) {
+		return;
+	}
+
+	var finalStopEls = document.querySelectorAll("#boatSchedule .final-stop-tooltip");
+	finalStopEls.forEach(function (el) {
+		var tooltip = bootstrap.Tooltip.getInstance(el);
+		if (tooltip) {
+			tooltip.hide();
+		}
+	});
 }
 
 var finalStop = [];
@@ -268,6 +418,7 @@ function convertTime(firstTime = true) {
 				"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "")
 			);
 			$(row).on("click", function () {
+				hideFinalStopTooltips();
 				$(".stopsRow").each(function (i) {
 					$(this).removeClass("activeRow");
 				});
@@ -293,6 +444,8 @@ function convertTime(firstTime = true) {
 			}
 		});
 	}
+
+	initializeFinalStopTooltips();
 	return dataSet[0][4];
 }
 

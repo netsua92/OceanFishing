@@ -201,8 +201,9 @@ function displayAchievementData(type) {
 		getRoutes = printRoutesRuby(1, 0);
 		achiName = "prehistoric-professionals";
 		achiHeader = "What Even is That?";
-		achiText = "<p>This is a preliminary guide. All of the information herein is accurate but the full bite times for the normal zone and Spectral fish especially may be incomplete while still gathering bite time data.</p>" +
-					"<p>It is possible to complete this objective in any route ending at Thavnair. The suggested route has the highest total prehistoric fish available and the best target that there can be in the second zone. If intending to skip Sirensong Spectral Current, the exact route you take is less important but will be missing the objective fish with the highest yields.</p>" }
+		achiText = "<p>It is possible to complete this objective in any route ending at Thavnair. The suggested route has the highest total prehistoric fish available as Unnamed Spectral Current at Sunset and Thavnair Spectral Current at Day each have a fish that yields 4 and 7 on Double and Triple Hook that are not available at any other Time Frame. This route also has the best target for the objective that there can be in Sirensong as the objective fish available there is different in each Time Frame." +
+					"<p>There are fish that yield 3 and 5 on Double and Triple Hook available at Unnamed Island and Thavnair at all Time Frames which is why any route is viable. If intending to skip Sirensong Spectral Current, the exact route you take is even less important. However, any other route but the suggested one will be missing every objective fish with the highest yield.</p>" +
+					"<p>Going on an early, 24-person boat is viable due to the flexibility of this objective. Doing this allows the party to rely more on the 16 other people on the boat to proc the currents, encouraging use of the bait for the non-current fish.</p>" + "<p>It is possible to complete this objective in any route ending at Thavnair. The suggested route has the highest total prehistoric fish available and the best target that there can be in the second zone. If intending to skip Sirensong Spectral Current, the exact route you take is less important but will be missing the objective fish with the highest yields.</p>" ;}
 	else if (type == "mantis") {
 		getRoutes = printRoutesRuby(4, 7);
 		achiName = "time-waits-for-no-mantis";

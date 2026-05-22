@@ -54,6 +54,69 @@ var schedules = [
 	"Ciel at Sunset, Rhotano at Night, Sound at Day",
 ];
 
+var scheduleStopKeys = [
+	[
+		{ destinationKey: "destination.thesouthernstraitofmerlthor", timeKey: "table.night" },
+		{ destinationKey: "destination.galadionbay", timeKey: "table.day" },
+		{ destinationKey: "destination.thenorthernstraitofmerlthor", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.thesouthernstraitofmerlthor", timeKey: "table.day" },
+		{ destinationKey: "destination.galadionbay", timeKey: "table.sunset" },
+		{ destinationKey: "destination.thenorthernstraitofmerlthor", timeKey: "table.night" },
+	],
+	[
+		{ destinationKey: "destination.thesouthernstraitofmerlthor", timeKey: "table.sunset" },
+		{ destinationKey: "destination.galadionbay", timeKey: "table.night" },
+		{ destinationKey: "destination.thenorthernstraitofmerlthor", timeKey: "table.day" },
+	],
+	[
+		{ destinationKey: "destination.galadionbay", timeKey: "table.night" },
+		{ destinationKey: "destination.thesouthernstraitofmerlthor", timeKey: "table.day" },
+		{ destinationKey: "destination.rhotanosea", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.galadionbay", timeKey: "table.day" },
+		{ destinationKey: "destination.thesouthernstraitofmerlthor", timeKey: "table.sunset" },
+		{ destinationKey: "destination.rhotanosea", timeKey: "table.night" },
+	],
+	[
+		{ destinationKey: "destination.galadionbay", timeKey: "table.sunset" },
+		{ destinationKey: "destination.thesouthernstraitofmerlthor", timeKey: "table.night" },
+		{ destinationKey: "destination.rhotanosea", timeKey: "table.day" },
+	],
+	[
+		{ destinationKey: "destination.thecieldalaes", timeKey: "table.night" },
+		{ destinationKey: "destination.thenorthernstraitofmerlthor", timeKey: "table.day" },
+		{ destinationKey: "destination.thebloodbrinesea", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.thecieldalaes", timeKey: "table.day" },
+		{ destinationKey: "destination.thenorthernstraitofmerlthor", timeKey: "table.sunset" },
+		{ destinationKey: "destination.thebloodbrinesea", timeKey: "table.night" },
+	],
+	[
+		{ destinationKey: "destination.thecieldalaes", timeKey: "table.sunset" },
+		{ destinationKey: "destination.thenorthernstraitofmerlthor", timeKey: "table.night" },
+		{ destinationKey: "destination.thebloodbrinesea", timeKey: "table.day" },
+	],
+	[
+		{ destinationKey: "destination.thecieldalaes", timeKey: "table.night" },
+		{ destinationKey: "destination.rhotanosea", timeKey: "table.day" },
+		{ destinationKey: "destination.therothlytsound", timeKey: "table.sunset" },
+	],
+	[
+		{ destinationKey: "destination.thecieldalaes", timeKey: "table.day" },
+		{ destinationKey: "destination.rhotanosea", timeKey: "table.sunset" },
+		{ destinationKey: "destination.therothlytsound", timeKey: "table.night" },
+	],
+	[
+		{ destinationKey: "destination.thecieldalaes", timeKey: "table.sunset" },
+		{ destinationKey: "destination.rhotanosea", timeKey: "table.night" },
+		{ destinationKey: "destination.therothlytsound", timeKey: "table.day" },
+	],
+];
+
 var finalStopKeys = [
 	{ img: imgSunset, key: "destination.thenorthernstraitofmerlthor" },
 	{ img: imgNight, key: "destination.thenorthernstraitofmerlthor" },
@@ -74,7 +137,109 @@ function getFinalStop(index) {
 	var stop = finalStopKeys[index];
 	var label =
 		typeof translateWord === "function" ? translateWord(stop.key) : stop.key;
-	return stop.img + '<span class="desttextrt">' + label + "</span>";
+	return (
+		"<span class='final-stop-tooltip' data-schedule-index='" +
+		index +
+		"' tabindex='0'>" +
+		stop.img +
+		'<span class="desttextrt">' +
+		label +
+		"</span></span>"
+	);
+}
+
+function getScheduleTooltip(index) {
+	if (!scheduleStopKeys[index]) {
+		if (!schedules[index]) return "";
+		var fallbackTooltip = schedules[index];
+		if (typeof imgNight === "string") {
+			fallbackTooltip = fallbackTooltip.replace(
+				/(South|Galadion|North|Rhotano|Ciel|Blood|Sound) at Night/g,
+				imgNight + " $1"
+			);
+		}
+		if (typeof imgDay === "string") {
+			fallbackTooltip = fallbackTooltip.replace(
+				/(South|Galadion|North|Rhotano|Ciel|Blood|Sound) at Day/g,
+				imgDay + " $1"
+			);
+		}
+		if (typeof imgSunset === "string") {
+			fallbackTooltip = fallbackTooltip.replace(
+				/(South|Galadion|North|Rhotano|Ciel|Blood|Sound) at Sunset/g,
+				imgSunset + " $1"
+			);
+		}
+		fallbackTooltip = fallbackTooltip.replace(/,\s*/g, "<br>");
+		return fallbackTooltip.replace(
+			/iconSmallest/g,
+			"iconSmallest scheduleTooltipIcon"
+		);
+	}
+
+	return scheduleStopKeys[index]
+		.map(function (stop) {
+			var destination =
+				typeof translateWord === "function"
+					? translateWord(stop.destinationKey)
+					: stop.destinationKey;
+			var badge = "";
+			if (stop.timeKey === "table.night") {
+				badge = imgNight;
+			} else if (stop.timeKey === "table.day") {
+				badge = imgDay;
+			} else if (stop.timeKey === "table.sunset") {
+				badge = imgSunset;
+			}
+
+			if (typeof badge === "string") {
+				badge = badge.replace(/iconSmallest/g, "iconSmallest scheduleTooltipIcon");
+			}
+
+			return badge + " " + destination;
+		})
+		.join("<br>");
+}
+
+function initializeFinalStopTooltips() {
+	if (typeof bootstrap === "undefined" || !bootstrap.Tooltip) {
+		return;
+	}
+
+	var finalStopEls = document.querySelectorAll("#boatSchedule .final-stop-tooltip");
+	finalStopEls.forEach(function (el) {
+		var existingTooltip = bootstrap.Tooltip.getInstance(el);
+		if (existingTooltip) {
+			existingTooltip.dispose();
+		}
+
+		var scheduleIndex = Number(el.getAttribute("data-schedule-index"));
+		var tooltip = getScheduleTooltip(scheduleIndex);
+		if (!tooltip) {
+			return;
+		}
+
+		el.setAttribute("data-bs-toggle", "tooltip");
+		el.setAttribute("data-bs-html", "true");
+		el.setAttribute("data-bs-custom-class", "schedule-tooltip");
+		el.setAttribute("data-bs-trigger", "hover");
+		el.setAttribute("data-bs-title", tooltip);
+		bootstrap.Tooltip.getOrCreateInstance(el, { trigger: "hover" });
+	});
+}
+
+function hideFinalStopTooltips() {
+	if (typeof bootstrap === "undefined" || !bootstrap.Tooltip) {
+		return;
+	}
+
+	var finalStopEls = document.querySelectorAll("#boatSchedule .final-stop-tooltip");
+	finalStopEls.forEach(function (el) {
+		var tooltip = bootstrap.Tooltip.getInstance(el);
+		if (tooltip) {
+			tooltip.hide();
+		}
+	});
 }
 
 var finalStop = [];
@@ -300,6 +465,7 @@ function convertTime(firstTime = true) {
 			$(row).addClass("stopsRow");
 			$(row).attr("tabindex", "0");
 			$(row).on("click", function () {
+				hideFinalStopTooltips();
 				$(".stopsRow").each(function (i) {
 					$(this).removeClass("activeRow");
 				});
@@ -324,6 +490,8 @@ function convertTime(firstTime = true) {
 			}
 		});
 	}
+
+	initializeFinalStopTooltips();
 
 	return dataSet[0][4];
 }
