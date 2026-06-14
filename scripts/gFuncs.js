@@ -628,7 +628,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 					title: translateWord("table.fish"),
 				},
 				{ data: "Hookset", title: translateWord("table.hook") },
-				{ data: "Bait.BestBait", title: translateWord("table.bestbait") },
+				{ data: "Bait.BestBait", title: translateWord("table.bestbait"), orderable: false },
 				{
 					data: {
 						_: "Bait.Ragworm.0",
@@ -724,7 +724,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 					title: translateWord("table.fish"),
 				},
 				{ data: "Hookset", title: translateWord("table.hook") },
-				{ data: "Bait.BestBait", title: translateWord("table.bestbait") },
+				{ data: "Bait.BestBait", title: translateWord("table.bestbait"), orderable: false },
 				{
 					data: {
 						_: "Bait.Ragworm.0",
