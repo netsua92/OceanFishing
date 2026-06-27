@@ -147,6 +147,263 @@ function isFishCaught(rawFishName) {
 	return false;
 }
 
+var completedRoutesFilterStorageKey = "hideCompletedRoutes";
+
+var routeStopConfigs = {
+	ruby: [
+		[
+			{ stop: "Unnamed", time: "Sunset" },
+			{ stop: "Sirensong", time: "Night" },
+			{ stop: "Thavnair", time: "Day" },
+		],
+		[
+			{ stop: "Sirensong", time: "Sunset" },
+			{ stop: "Kugane", time: "Night" },
+			{ stop: "One River", time: "Day" },
+		],
+		[
+			{ stop: "Sirensong", time: "Sunset" },
+			{ stop: "Kugane", time: "Night" },
+			{ stop: "Ruby Sea", time: "Day" },
+		],
+		[
+			{ stop: "Unnamed", time: "Night" },
+			{ stop: "Sirensong", time: "Day" },
+			{ stop: "Thavnair", time: "Sunset" },
+		],
+		[
+			{ stop: "Sirensong", time: "Night" },
+			{ stop: "Kugane", time: "Day" },
+			{ stop: "One River", time: "Sunset" },
+		],
+		[
+			{ stop: "Sirensong", time: "Night" },
+			{ stop: "Kugane", time: "Day" },
+			{ stop: "Ruby Sea", time: "Sunset" },
+		],
+		[
+			{ stop: "Unnamed", time: "Day" },
+			{ stop: "Sirensong", time: "Sunset" },
+			{ stop: "Thavnair", time: "Night" },
+		],
+		[
+			{ stop: "Sirensong", time: "Day" },
+			{ stop: "Kugane", time: "Sunset" },
+			{ stop: "One River", time: "Night" },
+		],
+		[
+			{ stop: "Sirensong", time: "Day" },
+			{ stop: "Kugane", time: "Sunset" },
+			{ stop: "Ruby Sea", time: "Night" },
+		],
+	],
+	indigo: [
+		[
+			{ stop: "Southern", time: "Night" },
+			{ stop: "Galadion", time: "Day" },
+			{ stop: "Northern", time: "Sunset" },
+		],
+		[
+			{ stop: "Southern", time: "Day" },
+			{ stop: "Galadion", time: "Sunset" },
+			{ stop: "Northern", time: "Night" },
+		],
+		[
+			{ stop: "Southern", time: "Sunset" },
+			{ stop: "Galadion", time: "Night" },
+			{ stop: "Northern", time: "Day" },
+		],
+		[
+			{ stop: "Galadion", time: "Night" },
+			{ stop: "Southern", time: "Day" },
+			{ stop: "Rhotano", time: "Sunset" },
+		],
+		[
+			{ stop: "Galadion", time: "Day" },
+			{ stop: "Southern", time: "Sunset" },
+			{ stop: "Rhotano", time: "Night" },
+		],
+		[
+			{ stop: "Galadion", time: "Sunset" },
+			{ stop: "Southern", time: "Night" },
+			{ stop: "Rhotano", time: "Day" },
+		],
+		[
+			{ stop: "Cieldalaes", time: "Night" },
+			{ stop: "Northern", time: "Day" },
+			{ stop: "Blood", time: "Sunset" },
+		],
+		[
+			{ stop: "Cieldalaes", time: "Day" },
+			{ stop: "Northern", time: "Sunset" },
+			{ stop: "Blood", time: "Night" },
+		],
+		[
+			{ stop: "Cieldalaes", time: "Sunset" },
+			{ stop: "Northern", time: "Night" },
+			{ stop: "Blood", time: "Day" },
+		],
+		[
+			{ stop: "Cieldalaes", time: "Night" },
+			{ stop: "Rhotano", time: "Day" },
+			{ stop: "Rothlyt", time: "Sunset" },
+		],
+		[
+			{ stop: "Cieldalaes", time: "Day" },
+			{ stop: "Rhotano", time: "Sunset" },
+			{ stop: "Rothlyt", time: "Night" },
+		],
+		[
+			{ stop: "Cieldalaes", time: "Sunset" },
+			{ stop: "Rhotano", time: "Night" },
+			{ stop: "Rothlyt", time: "Day" },
+		],
+	],
+};
+
+function normalizeFishNameForChecklist(rawFishName) {
+	return String(rawFishName || "").replace(/^(?:[MITF]!)+/, "").trim();
+}
+
+function getHideCompletedRoutesEnabled() {
+	try {
+		return localStorage.getItem(completedRoutesFilterStorageKey) === "true";
+	} catch (e) {
+		return false;
+	}
+}
+
+function setHideCompletedRoutesEnabled(enabled) {
+	try {
+		localStorage.setItem(completedRoutesFilterStorageKey, enabled ? "true" : "false");
+	} catch (e) {
+		return;
+	}
+}
+
+function getRouteStopConfig(route, routeNumber) {
+	var routeKey = String(route || "").trim().toLowerCase();
+	var routeConfigSet = routeStopConfigs[routeKey];
+	var routeIndex = Number(routeNumber) - 1;
+	if (!routeConfigSet || routeIndex < 0 || routeIndex >= routeConfigSet.length) {
+		return [];
+	}
+	return routeConfigSet[routeIndex];
+}
+
+function getRouteScheduleEntries(route, routeNumber, dataObj) {
+	var routeStops = getRouteStopConfig(route, routeNumber);
+	var allEntries = [];
+
+	routeStops.forEach(function (routeStop) {
+		var stopEntries = (dataObj || []).filter(function (item) {
+			return item.Stop.indexOf(routeStop.stop) !== -1;
+		});
+
+		var regularEntries = stopEntries.filter(function (item) {
+			return item.TimeFrameDay == "";
+		});
+
+		var spectralEntries = stopEntries.filter(function (item) {
+			return item.TimeFrameDay !== "";
+		});
+
+		switch (routeStop.time) {
+			case "Day":
+				spectralEntries = spectralEntries.filter(function (item) {
+					return item.TimeFrameDay == "Yes";
+				});
+				break;
+			case "Night":
+				spectralEntries = spectralEntries.filter(function (item) {
+					return item.TimeFrameNight == "Yes";
+				});
+				break;
+			default:
+				spectralEntries = spectralEntries.filter(function (item) {
+					return item.TimeFrameSunset == "Yes";
+				});
+		}
+
+		allEntries = allEntries.concat(regularEntries, spectralEntries);
+	});
+
+	return allEntries;
+}
+
+function getRouteUncaughtSummary(route, routeNumber, dataObj) {
+	var routeEntries = getRouteScheduleEntries(route, routeNumber, dataObj);
+	var uncaughtFishNames = {};
+
+	routeEntries.forEach(function (item) {
+		if (!isFishCaught(item.Fish, item)) {
+			uncaughtFishNames[normalizeFishNameForChecklist(item.Fish).toLowerCase()] = true;
+		}
+	});
+
+	var uncaughtCount = Object.keys(uncaughtFishNames).length;
+	return {
+		entries: routeEntries,
+		uncaughtCount: uncaughtCount,
+		hasUncaught: uncaughtCount > 0,
+	};
+}
+
+function syncActiveBoatScheduleRoute(firstRoute) {
+	var activeRoute = null;
+	var activeRow = activeRowIDpers ? document.getElementById(activeRowIDpers) : null;
+
+	if (activeRow) {
+		activeRow.classList.add("activeRow");
+		activeRoute = activeRow.getAttribute("data-route");
+	} else {
+		var firstRow = document.querySelector("#boatSchedule>tbody>tr");
+		if (firstRow) {
+			firstRow.classList.add("activeRow");
+			activeRowIDpers = firstRow.id || "";
+			activeRoute = firstRow.getAttribute("data-route");
+		} else {
+			activeRowIDpers = "";
+		}
+	}
+
+	return activeRoute || (firstRoute != null ? String(firstRoute) : null);
+}
+
+function updateBoatScheduleEmptyState(show) {
+	var emptyState = document.getElementById("boatScheduleEmptyState");
+	if (!emptyState) {
+		return;
+	}
+	emptyState.classList.toggle("d-none", !show);
+}
+
+function clearDisplayedStopTables() {
+	["#dest1Label", "#dest2Label", "#dest3Label"].forEach(function (selector, index) {
+		var label = document.querySelector(selector);
+		if (label) {
+			label.textContent = "Stop " + (index + 1);
+		}
+	});
+
+	[
+		"#desttable1reg",
+		"#desttable1spec",
+		"#desttable2reg",
+		"#desttable2spec",
+		"#desttable3reg",
+		"#desttable3spec",
+	].forEach(function (selector) {
+		if (typeof $ !== "undefined" && $.fn && $.fn.dataTable && $.fn.dataTable.isDataTable(selector)) {
+			$(selector).DataTable().clear().destroy();
+		}
+		var table = document.querySelector(selector);
+		if (table) {
+			table.innerHTML = "";
+		}
+	});
+}
+
 function getUncaughtRoutes(color) {
 	caughtFish = JSON.parse(localStorage.getItem("caughtFishLS-" + color));
 	if (caughtFish != null) {

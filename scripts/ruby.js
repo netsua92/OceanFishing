@@ -1,6 +1,27 @@
 var cleanedDataObj = [];
 const cleanedDataObjBK = [];
 $(document).ready(function () {
+	var hideCompletedRoutesToggle = document.getElementById("hideCompletedRoutesToggle");
+	if (hideCompletedRoutesToggle) {
+		function syncHideCompletedRoutesButtonState(enabled) {
+			hideCompletedRoutesToggle.classList.toggle("active", !!enabled);
+			hideCompletedRoutesToggle.setAttribute("aria-pressed", enabled ? "true" : "false");
+		}
+
+		syncHideCompletedRoutesButtonState(getHideCompletedRoutesEnabled());
+		hideCompletedRoutesToggle.addEventListener("click", function () {
+			var nextEnabled = !getHideCompletedRoutesEnabled();
+			setHideCompletedRoutesEnabled(nextEnabled);
+			syncHideCompletedRoutesButtonState(nextEnabled);
+			var firstRoute = convertTime(false);
+			var selectedRoute = syncActiveBoatScheduleRoute(firstRoute);
+			if (selectedRoute) {
+				displayStops("Ruby", selectedRoute, cleanedDataObj);
+			} else {
+				clearDisplayedStopTables();
+			}
+		});
+	}
 
 	$("#boatscheduletoggle").on("click", function () {
 		$("#boatSchedule>tbody>tr").each(function (index) {

@@ -570,38 +570,3 @@ p .svgColor {
 [data-bs-theme="light"] #boatSchedule > tbody > tr.stopsRow:nth-of-type(odd):not(.activeRow) > td {
   background-color: #e9ecef;
 }
-
-@media screen and (max-width:600px){
-	.container{--bs-gutter-x:0;}
-	.container-xxl{padding:0 !important;}
-	.p-5{padding: 1rem !important;}
-	.p-5 .row{overflow-x:scroll;}
-	.p-5 .col-6, .p-5 .col-lg-6{width:100%;padding:0 12px !important;margin-bottom:20px;}
-	.tyoto{margin-bottom:0;}
-	table.dataTable thead th{text-align:center;font-size:14px;}
-	table.dataTable td{text-align:center;font-size:14px;padding:5px !important;}
-	.timebadge{width:35px;margin:0 calc(50% - 17.5px) 5px;}
-	.desttextrt{text-align:center;margin:0;}
-	#boatSchedule td .iconSmall{width:40px;margin:0;}
-	#boatSchedule td .iconSmall:last-of-type{margin-top:5px;}
-	.nav-item button{padding:5px;}
-	.nav-item button .timebadge{width:35px;margin:5px calc(50% - 17.5px);}
-	.nav-item button span{font-size:14px;float:left;width:100%;line-height:18px;min-height:36px;display:flex;align-items:center;justify-content:center;}
-	.padding-toggles{width:100%;padding:10px 10px 0 10px;}
-	.padding-toggles button{padding:5px;font-size:14px;line-height:18px;height:54px;display:flex;flex:1;align-items:center;justify-content:center;}
-	#boatscheduletoggle{width:100%;}
-	.dataTable th{padding: 5px 30px 5px 5px;}
-	.dataTable .iconSmall{width:40px;}
-	.dataTable .iconMini{display:block;margin-bottom:0;}
-	#desttable1regContainer, #desttable2regContainer, #desttable3regContainer, #desttable1specContainer, #desttable2specContainer, #desttable3specContainer{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#888 #eee;}
-	#desttable1regContainer::-webkit-scrollbar, #desttable2regContainer::-webkit-scrollbar, #desttable3regContainer::-webkit-scrollbar, #desttable1specContainer::-webkit-scrollbar, #desttable2specContainer::-webkit-scrollbar, #desttable3specContainer::-webkit-scrollbar{height: 10px;}
-	#desttable1regContainer::-webkit-scrollbar-track, #desttable2regContainer::-webkit-scrollbar-track, #desttable3regContainer::-webkit-scrollbar-track, #desttable1specContainer::-webkit-scrollbar-track, #desttable2specContainer::-webkit-scrollbar-track, #desttable3specContainer::-webkit-scrollbar-track{background:#eee;}
-	#desttable1regContainer::-webkit-scrollbar-thumb, #desttable2regContainer::-webkit-scrollbar-thumb, #desttable3regContainer::-webkit-scrollbar-thumb, #desttable1specContainer::-webkit-scrollbar-thumb, #desttable2specContainer::-webkit-scrollbar-thumb, #desttable3specContainer::-webkit-scrollbar-thumb{background:#888;border-radius:10px;}
-	#desttable1regContainer::-webkit-scrollbar-thumb:hover, #desttable2regContainer::-webkit-scrollbar-thumb:hover, #desttable3regContainer::-webkit-scrollbar-thumb:hover, #desttable1specContainer::-webkit-scrollbar-thumb:hover, #desttable2specContainer::-webkit-scrollbar-thumb:hover, #desttable3specContainer::-webkit-scrollbar-thumb:hover{background:#555;}
-	.accordion-body{padding:10px;}
-	.accordion-body table th, .accordion-body table td{padding:5px;}
-	.accordion-body table td .iconSmall{width:40px;}
-	.accordion-body table td .bitebadge{margin-bottom:0;}
-	.accordion-body table td .fish-intuition{display:flex;align-items:center;justify-content: center;}
-	.bonus-route-grid{grid-template-columns: repeat(auto-fill, minmax(101px, 1fr)) !important;}
-}

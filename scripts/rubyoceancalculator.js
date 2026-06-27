@@ -263,20 +263,61 @@ function formatCleanDate(date) {
 	return new Intl.DateTimeFormat(timeRegion, dateOptions).format(date);
 }
 
+function formatDayHourDepartureLabel(days, hours) {
+	if (days === 1 && hours === 0) {
+		return typeof translateWord === "function"
+			? translateWord("schedule.in1day")
+			: "in 1 day";
+	}
+
+	if (hours === 0) {
+		var daysLabel =
+			typeof translateWord === "function"
+				? translateWord("schedule.indays")
+				: "in {0} days";
+		return daysLabel.replace("{0}", days);
+	}
+
+	if (days === 1 && hours === 1) {
+		return typeof translateWord === "function"
+			? translateWord("schedule.in1day1hour")
+			: "in 1 day 1 hour";
+	}
+
+	if (days === 1) {
+		var oneDayHoursLabel =
+			typeof translateWord === "function"
+				? translateWord("schedule.in1dayhours")
+				: "in 1 day {0} hours";
+		return oneDayHoursLabel.replace("{0}", hours);
+	}
+
+	if (hours === 1) {
+		var daysOneHourLabel =
+			typeof translateWord === "function"
+				? translateWord("schedule.indays1hour")
+				: "in {0} days 1 hour";
+		return daysOneHourLabel.replace("{0}", days);
+	}
+
+	var daysHoursLabel =
+		typeof translateWord === "function"
+			? translateWord("schedule.indayshours")
+			: "in {0} days {1} hours";
+	return daysHoursLabel.replace("{0}", days).replace("{1}", hours);
+}
+
 function getTimeUntilDeparture(stopTime) {
 	var now = Date.now();
 	var diff = stopTime.getTime() - now;
 	var minutes = Math.floor(diff / (1000 * 60));
-	var hours = Math.floor(minutes / 60);
-	var days = Math.floor(hours / 24);
+	var totalHours = Math.floor(minutes / 60);
+	var days = Math.floor(totalHours / 24);
+	var hours = totalHours % 24;
 
 	// Handle upcoming departures (positive time)
 	if (days > 0) {
-		var label =
-			typeof translateWord === "function"
-				? translateWord("schedule.inaday")
-				: "in a day";
-		return label;
+		return formatDayHourDepartureLabel(days, hours);
 	} else if (hours > 0) {
 		if (hours === 1) {
 			var label =
@@ -327,6 +368,7 @@ function getTimeUntilDeparture(stopTime) {
 function convertTime(firstTime = true) {
 	var x = Date.now();
 	var selectedTime = subtractTimeFromDate(new Date(x), 6.7);
+	var hideCompletedRoutes = getHideCompletedRoutesEnabled();
 
 	var selectedTwoHourChunk = Math.floor(
 		selectedTime.getTime() / 1000 / (60 * 60 * 2)
@@ -335,9 +377,10 @@ function convertTime(firstTime = true) {
 	//align the number that is assigned to the next two hour block to the pattern array
 	var offset = 92;
 	var tempTime = (selectedTwoHourChunk + offset) % pattern.length;
+	var maxSlots = hideCompletedRoutes ? pattern.length : 12;
 
 	var dataSet = [];
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i < maxSlots; i++) {
 		var temp =
 			tempTime + i >= pattern.length
 				? tempTime + i - pattern.length
@@ -350,18 +393,29 @@ function convertTime(firstTime = true) {
 		var routeNumber = pattern[temp];
 		var finalStopDisp = getFinalStop(pattern[temp] - 1);
 		var optObjectives = getRouteName(pattern[temp] - 1);
+		var routeSummary = getRouteUncaughtSummary("Ruby", routeNumber, cleanedDataObjBK);
 		var images = routeImages[pattern[temp] - 1];
 
 		var timeUntilDepature = getTimeUntilDeparture(stopTime);
 		var cleanDate = formatCleanDate(stopTime);
-		dataSet.push([
-			cleanDate,
-			timeUntilDepature,
-			finalStopDisp,
-			optObjectives,
-			routeNumber,
-			images,
-		]);
+		if (!hideCompletedRoutes || routeSummary.hasUncaught) {
+			dataSet.push([
+				cleanDate,
+				timeUntilDepature,
+				finalStopDisp,
+				routeSummary.uncaughtCount,
+				optObjectives,
+				routeNumber,
+				images,
+			]);
+			if (hideCompletedRoutes && dataSet.length === 12) {
+				break;
+			}
+		}
+
+		if (!hideCompletedRoutes && dataSet.length === 12) {
+			break;
+		}
 	}
 
 	var boatTable;
@@ -403,6 +457,12 @@ function convertTime(firstTime = true) {
 			{
 				title:
 					typeof translateWord === "function"
+						? translateWord("schedule.uncaught")
+						: "Uncaught",
+			},
+			{
+				title:
+					typeof translateWord === "function"
 						? translateWord("schedule.optionalobjectives")
 						: "Optional Objectives",
 			},
@@ -410,12 +470,12 @@ function convertTime(firstTime = true) {
 			{ title: "" },
 		],
 		createdRow: function (row, data, dataIndex) {
-			$(row).attr("data-route", data[4]);
+			$(row).attr("data-route", data[5]);
 			$(row).addClass("stopsRow");
 			$(row).attr("tabindex", "0");
 			$(row).attr(
 				"id",
-				"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "")
+				"stop" + data[5] + "_" + data[0].replace(/\s/g, "").replace(":", "")
 			);
 			$(row).on("click", function () {
 				hideFinalStopTooltips();
@@ -424,9 +484,8 @@ function convertTime(firstTime = true) {
 				});
 				$(this).addClass("activeRow");
 				activeRowIDpers =
-					"stop" + data[4] + "_" + data[0].replace(/\s/g, "").replace(":", "");
-				console.log("Cleaned obj bk", cleanedDataObjBK);
-				displayStops("Ruby", data[4], cleanedDataObjBK);
+					"stop" + data[5] + "_" + data[0].replace(/\s/g, "").replace(":", "");
+				displayStops("Ruby", data[5], cleanedDataObj);
 			});
 		},
 		data: dataSet,
@@ -435,6 +494,8 @@ function convertTime(firstTime = true) {
 		ordering: false,
 		info: false,
 	});
+
+	updateBoatScheduleEmptyState(hideCompletedRoutes && dataSet.length === 0);
 
 	if (activeRowIds.length > 0) {
 		activeRowIds.forEach(function (rowId) {
@@ -446,7 +507,7 @@ function convertTime(firstTime = true) {
 	}
 
 	initializeFinalStopTooltips();
-	return dataSet[0][4];
+	return dataSet.length > 0 ? dataSet[0][5] : null;
 }
 
 document.addEventListener("timeFormatChanged", function () {

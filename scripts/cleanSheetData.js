@@ -1,5 +1,11 @@
+function cloneFishEntry(entry) {
+	return JSON.parse(JSON.stringify(entry));
+}
+
 function sheetDataHandlerIndigo(sheetData) {
 	console.log("Indigo data: ", sheetData);
+	cleanedDataObj.length = 0;
+	cleanedDataObjBK.length = 0;
 
 	for (var key in sheetData) {
 		var fish = sheetData[key];
@@ -65,23 +71,23 @@ function sheetDataHandlerIndigo(sheetData) {
 		}
 
 		cleanedDataObj.push(newFish);
-		cleanedDataObjBK.push(newFish);
+		cleanedDataObjBK.push(cloneFishEntry(newFish));
 	}
 
 	console.log("clean data", cleanedDataObj);
 
-	//Get Ocean Fishing Schedule for next 12 stops and return the first Route to show
+	// Build initial schedule, then explicitly reapply completed-route filter if enabled.
 	var firstRoute = convertTime();
-	var table = $("#boatSchedule").DataTable();
+	if (getHideCompletedRoutesEnabled()) {
+		firstRoute = convertTime(false);
+	}
 	var test = setInterval(function () {
-		convertTime(false);
-		if (activeRowIDpers == "") {
-			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+		var refreshedFirstRoute = convertTime(false);
+		var selectedRoute = syncActiveBoatScheduleRoute(refreshedFirstRoute);
+		if (selectedRoute) {
+			displayStops("Indigo", selectedRoute, cleanedDataObj);
 		} else {
-			var activeRow = document.getElementById(activeRowIDpers);
-			if (activeRow) {
-				activeRow.classList.add("activeRow");
-			}
+			clearDisplayedStopTables();
 		}
 
 		if ($("#boatscheduletoggle").hasClass("active")) {
@@ -92,13 +98,19 @@ function sheetDataHandlerIndigo(sheetData) {
 			});
 		}
 	}, 60000);
-	$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+	var initialSelectedRoute = syncActiveBoatScheduleRoute(firstRoute);
 	$("#throbber").addClass("importanthide");
-	displayStops("Indigo", firstRoute, cleanedDataObj);
+	if (initialSelectedRoute) {
+		displayStops("Indigo", initialSelectedRoute, cleanedDataObj);
+	} else {
+		clearDisplayedStopTables();
+	}
 }
 
 function sheetDataHandlerRuby(sheetData) {
 	console.log("Ruby data: ", sheetData);
+	cleanedDataObj.length = 0;
+	cleanedDataObjBK.length = 0;
 
 	for (var key in sheetData) {
 		var fish = sheetData[key];
@@ -154,24 +166,33 @@ function sheetDataHandlerRuby(sheetData) {
 			Fabled: fish.FabledTable,
 		};
 
+		if (newFish.DH[0] == "") {
+			newFish.DH[0] = "3 - 4";
+			newFish.DH[1] = 3;
+		}
+		if (newFish.TH[0] == "") {
+			newFish.TH[0] = "5 - 7";
+			newFish.TH[1] = 5;
+		}
+
 		cleanedDataObj.push(newFish);
-		cleanedDataObjBK.push(newFish);
+		cleanedDataObjBK.push(cloneFishEntry(newFish));
 	}
 
 	console.log("clean data", cleanedDataObj);
 
-	//Get Ocean Fishing Schedule for next 12 stops and return the first Route to show
+	// Build initial schedule, then explicitly reapply completed-route filter if enabled.
 	var firstRoute = convertTime();
-	var table = $("#boatSchedule").DataTable();
+	if (getHideCompletedRoutesEnabled()) {
+		firstRoute = convertTime(false);
+	}
 	var test = setInterval(function () {
-		convertTime(false);
-		if (activeRowIDpers == "") {
-			$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+		var refreshedFirstRoute = convertTime(false);
+		var selectedRoute = syncActiveBoatScheduleRoute(refreshedFirstRoute);
+		if (selectedRoute) {
+			displayStops("Ruby", selectedRoute, cleanedDataObj);
 		} else {
-			var activeRow = document.getElementById(activeRowIDpers);
-			if (activeRow) {
-				activeRow.classList.add("activeRow");
-			}
+			clearDisplayedStopTables();
 		}
 
 		if ($("#boatscheduletoggle").hasClass("active")) {
@@ -183,7 +204,12 @@ function sheetDataHandlerRuby(sheetData) {
 		}
 	}, 60000);
 
-	$("#boatSchedule>tbody>tr:first").addClass("activeRow");
+	var initialSelectedRoute = syncActiveBoatScheduleRoute(firstRoute);
 	$("#throbber").addClass("importanthide");
-	displayStops("Ruby", firstRoute, cleanedDataObj);
+	if (initialSelectedRoute) {
+		displayStops("Ruby", initialSelectedRoute, cleanedDataObj);
+	} else {
+		clearDisplayedStopTables();
+	}
 }
+

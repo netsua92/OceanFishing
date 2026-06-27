@@ -107,7 +107,7 @@ function localizePage() {
     var userLang = (checkLanguage() || "en").toLowerCase();
     if (!["en", "fr", "jp", "de", "ko"].includes(userLang)) userLang = "en";
 
-    var url = "/locales/translation-" + userLang + ".json?v=2";
+    var url = "/locales/translation-" + userLang + ".json?v=3";
 
     fetch(url, { cache: "no-store" })
         .then(function (res) {

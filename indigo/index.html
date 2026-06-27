@@ -10,13 +10,13 @@
 
     <!-- Common styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link href="/css/navbar-static.css?v=1" rel="stylesheet">
-    <link href="/assets/dist/css/bootstrap.min.css?v=10" rel="stylesheet">
-    <link href="/css/styles.css?v=13" rel="stylesheet">
+    <link href="/css/navbar-static.css?v=2" rel="stylesheet">
+    <link href="/assets/dist/css/bootstrap.min.css?v=11" rel="stylesheet">
+    <link href="/css/styles.css?v=14" rel="stylesheet">
 
     <!-- DataTables CSS -->
-    <link href="../css/datatables.min.css?v=1" rel="stylesheet">
-    <link href="../css/dataTables.bootstrap5.min.css?v=1" rel="stylesheet">
+    <link href="../css/datatables.min.css?v=2" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap5.min.css?v=2" rel="stylesheet">
 
     <style>
         #pageContent { opacity: 0; transition: opacity 0.4s ease; }
@@ -24,27 +24,27 @@
     </style>
 
     <!-- Common scripts -->
-    <script src="/scripts/jquery-3.7.1.min.js?v=1" type="text/javascript" defer></script>
-    <script src="/assets/js/cookie.js?v=1" defer></script>
-    <script src="/assets/js/color-modes.js?v=2"></script>
-    <script src="/scripts/contentReady.js?v=1" type="text/javascript" defer></script>
-    <script src="/scripts/localeUtil.js?v=1" type="text/javascript" defer></script>
-    <script src="/scripts/headerandfooter.js?v=7" type="text/javascript" defer></script>
-    <script src="/assets/dist/js/bootstrap.bundle.min.js?v=1"></script>
+    <script src="/scripts/jquery-3.7.1.min.js?v=2" type="text/javascript" defer></script>
+    <script src="/assets/js/cookie.js?v=2" defer></script>
+    <script src="/assets/js/color-modes.js?v=3"></script>
+    <script src="/scripts/contentReady.js?v=2" type="text/javascript" defer></script>
+    <script src="/scripts/localeUtil.js?v=2" type="text/javascript" defer></script>
+    <script src="/scripts/headerandfooter.js?v=8" type="text/javascript" defer></script>
+    <script src="/assets/dist/js/bootstrap.bundle.min.js?v=2"></script>
 
     <!-- Page-specific scripts -->
-    <script src="../scripts/popper.min.js?v=1" type="text/javascript" defer></script>
-    <script src="../scripts/cleanSheetData.js?v=12" type="text/javascript" defer></script>
-    <script src="../scripts/moment.js?v=1" type="text/javascript" defer></script>
-    <script src="../scripts/localize.js?v=13" type="text/javascript" defer></script>
-    <script src="../scripts/gFuncs.js?v=16" type="text/javascript" defer></script>
-    <script src="../scripts/getSheetData.js?v=1" type="text/javascript" defer></script>
-    <script src="../scripts/datatables.min.js?v=1" type="text/javascript" defer></script>
-    <script src="../scripts/dataTables.bootstrap5.min.js?v=1" type="text/javascript" defer></script>
-    <script src="../scripts/displayStops.js?v=11" type="text/javascript" defer></script>
-    <script src="../scripts/indigo.js?v=13" type="text/javascript" defer></script>
-    <script src="../scripts/indigooceancalculator.js?v=18" type="text/javascript" defer></script>
-    <script src="../scripts/table-a11y.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/popper.min.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/cleanSheetData.js?v=15" type="text/javascript" defer></script>
+    <script src="../scripts/moment.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/localize.js?v=15" type="text/javascript" defer></script>
+    <script src="../scripts/gFuncs.js?v=21" type="text/javascript" defer></script>
+    <script src="../scripts/getSheetData.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/datatables.min.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/dataTables.bootstrap5.min.js?v=2" type="text/javascript" defer></script>
+    <script src="../scripts/displayStops.js?v=12" type="text/javascript" defer></script>
+    <script src="../scripts/indigo.js?v=16" type="text/javascript" defer></script>
+    <script src="../scripts/indigooceancalculator.js?v=21" type="text/javascript" defer></script>
+    <script src="../scripts/table-a11y.js?v=3" type="text/javascript" defer></script>
 
     <title>Ocean Fishing Tracker | Indigo</title>
 </head>
@@ -58,14 +58,14 @@
         <div class="bg-body-tertiary p-5 rounded">
             <div class="row">                
                 <div class="col-sm-6"><h1 data-localize="indigoroute">Indigo Route</h1></div>
-                <div class="col-sm-6"><!--<button id="caughttoggle"  type="button" class="btn btn-outline-primary">Toggle Caught Filter</button>--><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true" data-localize="table.toggleschedule">Toggle Schedule</button></div>
+                <div class="col-sm-6 d-flex flex-wrap justify-content-sm-end gap-3 align-items-center"><!--<button id="caughttoggle"  type="button" class="btn btn-outline-primary">Toggle Caught Filter</button>--><button id="boatscheduletoggle"  type="button" class="btn btn-outline-primary" aria-controls="boatSchedule" aria-expanded="true" data-localize="table.toggleschedule">Toggle Schedule</button><button id="hideCompletedRoutesToggle" type="button" class="btn btn-outline-primary" aria-pressed="false" data-localize="schedule.hidecompletedroutes">Hide completed routes</button></div>
             </div>
             <div class="row">
                 <table id="boatSchedule" ><div id="throbber" class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>
-                  </div></table>
+                  </div></table><div id="boatScheduleEmptyState" class="alert alert-secondary mt-3 d-none" data-localize="schedule.noupcominguncaught">No upcoming routes contain uncaught fish</div>
             </div>
         </div>
         <br>
