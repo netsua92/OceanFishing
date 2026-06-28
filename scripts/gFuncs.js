@@ -831,6 +831,16 @@ function styleRow(row, id, type) {
 function makeStopTable(tempDataSet, type, id, time, route) {
 	$("#fff" + id + "spec").prop("checked", false);
 	$("#fff" + id).prop("checked", false);
+	let toggleDiv = document.querySelector("#Toggles" + id + type);
+	let persistedColumnVisibility = {};
+	if (toggleDiv) {
+		toggleDiv.querySelectorAll("button.toggle-vis").forEach((el) => {
+			let columnIdx = Number(el.getAttribute("data-column"));
+			if (Number.isNaN(columnIdx)) return;
+			persistedColumnVisibility[columnIdx] =
+				el.classList.contains("active") || el.getAttribute("aria-pressed") === "true";
+		});
+	}
 	let newtempDataSet = [];
 	let specBait = false;
 	let mooch = false;
@@ -1060,21 +1070,25 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		});
 	}
 	//Set Click Listeners for Bait Toggles
-	let toggleDiv = document.querySelector("#Toggles" + id + type);
-
-	toggleDiv.querySelectorAll("button.toggle-vis").forEach((el) => {
-		el.addEventListener("click", function (e) {
+	if (toggleDiv) {
+		toggleDiv.querySelectorAll("button.toggle-vis").forEach((el) => {
+			el.onclick = function (e) {
 			e.preventDefault();
 
-			let columnIdx = e.target.getAttribute("data-column");
+			let columnIdx = this.getAttribute("data-column");
+			if (columnIdx === null) return;
 			let column = table.column(columnIdx);
+			let nextVisible = !column.visible();
 
 			// Toggle the visibility
-			column.visible(!column.visible());
+			column.visible(nextVisible);
+			this.classList.toggle("active", nextVisible);
+			this.setAttribute("aria-pressed", nextVisible ? "true" : "false");
+		};
 		});
-	});
+	}
 	let toggleFable = document.querySelector("#fff" + id);
-	$(toggleFable).on("change", function (event, state) {
+	$(toggleFable).off("change").on("change", function (event, state) {
 		var c = $(this).prop("checked");
 		$("#fff" + id + "spec").prop("checked", c);
 
@@ -1093,7 +1107,7 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	});
 
 	let toggleFableSpec = document.querySelector("#fff" + id + "spec");
-	$(toggleFableSpec).on("change", function (event, state) {
+	$(toggleFableSpec).off("change").on("change", function (event, state) {
 		var c = $(this).prop("checked");
 		$("#fff" + id).prop("checked", c);
 
@@ -1166,6 +1180,24 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 				$("#specialBaitToggle" + id + type).addClass("disabled");
 				$("#specialBaitToggle" + id + type).attr("disabled", true).attr("tabindex", "-1");
 			}
+		});
+	}
+
+	if (toggleDiv) {
+		toggleDiv.querySelectorAll("button.toggle-vis").forEach((el) => {
+			let columnIdx = Number(el.getAttribute("data-column"));
+			if (Number.isNaN(columnIdx)) return;
+
+			let isDisabled = el.hasAttribute("disabled") || el.classList.contains("disabled");
+			let shouldBeVisible = isDisabled
+				? false
+				: persistedColumnVisibility[columnIdx] !== undefined
+				? persistedColumnVisibility[columnIdx]
+				: el.classList.contains("active") || el.getAttribute("aria-pressed") === "true";
+
+			table.column(columnIdx).visible(shouldBeVisible);
+			el.classList.toggle("active", shouldBeVisible);
+			el.setAttribute("aria-pressed", shouldBeVisible ? "true" : "false");
 		});
 	}
 
