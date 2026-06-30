@@ -828,9 +828,56 @@ function styleRow(row, id, type) {
 	return row;
 }
 
+var stopTableUiState = {
+	fabledByStop: {},
+	sortByTable: {},
+};
+
+function getStopTableSelector(id, type) {
+	return "#desttable" + id + type;
+}
+
+function applyFabledFocusState(id, checked) {
+	$("#fff" + id).prop("checked", !!checked);
+	$("#fff" + id + "spec").prop("checked", !!checked);
+
+	$("[id^=desttable" + id + "] .fabled").each(function () {
+		if (checked) {
+			$(this).closest("tr").hide();
+			$(this).closest("table").removeClass("table-striped");
+		} else {
+			$(this).closest("tr").show();
+			$(this).closest("table").addClass("table-striped");
+		}
+	});
+}
+
 function makeStopTable(tempDataSet, type, id, time, route) {
-	$("#fff" + id + "spec").prop("checked", false);
-	$("#fff" + id).prop("checked", false);
+	let tableSelector = getStopTableSelector(id, type);
+	if (
+		typeof $ !== "undefined" &&
+		$.fn &&
+		$.fn.dataTable &&
+		$.fn.dataTable.isDataTable(tableSelector)
+	) {
+		try {
+			let existingTable = $(tableSelector).DataTable();
+			let existingOrder = existingTable.order();
+			if (Array.isArray(existingOrder) && existingOrder.length > 0) {
+				stopTableUiState.sortByTable[tableSelector] = existingOrder;
+			}
+		} catch (err) {
+			// Ignore sort capture failures and continue with rebuild.
+		}
+	}
+
+	let existingFabledState = stopTableUiState.fabledByStop[id];
+	if (typeof existingFabledState !== "boolean") {
+		existingFabledState =
+			$("#fff" + id).prop("checked") || $("#fff" + id + "spec").prop("checked") || false;
+		stopTableUiState.fabledByStop[id] = !!existingFabledState;
+	}
+
 	let toggleDiv = document.querySelector("#Toggles" + id + type);
 	let persistedColumnVisibility = {};
 	if (toggleDiv) {
@@ -1088,41 +1135,17 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 		});
 	}
 	let toggleFable = document.querySelector("#fff" + id);
-	$(toggleFable).off("change").on("change", function (event, state) {
-		var c = $(this).prop("checked");
-		$("#fff" + id + "spec").prop("checked", c);
-
-		$("[id^=desttable" + id + "]").each(function (index) {
-			$("[id^=desttable" + id + "] .fabled").each(function () {
-				// .each to loop through elements
-				if (toggleFable.checked) {
-					$(this).closest("tr").hide();
-					$(this).closest("table").removeClass("table-striped");
-				} else {
-					$(this).closest("tr").show();
-					$(this).closest("table").addClass("table-striped");
-				}
-			});
-		});
+	$(toggleFable).off("change").on("change", function () {
+		var c = !!$(this).prop("checked");
+		stopTableUiState.fabledByStop[id] = c;
+		applyFabledFocusState(id, c);
 	});
 
 	let toggleFableSpec = document.querySelector("#fff" + id + "spec");
-	$(toggleFableSpec).off("change").on("change", function (event, state) {
-		var c = $(this).prop("checked");
-		$("#fff" + id).prop("checked", c);
-
-		$("[id^=desttable" + id + "]").each(function (index) {
-			$("[id^=desttable" + id + "] .fabled").each(function () {
-				// .each to loop through elements
-				if (toggleFable.checked) {
-					$(this).closest("tr").hide();
-					$(this).closest("table").removeClass("table-striped");
-				} else {
-					$(this).closest("tr").show();
-					$(this).closest("table").addClass("table-striped");
-				}
-			});
-		});
+	$(toggleFableSpec).off("change").on("change", function () {
+		var c = !!$(this).prop("checked");
+		stopTableUiState.fabledByStop[id] = c;
+		applyFabledFocusState(id, c);
 	});
 
 	const tooltipTriggerList = document.querySelectorAll(
@@ -1151,12 +1174,12 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 	$("[id^=desttable" + id + type + "]").each(function (index) {
 		let column = table.column(6);
 		if ($(this).find(".moochIcon").length > 0) {
-			column.visible(!column.visible());
+			column.visible(true);
 			$("#moochBaitToggle" + id + type).addClass("active");
 			$("#moochBaitToggle" + id + type).removeClass("disabled");
 			$("#moochBaitToggle" + id + type).removeAttr("disabled").removeAttr("tabindex");
 		} else {
-			column.visible(column.visible());
+			column.visible(false);
 			$("#moochBaitToggle" + id + type).addClass("disabled");
 			$("#moochBaitToggle" + id + type).removeClass("active");
 			$("#moochBaitToggle" + id + type).attr("disabled", true).attr("tabindex", "-1");
@@ -1198,6 +1221,30 @@ function makeStopTable(tempDataSet, type, id, time, route) {
 			table.column(columnIdx).visible(shouldBeVisible);
 			el.classList.toggle("active", shouldBeVisible);
 			el.setAttribute("aria-pressed", shouldBeVisible ? "true" : "false");
+		});
+	}
+
+	let savedSortOrder = stopTableUiState.sortByTable[tableSelector];
+	if (Array.isArray(savedSortOrder) && savedSortOrder.length > 0) {
+		try {
+			table.order(savedSortOrder).draw(false);
+		} catch (err) {
+			// Ignore invalid saved sort and continue.
+		}
+	}
+
+	applyFabledFocusState(id, stopTableUiState.fabledByStop[id]);
+
+	if (typeof table.on === "function") {
+		table.on("order.dt", function () {
+			let nextOrder = table.order();
+			if (Array.isArray(nextOrder) && nextOrder.length > 0) {
+				stopTableUiState.sortByTable[tableSelector] = nextOrder;
+			}
+		});
+
+		table.on("draw.dt", function () {
+			applyFabledFocusState(id, !!stopTableUiState.fabledByStop[id]);
 		});
 	}
 
